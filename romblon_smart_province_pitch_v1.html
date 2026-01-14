@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romblon Smart Province | CSV × Likha Labs — v1.0</title>
+  <style>
+    :root { --bg-color:#050505; --text-color:#e0e0e0; --accent-color:#00ff9d; --secondary-accent:#00d2ff; --danger-color:#ff4d4d; --muted-text:#888; --glass-bg:rgba(25,25,25,0.6); --border-color:rgba(255,255,255,0.1); --font-main:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; --font-mono:'JetBrains Mono','Fira Code',monospace; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background-color:var(--bg-color);color:var(--text-color);font-family:var(--font-main);overflow:hidden;height:100vh;width:100vw}
+    h1,h2,h3{font-weight:800;letter-spacing:-0.03em;line-height:1.1}
+    h1{font-size:4.5rem;margin-bottom:1rem;background:linear-gradient(to right,#fff,#888);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    h2{font-size:3rem;margin-bottom:1.5rem;color:#fff}
+    p{font-size:1.25rem;line-height:1.6;color:#ccc;margin-bottom:1.5rem;max-width:65ch}
+    .mono{font-family:var(--font-mono);color:var(--secondary-accent);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;display:block}
+    .highlight{color:var(--accent-color)}
+    .text-gradient{background:linear-gradient(to right,var(--accent-color),var(--secondary-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .footnote{font-size:0.7rem;color:#555;margin-top:2rem;display:block;max-width:100%;font-style:italic}
+    .slides-container{position:relative;height:100vh;width:100vw;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+    .slide{height:100vh;width:100vw;position:absolute;top:0;left:0;display:flex;opacity:0;pointer-events:none;transition:opacity .6s ease;padding:4rem 6rem;align-items:center;background:radial-gradient(circle at 50% 50%, rgba(0,255,157,0.03) 0%, transparent 50%);overflow-y:auto}
+    .slide.active{opacity:1;pointer-events:all;z-index:10}
+    .split-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;width:100%;height:100%;align-items:center}
+    .center-layout{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;width:100%;height:100%;max-width:1200px;margin:0 auto}
+    .stat-card{background:var(--glass-bg);border:1px solid var(--border-color);padding:2.5rem;border-radius:16px;backdrop-filter:blur(10px);transition:transform .3s ease}
+    .stat-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,0.2)}
+    .stat-big{font-size:4rem;font-weight:800;color:#fff;font-family:var(--font-mono);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.9rem;text-transform:uppercase;color:var(--muted-text);letter-spacing:.05em}
+    .mockup-container{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,0.6);border:1px solid #333;transition:all .5s ease;background:#0f0f0f}
+    .mockup-container:hover{transform:scale(1.02);border-color:var(--accent-color)}
+    .mockup-img{width:100%;height:auto;display:block;filter:grayscale(10%) contrast(110%);object-fit:cover}
+    .logo{width:80px;height:80px;object-fit:contain;margin-bottom:2rem;border-radius:50%;background:#000;border:1px solid #333;padding:10px}
+    .controls{position:fixed;bottom:2.5rem;right:3rem;display:flex;gap:1.5rem;z-index:100}
+    .btn-nav{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;font-family:var(--font-mono);transition:.2s;display:flex;align-items:center;justify-content:center;font-size:1.2rem;backdrop-filter:blur(5px)}
+    .btn-nav:hover{background:rgba(255,255,255,0.1);border-color:var(--accent-color);color:var(--accent-color)}
+    .btn-primary{background:var(--accent-color);color:#000;border:none;padding:1rem 2rem;font-size:1rem;font-weight:700;border-radius:8px;cursor:pointer;text-transform:uppercase;font-family:var(--font-mono);letter-spacing:.05em;transition:.3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,255,157,0.2)}
+    .progress-bar{position:fixed;bottom:0;left:0;height:4px;background:linear-gradient(to right,var(--secondary-accent),var(--accent-color));width:0%;transition:width .3s ease;z-index:100}
+    .grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);background-size:40px 40px;pointer-events:none;z-index:1}
+    .blur-pill{background:rgba(0,255,157,0.1);color:var(--accent-color);padding:4px 12px;border-radius:100px;font-size:.8rem;font-family:var(--font-mono);border:1px solid rgba(0,255,157,0.2);display:inline-block;margin-bottom:1rem}
+    @media (max-width:768px){h1{font-size:2.5rem}h2{font-size:2rem}p{font-size:1rem}.slide{flex-direction:column;padding:2rem 1.5rem;align-items:flex-start;justify-content:flex-start;height:100vh;overflow-y:auto}.split-layout{grid-template-columns:1fr;gap:2rem;display:flex;flex-direction:column}.center-layout{justify-content:flex-start;padding-top:2rem}.stat-card{width:100%!important;padding:1.5rem}.mockup-container{width:100%;margin-top:1rem}.display-grid{grid-template-columns:1fr!important;gap:1.5rem!important}.controls{bottom:1rem;right:1rem;gap:1rem}.btn-nav{width:40px;height:40px;font-size:1rem}}
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+  <div class="progress-bar" id="progress"></div>
+  <div class="slides-container">
+    
+    <!-- SLIDE 1: Title -->
+    <div class="slide active" id="slide-1">
+      <div class="split-layout">
+        <div class="center-layout" style="border-right:1px solid #222;opacity:.4;filter:grayscale(100%)">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop" alt="Legacy LGU Operations" class="mockup-img" style="border-radius:12px">
+          <p class="mono" style="margin-top:2rem">LEGACY STATE: MANUAL & DISCONNECTED</p>
+        </div>
+        <div class="center-layout">
+          <div style="text-align:left;width:100%;padding-left:2rem">
+            <span class="blur-pill">UNSOLICITED PROPOSAL • PILOT PROVINCE</span>
+            <h1>Romblon <br><span class="text-gradient">Smart Province</span></h1>
+            <p style="font-size:1.5rem;color:#fff">AI-powered governance + EdTech ecosystem for island communities.</p>
+            <p class="mono" style="color: var(--muted-text);">CLIMATE SMART VENTURES × LIKHA LABS</p>
+            <p style="font-size:1rem;color:#aaa;margin-top:2rem">A national pilot to demonstrate how AI can empower small island provinces with limited resources.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Why Romblon, Why Now -->
+    <div class="slide" id="slide-2">
+      <div class="center-layout">
+        <span class="mono">WHY ROMBLON, WHY NOW</span>
+        <h2>The Perfect Pilot Province</h2>
+        <span class="mono" style="color:#888">RA 11032 (EODB, 2018) + RA 11055 (PSED, 2018) + RA 10929 (Free Internet, 2017) + DepEd Digital Transformation Roadmap 2023–2028</span>
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:4rem;width:100%">
+          <div class="stat-card">
+            <div class="stat-big">302K</div>
+            <p class="mono">POPULATION</p>
+            <p style="font-size:.9rem;margin-top:1rem">17 municipalities across 3 major islands. Small enough to pilot, big enough to prove national scalability.</p>
+          </div>
+          <div class="stat-card" style="border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
+            <div class="stat-big text-gradient">#1</div>
+            <p class="mono" style="color:var(--accent-color)">MARBLE CAPITAL</p>
+            <p style="font-size:.9rem;margin-top:1rem;color:#fff">Tourism + marble industry = workforce development opportunity aligned with economic base.</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-big">3-5</div>
+            <p class="mono">STAFF PER LGU</p>
+            <p style="font-size:.9rem;margin-top:1rem">Limited human resources make AI force-multiplier critical for service delivery.</p>
+          </div>
+        </div>
+        <ul style="list-style:none;color:#ccc;margin-top:2rem;max-width:900px">
+          <li style="margin-bottom:1rem">• <strong>RA 11032 (EODB):</strong> 3-day business permits; 20-day complex permits — requires digital processing</li>
+          <li style="margin-bottom:1rem">• <strong>RA 11055 (PSED):</strong> Free public education up to tertiary — demands quality EdTech infrastructure</li>
+          <li>• <strong>RA 10929:</strong> Free internet in public places — enables digital service delivery at last mile</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: The Challenge -->
+    <div class="slide" id="slide-3">
+      <div class="split-layout">
+        <div>
+          <span class="mono">THE CHALLENGE</span>
+          <h2>Island Governance at Breaking Point</h2>
+          <p>Romblon's LGUs face the same pressures as Metro Manila — with 10% of the resources.</p>
+          <div style="margin-top:3rem">
+            <div style="display:flex;align-items:center;margin-bottom:2rem">
+              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">8hrs</div>
+              <div>
+                <p class="mono" style="color:var(--danger-color)">CITIZEN WAITING TIME</p>
+                <p style="margin-bottom:0;font-size:1rem">For simple permits/inquiries. Staff stretched across multiple offices.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;margin-bottom:2rem">
+              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">68%</div>
+              <div>
+                <p class="mono" style="color:var(--danger-color)">YOUTH OUT-MIGRATION</p>
+                <p style="margin-bottom:0;font-size:1rem">Limited opportunities post-graduation. Skills mismatch with local economy.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center">
+              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">0</div>
+              <div>
+                <p class="mono" style="color:var(--danger-color)">DIGITAL TOOLS</p>
+                <p style="margin-bottom:0;font-size:1rem">Paper-based processes. No budget analytics. Manual permit routing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-container">
+          <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=1600&auto=format&fit=crop" alt="Island Community" class="mockup-img" style="opacity:.7">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Solution Overview -->
+    <div class="slide" id="slide-4">
+      <div class="center-layout">
+        <span class="mono">THE SOLUTION</span>
+        <h2>Romblon Smart Province Platform</h2>
+        <p style="margin-bottom:3rem">Two integrated systems: <strong class="highlight">LGU AI Platform</strong> for governance + <strong class="highlight">EdTech Ecosystem</strong> for human capital.</p>
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;width:100%">
+          <div class="stat-card" style="border-left:4px solid var(--accent-color)">
+            <span class="mono" style="color:var(--accent-color)">SYSTEM 1: GOVERNANCE</span>
+            <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">LGU AI Platform</h3>
+            <ul style="list-style:none;padding:0;text-align:left;font-size:.95rem;line-height:1.8">
+              <li>✓ 24/7 AI Citizen Helpdesk (Tagalog + Romblomanon)</li>
+              <li>✓ Business Permit Automation (EODB compliance)</li>
+              <li>✓ Budget & Procurement Intelligence</li>
+              <li>✓ Public Advisory System (disaster, health, programs)</li>
+              <li>✓ Cross-municipality data sharing</li>
+            </ul>
+          </div>
+          <div class="stat-card" style="border-left:4px solid var(--secondary-accent)">
+            <span class="mono" style="color:var(--secondary-accent)">SYSTEM 2: EDUCATION</span>
+            <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">EdTech Ecosystem</h3>
+            <ul style="list-style:none;padding:0;text-align:left;font-size:.95rem;line-height:1.8">
+              <li>✓ AI-Powered Learning Platform (adaptive, multilingual)</li>
+              <li>✓ Skills Training: Tourism, Marble Industry, BPO-ready</li>
+              <li>✓ Teacher Professional Development</li>
+              <li>✓ Jobs Pathway Tracker (local + remote opportunities)</li>
+              <li>✓ Romblon State University integration</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:2rem;font-size:1rem;color:#888;max-width:800px">Built on <strong>Accord Platform</strong> (Likha Labs IP) — governance-by-design architecture with audit trails, DPIA-compliant, Cloud First aligned.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Proof — Existing Tech -->
+    <div class="slide" id="slide-5">
+      <div class="split-layout">
+        <div>
+          <span class="blur-pill">PROVEN TECHNOLOGY • LIVE SYSTEMS</span>
+          <h2>We Don't Propose. We Deploy.</h2>
+          <p style="margin-top:1.5rem">The Romblon platform is built on <strong>battle-tested infrastructure</strong> already running for energy sector clients.</p>
+          <ul style="margin-top:2rem;list-style:none;color:#ccc">
+            <li style="margin-bottom:1.5rem">
+              <strong style="color:#fff">CSV Radar (Live v1.0-alpha)</strong><br>
+              <span style="font-size:.9rem">Policy intelligence engine scanning DOE/ERC daily. ~70 alerts/month, 12% critical, 3.5hrs/week saved per analyst.</span>
+            </li>
+            <li style="margin-bottom:1.5rem">
+              <strong style="color:#fff">CSV Orbit (Production v2.1)</strong><br>
+              <span style="font-size:.9rem">Opportunity scanner for development funding. 85-90% field completion, 80+ opportunities per scan.</span>
+            </li>
+            <li style="margin-bottom:1.5rem">
+              <strong style="color:#fff">Accord Platform (Backend 70% Complete)</strong><br>
+              <span style="font-size:.9rem">Governance-by-design OS with RBAC, audit trails, cryptographic provenance (Accord Attest).</span>
+            </li>
+          </ul>
+          <p style="font-size:.9rem;color:var(--accent-color);margin-top:2rem">→ Romblon adaptation: 4-6 weeks from signed MOU to pilot launch.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div class="mockup-container" style="border-color:var(--accent-color)">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop" alt="Platform Dashboard" class="mockup-img">
+          </div>
+          <p class="mono" style="text-align:center;color:#888">Live dashboard examples from energy sector deployments</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Personas + Impact -->
+    <div class="slide" id="slide-6">
+      <div class="center-layout">
+        <span class="mono">WHO BENEFITS</span>
+        <h2>Three Stakeholders, One Platform</h2>
+        <p>Designed for the real people who will use it every day.</p>
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:4rem;width:100%">
+          <div class="stat-card">
+            <div style="width:60px;height:60px;background:rgba(0,255,157,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👨‍💼</div>
+            <p class="mono" style="color:var(--accent-color)">MAYOR JUAN</p>
+            <h4 style="color:#fff;margin:.5rem 0">Municipal Mayor</h4>
+            <p style="font-size:.9rem;margin-top:1rem">Needs: Real-time budget monitoring, citizen satisfaction data, compliance dashboards for COA audits.</p>
+            <p style="font-size:.85rem;color:var(--accent-color);margin-top:1rem"><strong>Impact:</strong> 60% faster decision-making; zero audit observations on AI-flagged items.</p>
+          </div>
+          <div class="stat-card">
+            <div style="width:60px;height:60px;background:rgba(0,210,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👩‍🏫</div>
+            <p class="mono" style="color:var(--secondary-accent)">TEACHER MARIA</p>
+            <h4 style="color:#fff;margin:.5rem 0">Public School Teacher</h4>
+            <p style="font-size:.9rem;margin-top:1rem">Needs: Adaptive learning tools, multilingual content, student progress tracking, AI tutoring for struggling learners.</p>
+            <p style="font-size:.85rem;color:var(--secondary-accent);margin-top:1rem"><strong>Impact:</strong> 40% improvement in student engagement; 25% reduction in dropout rates.</p>
+          </div>
+          <div class="stat-card">
+            <div style="width:60px;height:60px;background:rgba(255,77,77,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">🧑‍💼</div>
+            <p class="mono">ENTREPRENEUR CARLO</p>
+            <h4 style="color:#fff;margin:.5rem 0">Local Business Owner</h4>
+            <p style="font-size:.9rem;margin-top:1rem">Needs: Fast business permits, 24/7 government service access, skills training for employees (tourism/marble).</p>
+            <p style="font-size:.85rem;color:#fff;margin-top:1rem"><strong>Impact:</strong> 3-day permit processing (vs 21 days); 5 new hires trained via platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: National Scalability -->
+    <div class="slide" id="slide-7">
+      <div class="split-layout">
+        <div class="mockup-container">
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1600&auto=format&fit=crop" alt="Philippines Map" class="mockup-img" style="opacity:.6">
+        </div>
+        <div>
+          <span class="mono" style="color:var(--accent-color)">NATIONAL VISION</span>
+          <h2>From Romblon to 1,488 LGUs</h2>
+          <p>Romblon is the blueprint for nationwide AI-powered local governance.</p>
+          <div style="margin-top:2rem">
+            <h3 style="color:#fff;font-size:1.5rem;margin-bottom:1rem">Why This Pilot Matters:</h3>
+            <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:2">
+              <li>• <strong>Replicable Model:</strong> Island geography mirrors 463 other Philippine municipalities</li>
+              <li>• <strong>Cost Efficiency:</strong> Per-capita deployment cost 40% lower than Metro Manila pilots</li>
+              <li>• <strong>Partnership Template:</strong> Provincial + 17 municipal LGUs = multi-tier governance reference</li>
+              <li>• <strong>DICT Alignment:</strong> Validates eGov PH System, Cloud First Policy, National Broadband Plan</li>
+              <li>• <strong>DepEd Integration:</strong> Direct link to Digital Transformation Roadmap 2023–2028</li>
+            </ul>
+          </div>
+          <p style="margin-top:2rem;font-size:1.1rem;color:var(--accent-color)"><strong>Target:</strong> 50 island provinces (2M+ citizens) by 2028. Romblon proves the model by end of 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Pricing & Partnership Model -->
+    <div class="slide" id="slide-8">
+      <div class="center-layout">
+        <span class="mono">PARTNERSHIP MODEL</span>
+        <h2>Unsolicited PPP + National Agency Support</h2>
+        <p>Dual-track approach: LGU partnership for AI governance + DICT/DepEd for EdTech scale.</p>
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;width:100%">
+          <div class="stat-card" style="border-left:4px solid var(--accent-color)">
+            <span class="mono" style="color:var(--accent-color)">TRACK 1: LGU PPP (UNSOLICITED)</span>
+            <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">AI Governance Platform</h3>
+            <p style="font-size:.95rem;margin-bottom:1rem">Build-Operate-Transfer (BOT) Model • 3-year concession</p>
+            <div style="text-align:left;font-size:.9rem;line-height:1.8">
+              <p><strong>CSV Investment:</strong> ₱12M upfront (platform deployment + training)</p>
+              <p><strong>LGU Payment:</strong> ₱150K/month per municipality (~₱2.5M/year provincial-wide)</p>
+              <p><strong>Revenue Share:</strong> 70% CSV, 30% Romblon Provincial Gov (reinvested in digital infra)</p>
+              <p><strong>Transfer:</strong> Full IP and operations transfer to province after Year 3</p>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left:4px solid var(--secondary-accent)">
+            <span class="mono" style="color:var(--secondary-accent)">TRACK 2: NATIONAL AGENCY</span>
+            <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">EdTech Ecosystem</h3>
+            <p style="font-size:.95rem;margin-bottom:1rem">DICT/DepEd Partnership + Grant Funding</p>
+            <div style="text-align:left;font-size:.9rem;line-height:1.8">
+              <p><strong>Funding Sources:</strong> DICT ICT Office, DepEd Digital Transformation Fund, DOST-PCIEERD</p>
+              <p><strong>Pilot Budget:</strong> ₱18M over 2 years (covers 85 public schools, RSU integration)</p>
+              <p><strong>CSV Role:</strong> Technical implementation partner + platform operator</p>
+              <p><strong>Sustainability:</strong> LGU co-funding (20%) + national subsidy (80%) post-pilot</p>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:2rem;font-size:.85rem;color:#888">Legal Framework: RA 11966 (PPP Code Sec 10); RA 12009 (Procurement Act Sec 22); RA 10173 (Data Privacy Sec 11(d), Sec 20); DICT Cloud First Policy 2020</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Implementation Timeline -->
+    <div class="slide" id="slide-9">
+      <div class="center-layout">
+        <span class="mono">EXECUTION ROADMAP</span>
+        <h2>6-Month Pilot to Province-Wide Rollout</h2>
+        <div style="margin-top:3rem;width:100%;max-width:1000px">
+          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem">
+            <div class="stat-card" style="padding:1.5rem">
+              <div style="width:50px;height:50px;background:#222;border:1px solid var(--accent-color);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--accent-color)">M1</div>
+              <p class="mono" style="color:var(--accent-color)">PARTNERSHIP</p>
+              <p style="font-size:.85rem;margin-top:.5rem">MOU signing, site assessment, stakeholder workshops</p>
+            </div>
+            <div class="stat-card" style="padding:1.5rem">
+              <div style="width:50px;height:50px;background:#222;border:1px solid var(--secondary-accent);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--secondary-accent)">M2-3</div>
+              <p class="mono" style="color:var(--secondary-accent)">DEPLOYMENT</p>
+              <p style="font-size:.85rem;margin-top:.5rem">Platform setup, 3-municipality pilot (Romblon town + 2), training rollout</p>
+            </div>
+            <div class="stat-card" style="padding:1.5rem">
+              <div style="width:50px;height:50px;background:#222;border:1px solid #888;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold">M4-6</div>
+              <p class="mono">PILOT PHASE</p>
+              <p style="font-size:.85rem;margin-top:.5rem">Live operations, data collection, iteration based on feedback</p>
+            </div>
+            <div class="stat-card" style="padding:1.5rem;border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
+              <div style="width:50px;height:50px;background:var(--accent-color);color:#000;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:800">M7+</div>
+              <p class="mono" style="color:var(--accent-color)">SCALE</p>
+              <p style="font-size:.85rem;margin-top:.5rem;color:#fff">17-municipality rollout; EdTech integration; national showcase</p>
+            </div>
+          </div>
+          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem">
+            <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
+              <span class="mono" style="color:#888">SUCCESS METRICS (6 MONTHS)</span>
+              <ul style="font-size:.9rem;line-height:2;margin-top:1rem;list-style:none">
+                <li>• 10,000+ citizens using AI helpdesk</li>
+                <li>• 500+ business permits processed digitally</li>
+                <li>• 5,000+ students on EdTech platform</li>
+                <li>• 80% citizen satisfaction (NPS >60)</li>
+                <li>• Zero data breaches; 99.5% uptime</li>
+              </ul>
+            </div>
+            <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
+              <span class="mono" style="color:#888">ROI FOR ROMBLON LGUs</span>
+              <ul style="font-size:.9rem;line-height:2;margin-top:1rem;list-style:none">
+                <li>• 70% reduction in permit processing time</li>
+                <li>• ₱8M/year saved in staff overtime + paper costs</li>
+                <li>• 3x increase in business registrations (EODB)</li>
+                <li>• 25% reduction in youth out-migration (skills)</li>
+                <li>• National recognition as "Digital Pioneer Province"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Close / Call to Action -->
+    <div class="slide" id="slide-10">
+      <div class="center-layout" style="background:radial-gradient(circle at center, rgba(0,210,255,0.08) 0%, transparent 70%)">
+        <h1>Make Romblon the <span class="text-gradient">Future of Island Governance</span></h1>
+        <p style="margin-top:2rem;max-width:800px">CSV + Likha Labs bring battle-tested technology, Fusion Engineering methodology, and a commitment to transferring full capabilities to the province.</p>
+        <div style="margin-top:3rem">
+          <div class="stat-card" style="max-width:700px;text-align:left">
+            <span class="mono" style="color:var(--accent-color)">NEXT STEPS</span>
+            <ul style="font-size:1.1rem;line-height:2;margin-top:1rem;list-style:none">
+              <li>✓ <strong>Week 1:</strong> Stakeholder briefing with Romblon Provincial Governor + Municipal Mayors</li>
+              <li>✓ <strong>Week 2:</strong> Site visit + community consultation (barangay captains, teachers, business owners)</li>
+              <li>✓ <strong>Week 3:</strong> MOU signing + pilot municipality selection</li>
+              <li>✓ <strong>Week 4:</strong> Kickoff with DICT Region 4B, DepEd Romblon Division Office</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:3rem;display:flex;gap:1.5rem;justify-content:center">
+          <button class="btn-primary" style="padding:1.2rem 3rem;font-size:1.1rem">SCHEDULE ROMBLON VISIT ></button>
+          <button class="btn-primary" style="background:#111;color:#fff;border:1px solid #333">REQUEST FULL PROPOSAL ></button>
+        </div>
+        <p class="mono" style="margin-top:3rem;color:#666">PREPARED BY: CLIMATE SMART VENTURES (Lead Proponent) × LIKHA LABS (Technology Partner)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="btn-nav" onclick="prevSlide()">←</button>
+    <span class="mono" id="slide-counter" style="display:flex;align-items:center;color:var(--muted-text)">1 / 10</span>
+    <button class="btn-nav" onclick="nextSlide()">→</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progress');
+    const counter = document.getElementById('slide-counter');
+    function updateSlide(){slides.forEach((slide,index)=>{slide.classList.remove('active');if(index===currentSlide){slide.classList.add('active')}});const progress=((currentSlide+1)/slides.length)*100;progressBar.style.width=`${progress}%`;counter.innerText=`${currentSlide+1} / ${slides.length}`}
+    function nextSlide(){if(currentSlide<slides.length-1){currentSlide++;updateSlide()}}
+    function prevSlide(){if(currentSlide>0){currentSlide--;updateSlide()}}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide()});
+    let touchStartX=0,touchEndX=0;document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},false);document.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;handleSwipe()},false);function handleSwipe(){if(touchStartX-touchEndX>50)nextSlide();if(touchEndX-touchStartX>50)prevSlide()}
+    updateSlide();
+  </script>
+</body>
+</html>
