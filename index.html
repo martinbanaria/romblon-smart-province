@@ -3,832 +3,779 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Solutions for Romblon | CSV × Likha Labs — v1.2</title>
+  <title>Digital Solutions for Romblon | CSV × Likha Labs</title>
   <style>
-    /* Color Palette & Variables */
+    /* ==========================================
+       DESIGN SYSTEM - v2.0
+       ========================================== */
+    
     :root {
-      --bg-color: #050505;
-      --text-color: #e0e0e0;
-      --accent-color: #00ff9d;
-      --secondary-accent: #00d2ff;
-      --danger-color: #ff4d4d;
-      --muted-text: #9a9a9a;
-      --glass-bg: rgba(25, 25, 25, 0.6);
-      --border-color: rgba(255, 255, 255, 0.1);
-      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      /* Typography Scale (Fixed - NO OVERRIDES) */
+      --text-xs: 0.75rem;      /* 12px */
+      --text-sm: 0.875rem;     /* 14px */
+      --text-base: 1rem;       /* 16px */
+      --text-lg: 1.125rem;     /* 18px */
+      --text-xl: 1.25rem;      /* 20px */
+      --text-2xl: 1.5rem;      /* 24px */
+      --text-3xl: 2rem;        /* 32px */
+      --text-4xl: 2.5rem;      /* 40px */
+      --text-5xl: 3rem;        /* 48px */
+      
+      /* Colors (Disciplined Usage) */
+      --primary: #00ff9d;
+      --secondary: #00d2ff;
+      --danger: #ff4d4d;
+      --text-primary: #ffffff;
+      --text-body: #e0e0e0;
+      --text-muted: #9a9a9a;
+      --bg-dark: #050505;
+      --bg-card: #0f0f0f;
+      --border: #1a1a1a;
+      
+      /* Spacing (8px Grid - Use ONLY These) */
+      --space-1: 0.5rem;   /* 8px */
+      --space-2: 1rem;     /* 16px */
+      --space-3: 1.5rem;   /* 24px */
+      --space-4: 2rem;     /* 32px */
+      --space-6: 3rem;     /* 48px */
+      --space-8: 4rem;     /* 64px */
+      --space-12: 6rem;    /* 96px */
+      
+      /* Font Families */
+      --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'SF Mono', Consolas, monospace;
     }
-
-    /* Global Reset */
+    
+    /* ==========================================
+       GLOBAL RESET
+       ========================================== */
+    
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
+    
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: var(--bg-dark);
+      color: var(--text-body);
       font-family: var(--font-main);
+      font-size: var(--text-base);
+      line-height: 1.6;
       overflow: hidden;
       height: 100vh;
       width: 100vw;
+      -webkit-font-smoothing: antialiased;
     }
-
-    /* Typography */
-    h1, h2, h3 {
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-
+    
+    /* ==========================================
+       TYPOGRAPHY SYSTEM
+       ========================================== */
+    
     h1 {
-      font-size: 2.75rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, #fff, #888);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.02em;
     }
-
+    
     h2 {
-      font-size: 2.25rem;
-      margin-bottom: 1.5rem;
-      color: #fff;
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.01em;
     }
-
+    
     h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.875rem;
-      color: #fff;
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
     }
-
+    
     p {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #d4d4d4;
-      margin-bottom: 1.25rem;
-      max-width: 70ch;
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: var(--space-3);
     }
-
-    ul {
-      margin-bottom: 1.5rem;
+    
+    .text-lg {
+      font-size: var(--text-lg);
+      line-height: 1.7;
     }
-
-    li {
-      margin-bottom: 0.75rem;
+    
+    .text-sm {
+      font-size: var(--text-sm);
+      line-height: 1.6;
     }
-
-    /* Utility Classes */
-    .mono {
+    
+    .text-xs {
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+    
+    .text-muted {
+      color: var(--text-muted);
+    }
+    
+    .text-primary-color {
+      color: var(--primary);
+    }
+    
+    .label {
       font-family: var(--font-mono);
-      color: var(--secondary-accent);
-      font-size: 0.9rem;
+      font-size: var(--text-xs);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--secondary);
       display: block;
+      margin-bottom: var(--space-2);
     }
-
-    .highlight {
-      color: var(--accent-color);
-    }
-
-    .text-gradient {
-      background: linear-gradient(to right, var(--accent-color), var(--secondary-accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .footnote {
-      font-size: 0.8rem;
-      color: #888;
-      margin-top: 2rem;
-      display: block;
-      max-width: 100%;
-      font-style: italic;
-    }
-
-    .blur-pill {
-      background: rgba(0, 255, 157, 0.1);
-      color: var(--accent-color);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
-      border: 1px solid rgba(0, 255, 157, 0.2);
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Slide Container */
-    .slides-container {
+    
+    /* ==========================================
+       LAYOUT SYSTEM
+       ========================================== */
+    
+    .slide-container {
       position: relative;
       height: 100vh;
       width: 100vw;
-      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
-
+    
     .slide {
-      height: 100vh;
-      width: 100vw;
       position: absolute;
       top: 0;
       left: 0;
-      display: flex;
+      width: 100%;
+      height: 100%;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.6s ease;
-      padding: 4rem 6rem;
+      transition: opacity 0.5s ease;
+      display: flex;
       align-items: center;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 255, 157, 0.03) 0%, transparent 50%);
-      overflow-y: auto;
+      justify-content: center;
+      padding: var(--space-8) var(--space-12);
     }
-
+    
     .slide.active {
       opacity: 1;
       pointer-events: all;
       z-index: 10;
     }
-
-    /* Layouts */
-    .split-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-    }
-
-    .center-layout {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Cards */
-    .stat-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-      transition: border-color 0.3s ease;
-    }
-
-    .stat-card:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .stat-big {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #fff;
-      font-family: var(--font-mono);
-      line-height: 1;
-      margin-bottom: 0.875rem;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      color: var(--muted-text);
-      letter-spacing: 0.05em;
-    }
-
-    /* Mockups */
-    .mockup-container {
+    
+    /* Template 1: Hero Layout */
+    .layout-hero {
       position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      border: 1px solid #333;
-      transition: border-color 0.3s ease;
-      background: #0f0f0f;
-    }
-
-    .mockup-container:hover {
-      border-color: var(--accent-color);
-    }
-
-    .mockup-img {
       width: 100%;
-      height: auto;
-      display: block;
-      filter: grayscale(10%) contrast(110%);
-      object-fit: cover;
-    }
-
-    /* Navigation Controls */
-    .controls {
-      position: fixed;
-      bottom: 2.5rem;
-      right: 3rem;
-      display: flex;
-      gap: 1.5rem;
-      z-index: 100;
-    }
-
-    .btn-nav {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      transition: all 0.2s ease;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      backdrop-filter: blur(5px);
+      text-align: center;
     }
-
-    .btn-nav:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--accent-color);
-      color: var(--accent-color);
-    }
-
-    .btn-nav:focus-visible {
-      outline: 2px solid var(--accent-color);
-      outline-offset: 3px;
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .btn-primary {
-      background: var(--accent-color);
-      color: #000;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 8px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-family: var(--font-mono);
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 255, 157, 0.2);
-    }
-
-    /* Progress Bar */
-    .progress-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      height: 4px;
-      background: linear-gradient(to right, var(--secondary-accent), var(--accent-color));
-      width: 0%;
-      transition: width 0.3s ease;
-      z-index: 100;
-    }
-
-    /* Grid Overlay */
-    .grid-overlay {
-      position: fixed;
+    
+    .hero-bg {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
+      object-fit: cover;
       z-index: 1;
     }
-
-    /* Grid Displays */
-    .display-grid {
-      display: grid;
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.65) 100%);
+      z-index: 2;
     }
-
-    /* Mobile Responsive */
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+    }
+    
+    /* Template 2: Split Layout */
+    .layout-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      width: 100%;
+      max-width: 1400px;
+      align-items: center;
+    }
+    
+    .split-visual {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    
+    .split-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .split-content h2 {
+      margin-bottom: var(--space-4);
+    }
+    
+    /* Template 3: Centered Grid */
+    .layout-centered {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+    }
+    
+    .layout-centered h2 {
+      margin-bottom: var(--space-2);
+    }
+    
+    .layout-centered > .text-muted {
+      margin-bottom: var(--space-6);
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    
+    /* ==========================================
+       COMPONENT SYSTEM
+       ========================================== */
+    
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: var(--space-4);
+      transition: border-color 0.2s ease;
+    }
+    
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .card-accent {
+      border-left: 3px solid var(--primary);
+    }
+    
+    .card-secondary {
+      border-left: 3px solid var(--secondary);
+    }
+    
+    /* Lists */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    li {
+      position: relative;
+      padding-left: var(--space-3);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+    
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      background: rgba(0, 255, 157, 0.1);
+      border: 1px solid rgba(0, 255, 157, 0.3);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: var(--space-2) var(--space-4);
+      background: var(--primary);
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 255, 157, 0.3);
+    }
+    
+    /* Persona Cards */
+    .persona-card {
+      text-align: center;
+    }
+    
+    .persona-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto var(--space-3);
+      border: 3px solid var(--border);
+    }
+    
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    
+    .nav-controls {
+      position: fixed;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      display: flex;
+      gap: var(--space-2);
+      z-index: 100;
+    }
+    
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      color: var(--text-body);
+      font-size: var(--text-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    .slide-counter {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      width: 0%;
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+    
+    /* ==========================================
+       MOBILE RESPONSIVE
+       ========================================== */
+    
     @media (max-width: 768px) {
       h1 {
-        font-size: 1.75rem;
-        margin-bottom: 0.75rem;
+        font-size: var(--text-4xl);
       }
-
+      
       h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: var(--text-2xl);
       }
-
+      
       h3 {
-        font-size: 1.125rem;
+        font-size: var(--text-xl);
       }
-
-      p {
-        font-size: 0.9375rem;
-        line-height: 1.7;
-      }
-
+      
       .slide {
-        flex-direction: column;
-        padding: 2rem 2rem;
-        align-items: flex-start;
-        justify-content: flex-start;
-        height: 100vh;
-        overflow-y: auto;
+        padding: var(--space-4);
       }
-
-      .split-layout {
+      
+      .layout-split {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        display: flex;
-        flex-direction: column;
+        gap: var(--space-4);
       }
-
-      .center-layout {
-        justify-content: flex-start;
-        padding-top: 2rem;
-      }
-
-      .stat-card {
-        width: 100%;
-        padding: 1.5rem;
-      }
-
-      .mockup-container {
-        width: 100%;
-        margin-top: 1rem;
-      }
-
-      .display-grid {
+      
+      .grid-2,
+      .grid-3,
+      .grid-4 {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: var(--space-3);
       }
-
-      .controls {
-        bottom: 1rem;
-        right: 1rem;
-        gap: 1rem;
-      }
-
-      .btn-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
+      
+      .hero-content {
+        padding: var(--space-4);
       }
     }
   </style>
 </head>
 <body>
-  <div class="grid-overlay"></div>
-  <div class="progress-bar" id="progress"></div>
-  <div class="slides-container">
+  <div class="slide-container">
     
-    <!-- SLIDE 1: Title -->
+    <!-- SLIDE 1: HERO -->
     <div class="slide active" id="slide-1">
-      <div class="split-layout">
-        <div class="center-layout" style="border-right:1px solid #222;opacity:.4;filter:grayscale(100%)">
-          <div style="width:100%;aspect-ratio:16/10;background:linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid #222">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="30" width="100" height="60" rx="4" stroke="#333" stroke-width="2"/>
-              <rect x="20" y="40" width="30" height="20" rx="2" stroke="#444" stroke-width="1"/>
-              <rect x="55" y="40" width="45" height="8" rx="2" fill="#222"/>
-              <rect x="55" y="52" width="35" height="8" rx="2" fill="#222"/>
-              <circle cx="35" cy="70" r="8" stroke="#444" stroke-width="1"/>
-              <rect x="55" y="65" width="45" height="15" rx="2" stroke="#333" stroke-width="1"/>
-            </svg>
-          </div>
-          <p class="mono" style="margin-top:2rem">LEGACY STATE: MANUAL & DISCONNECTED</p>
-        </div>
-        <div class="center-layout">
-          <div style="text-align:left;width:100%;padding-left:2rem">
-            <span class="blur-pill">INTRODUCTORY VISIT • JANUARY 2026</span>
-            <h1>Digital Solutions <br>for <span class="text-gradient">Romblon Province</span></h1>
-            <p style="font-size:1.125rem;color:#fff">AI-powered governance + EdTech solutions for island communities.</p>
-            <p class="mono" style="color: var(--muted-text);">CLIMATE SMART VENTURES × LIKHA LABS</p>
-            <p style="font-size:1rem;color:#aaa;margin-top:2rem">Introducing our platforms and exploring opportunities to support Romblon's digital transformation.</p>
-          </div>
+      <div class="layout-hero">
+        <img src="assets/images/hero-romblon-islands.jpg" alt="Romblon Islands" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="badge">CSV × LIKHA LABS • JANUARY 2026</span>
+          <h1>Digital Solutions for Romblon Province</h1>
+          <p class="text-lg">AI-powered governance and education technology designed for island communities.</p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 2: Why Romblon -->
+    <!-- SLIDE 2: THE CHALLENGE -->
     <div class="slide" id="slide-2">
-      <div class="center-layout">
-        <span class="mono">ABOUT ROMBLON</span>
-        <h2>An Island Province with Unique Potential</h2>
-        <span class="mono" style="color:#888">Context: RA 11032 (EODB) + RA 11055 (PSED) + RA 10929 (Free Internet) + DepEd Digital Transformation 2023–2028</span>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:4rem;width:100%">
-          <div class="stat-card">
-            <div class="stat-big">302K</div>
-            <p class="mono">POPULATION</p>
-            <p style="font-size:0.875rem;margin-top:1rem">17 municipalities across 3 major islands with diverse communities and needs.</p>
-          </div>
-          <div class="stat-card" style="border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
-            <div class="stat-big text-gradient">#1</div>
-            <p class="mono" style="color:var(--accent-color)">MARBLE CAPITAL</p>
-            <p style="font-size:0.875rem;margin-top:1rem;color:#fff">Tourism + marble industry = strong economic foundation for growth.</p>
-          </div>
-          <div class="stat-card">
-            <div class="stat-big">3-5</div>
-            <p class="mono">STAFF PER LGU</p>
-            <p style="font-size:0.875rem;margin-top:1rem">Limited human resources where digital tools can make outsized impact.</p>
-          </div>
+      <div class="layout-split">
+        <div class="split-visual">
+          <img src="assets/images/government-office.jpg" alt="Government office">
         </div>
-        <ul style="list-style:none;color:#ccc;margin-top:2rem;max-width:900px">
-          <li style="margin-bottom:1rem">• <strong>EODB Mandate:</strong> 3-day business permits; 20-day complex permits require digital workflows</li>
-          <li style="margin-bottom:1rem">• <strong>Education Priority:</strong> Free tertiary education (PSED) demands quality learning infrastructure</li>
-          <li>• <strong>Digital Access:</strong> Free internet mandate enables last-mile service delivery</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- SLIDE 3: The Challenges -->
-    <div class="slide" id="slide-3">
-      <div class="split-layout">
-        <div>
-          <span class="mono">COMMON LGU CHALLENGES</span>
+        <div class="split-content">
+          <span class="label">The Challenge</span>
           <h2>Island Governance Realities</h2>
-          <p>Romblon's LGUs face familiar challenges that digital solutions can address.</p>
-          <div style="margin-top:3rem">
-            <div style="display:flex;align-items:center;margin-bottom:2rem">
-              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">Long</div>
-              <div>
-                <p class="mono" style="color:var(--danger-color)">WAIT TIMES</p>
-                <p style="margin-bottom:0;font-size:1rem">Citizens travel to town halls for permits, inquiries, and clarifications—hours of their day.</p>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;margin-bottom:2rem">
-              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">Youth</div>
-              <div>
-                <p class="mono" style="color:var(--danger-color)">OUT-MIGRATION</p>
-                <p style="margin-bottom:0;font-size:1rem">Limited post-graduation opportunities. Skills training needed for local industries.</p>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center">
-              <div class="stat-big" style="font-size:3rem;margin-right:1.5rem;min-width:150px;color:var(--danger-color)">Paper</div>
-              <div>
-                <p class="mono" style="color:var(--danger-color)">WORKFLOWS</p>
-                <p style="margin-bottom:0;font-size:1rem">Manual routing, fragmented data, difficult reporting and audit preparation.</p>
-              </div>
-            </div>
-          </div>
+          <p>Romblon's 17 municipalities face familiar barriers to digital transformation.</p>
+          <ul>
+            <li>Citizens travel hours for permits and clarifications</li>
+            <li>Youth leave after graduation due to limited opportunities</li>
+            <li>Paper workflows slow operations and audits</li>
+            <li>Limited staff resources across small LGUs</li>
+          </ul>
         </div>
-        <div class="mockup-container">
-          <div style="width:100%;aspect-ratio:16/10;background:linear-gradient(180deg, #0a1a2a 0%, #051525 50%, #020a10 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
-            <svg width="100%" height="100%" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#0a2540"/>
-                  <stop offset="100%" style="stop-color:#051020"/>
-                </linearGradient>
-              </defs>
-              <rect fill="url(#ocean)" width="400" height="250"/>
-              <ellipse cx="200" cy="180" rx="120" ry="40" fill="#0f3020" opacity="0.6"/>
-              <ellipse cx="200" cy="175" rx="100" ry="30" fill="#0a2515" opacity="0.8"/>
-              <path d="M100 160 Q150 140 200 150 Q250 160 300 145 L300 180 Q250 195 200 185 Q150 175 100 190 Z" fill="#0d2818" opacity="0.7"/>
-              <circle cx="350" cy="50" r="25" fill="#1a1a2e" opacity="0.3"/>
-              <text x="200" y="130" text-anchor="middle" fill="#00ff9d" font-family="monospace" font-size="12" opacity="0.6">ROMBLON ISLANDS</text>
-            </svg>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: OUR SOLUTION -->
+    <div class="slide" id="slide-3">
+      <div class="layout-centered">
+        <span class="label">Our Platforms</span>
+        <h2>Two Integrated Solutions</h2>
+        <p class="text-muted">Proven technology designed for Philippine local governments.</p>
+        
+        <div class="grid-2">
+          <div class="card card-accent">
+            <h3>Gyud.AI</h3>
+            <p class="text-sm text-muted">Digital Governance & Citizen Clarity</p>
+            <ul class="text-sm">
+              <li>AI ordinance search</li>
+              <li>Citizen chatbot (Filipino)</li>
+              <li>Budget dashboards</li>
+              <li>Business permit automation</li>
+            </ul>
+          </div>
+          
+          <div class="card card-secondary">
+            <h3>EdTech LMS</h3>
+            <p class="text-sm text-muted">Career Pathways & Skills Training</p>
+            <ul class="text-sm">
+              <li>AI career mapping</li>
+              <li>Tech & AI skills modules</li>
+              <li>Industry tracks</li>
+              <li>Job matching</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 4: Our Solutions Overview -->
+    <!-- SLIDE 4: GYUD.AI -->
     <div class="slide" id="slide-4">
-      <div class="center-layout">
-        <span class="mono">OUR PLATFORMS</span>
-        <h2>Two Integrated Solution Families</h2>
-        <p style="margin-bottom:3rem">CSV brings proven digital governance + education technology designed for Philippine LGUs.</p>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;width:100%">
-          <div class="stat-card" style="border-left:4px solid var(--accent-color)">
-            <span class="mono" style="color:var(--accent-color)">PLATFORM 1: GOVERNANCE</span>
-            <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">Gyud.AI</h3>
-            <p style="font-size:1rem;margin-bottom:1.5rem;color:#aaa">Digital Governance & Citizen Clarity Platform</p>
-            <ul style="list-style:none;padding:0;text-align:left;font-size:1rem;line-height:1.8">
-              <li>✓ AI-powered ordinance & policy search</li>
-              <li>✓ Citizen inquiry chatbot (Filipino/Romblomanon)</li>
-              <li>✓ Budget & procurement dashboards</li>
-              <li>✓ Business permit workflow automation</li>
-              <li>✓ Data consolidation across departments</li>
-            </ul>
-          </div>
-          <div class="stat-card" style="border-left:4px solid var(--secondary-accent)">
-            <span class="mono" style="color:var(--secondary-accent)">PLATFORM 2: EDUCATION</span>
-            <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">EdTech LMS</h3>
-            <p style="font-size:1rem;margin-bottom:1.5rem;color:#aaa">Career Pathways, Tech/AI Skills & Industry Certification</p>
-            <ul style="list-style:none;padding:0;text-align:left;font-size:1rem;line-height:1.8">
-              <li>✓ AI-powered career pathway mapping</li>
-              <li>✓ Tech & AI skills (industry-agnostic)</li>
-              <li>✓ Industry tracks: Tourism, Marble, BPO, Gov</li>
-              <li>✓ Direct job matching with employers</li>
-              <li>✓ TESDA-aligned certification</li>
-            </ul>
-          </div>
-        </div>
-        <p style="margin-top:2rem;font-size:1rem;color:#888;max-width:800px">Designed for Philippine context: DPIA-compliant, Cloud First aligned, multi-lingual, audit-ready.</p>
-      </div>
-    </div>
-
-    <!-- SLIDE 5: Gyud.AI Deep Dive -->
-    <div class="slide" id="slide-5">
-      <div class="split-layout">
-        <div>
-          <span class="blur-pill">GYUD.AI PLATFORM</span>
+      <div class="layout-split">
+        <div class="split-content">
+          <span class="badge">Gyud.AI Platform</span>
           <h2>Digital Governance for LGUs</h2>
-          <p style="margin-top:1.5rem"><strong>Gyud.AI</strong> is a Filipino-made AI platform purpose-built for local government operations.</p>
-          
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For Councillors & Policy-Makers</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• Instant search across all ordinances, resolutions, committee reports</li>
-            <li>• AI identifies amendments, penalties, implementing offices</li>
-            <li>• Policy interconnection analysis for legislative decisions</li>
-          </ul>
-
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For LGU Departments</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• Centralized dashboards: budgets, contracts, disbursements</li>
-            <li>• Automated anomaly detection & compliance alerts</li>
-            <li>• Standardized workflows reducing manual coordination</li>
-          </ul>
-
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For Citizens</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• Natural language queries: "Paano mag-apply ng business permit?"</li>
-            <li>• Clear answers on taxes, penalties, requirements</li>
-            <li>• 24/7 availability via web, mobile, SMS</li>
+          <p>Filipino-made AI platform built for local government operations.</p>
+          <ul>
+            <li>Instant ordinance search across all resolutions</li>
+            <li>Real-time budget and procurement dashboards</li>
+            <li>Natural language citizen queries 24/7</li>
+            <li>Automated compliance alerts</li>
+            <li>Audit-ready documentation</li>
           </ul>
         </div>
-        <div style="display:flex;flex-direction:column;gap:1.5rem">
-          <div class="stat-card" style="background:rgba(0,255,157,0.05);border-color:var(--accent-color)">
-            <p class="mono" style="color:var(--accent-color)">PROVEN RESULTS</p>
-            <h3 style="color:#fff;margin:.5rem 0 1rem">Pasig City Deployment</h3>
-            <ul style="font-size:0.875rem;line-height:1.8;list-style:none;padding:0">
-              <li>✓ Significant reduction in staff document retrieval time</li>
-              <li>✓ Fewer walk-in clarification requests reported</li>
-              <li>✓ Improved audit readiness (standardized logs)</li>
-              <li>✓ Enhanced CMCI scores (efficiency, innovation)</li>
-            </ul>
-          </div>
-          <div class="stat-card">
-            <p class="mono">TECHNICAL DESIGN</p>
-            <ul style="font-size:0.875rem;line-height:1.8;list-style:none;padding:0;text-align:left">
-              <li>• On-premise or hybrid deployment</li>
-              <li>• Full data sovereignty (LGU custody)</li>
-              <li>• DICT cybersecurity aligned</li>
-              <li>• Audit trails & encryption</li>
-            </ul>
-          </div>
+        <div class="split-visual">
+          <img src="assets/images/gyudai-mockup.jpg" alt="Gyud.AI Dashboard">
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 6: EdTech LMS Deep Dive -->
-    <div class="slide" id="slide-6">
-      <div class="split-layout">
-        <div class="mockup-container">
-          <div style="width:100%;aspect-ratio:16/10;background:linear-gradient(135deg, #0a0a15 0%, #0f0f1a 50%, #050510 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
-            <svg width="100%" height="100%" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <rect fill="#0a0a12" width="400" height="250"/>
-              <rect x="30" y="40" width="80" height="50" rx="4" fill="#111" stroke="#222"/>
-              <rect x="40" y="50" width="60" height="30" rx="2" fill="#00d2ff" opacity="0.2"/>
-              <rect x="130" y="60" width="80" height="50" rx="4" fill="#111" stroke="#222"/>
-              <rect x="140" y="70" width="60" height="30" rx="2" fill="#00ff9d" opacity="0.2"/>
-              <rect x="230" y="40" width="80" height="50" rx="4" fill="#111" stroke="#222"/>
-              <rect x="240" y="50" width="60" height="30" rx="2" fill="#00d2ff" opacity="0.2"/>
-              <circle cx="70" cy="150" r="25" fill="#111" stroke="#00ff9d" stroke-width="2" opacity="0.5"/>
-              <circle cx="170" cy="170" r="30" fill="#111" stroke="#00d2ff" stroke-width="2" opacity="0.5"/>
-              <circle cx="280" cy="150" r="25" fill="#111" stroke="#00ff9d" stroke-width="2" opacity="0.5"/>
-              <line x1="95" y1="150" x2="140" y2="165" stroke="#333" stroke-width="1"/>
-              <line x1="200" y1="165" x2="255" y2="155" stroke="#333" stroke-width="1"/>
-              <text x="200" y="220" text-anchor="middle" fill="#00d2ff" font-family="monospace" font-size="10" opacity="0.6">LEARNING → SKILLS → CAREER</text>
-            </svg>
-          </div>
+    <!-- SLIDE 5: EDTECH LMS -->
+    <div class="slide" id="slide-5">
+      <div class="layout-split">
+        <div class="split-visual">
+          <img src="assets/images/students-learning.jpg" alt="Students learning">
         </div>
-        <div>
-          <span class="blur-pill">EDTECH LMS PLATFORM</span>
+        <div class="split-content">
+          <span class="badge">EdTech LMS Platform</span>
           <h2>From Learning to Earning</h2>
-          <p style="margin-top:1.5rem">Career-first learning platform with AI-powered pathways to employment across industries.</p>
+          <p>Career-first learning platform with direct pathways to employment.</p>
+          <ul>
+            <li>AI-powered skills assessment and career mapping</li>
+            <li>Tech & AI skills for any industry</li>
+            <li>Industry-specific tracks (Tourism, Marble, BPO)</li>
+            <li>Direct job matching with employers</li>
+            <li>Post-placement success tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: WHO BENEFITS -->
+    <div class="slide" id="slide-6">
+      <div class="layout-centered">
+        <span class="label">Who Benefits</span>
+        <h2>Built for Real Stakeholders</h2>
+        <p class="text-muted">Designed for the people who will use them every day.</p>
+        
+        <div class="grid-3">
+          <div class="card persona-card">
+            <img src="assets/images/persona-mayor.jpg" alt="Mayor Juan" class="persona-avatar">
+            <span class="label text-primary-color">Mayor Juan</span>
+            <h4>Municipal Mayor</h4>
+            <p class="text-sm text-muted">Needs real-time budget monitoring and audit-ready dashboards.</p>
+          </div>
           
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Career Pathways</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• AI-powered skills assessment & career mapping</li>
-            <li>• Personalized learning paths based on job goals</li>
-            <li>• Direct job matching with local & remote employers</li>
-            <li>• Post-placement success tracking</li>
-          </ul>
-
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Tech & AI Skills (Industry-Agnostic)</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• AI Fundamentals: Prompt engineering, AI tools for work</li>
-            <li>• Digital Skills: Google Workspace, Canva, basic coding</li>
-            <li>• Data & Analytics: Excel, SQL basics, dashboarding</li>
-            <li>• Remote Work Ready: Virtual collaboration, freelancing</li>
-          </ul>
-
-          <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Industry-Specific Tracks</h3>
-          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
-            <li>• Tourism: Hospitality tech, booking systems, guest experience</li>
-            <li>• Marble: CAD/CAM basics, quality control, export standards</li>
-            <li>• BPO: English proficiency, typing, customer service</li>
-            <li>• Government: eGov systems, citizen service, data privacy</li>
-          </ul>
+          <div class="card persona-card">
+            <img src="assets/images/persona-teacher.jpg" alt="Teacher Maria" class="persona-avatar">
+            <span class="label" style="color: var(--secondary);">Teacher Maria</span>
+            <h4>Public School Teacher</h4>
+            <p class="text-sm text-muted">Needs adaptive tools and multilingual content for students.</p>
+          </div>
+          
+          <div class="card persona-card">
+            <img src="assets/images/persona-entrepreneur.jpg" alt="Carlo" class="persona-avatar">
+            <span class="label">Carlo</span>
+            <h4>Marble Workshop Owner</h4>
+            <p class="text-sm text-muted">Needs fast permits and tech-savvy workers with AI skills.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 7: Personas - Who Benefits -->
+    <!-- SLIDE 7: PROOF POINTS -->
     <div class="slide" id="slide-7">
-      <div class="center-layout">
-        <span class="mono">WHO BENEFITS</span>
-        <h2>Three Stakeholders, Real Impact</h2>
-        <p>Our platforms are designed for the real people who will use them every day.</p>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:4rem;width:100%">
-          <div class="stat-card">
-            <div style="width:60px;height:60px;background:rgba(0,255,157,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👨‍💼</div>
-            <p class="mono" style="color:var(--accent-color)">MAYOR JUAN</p>
-            <h4 style="color:#fff;margin:.5rem 0">Municipal Mayor</h4>
-            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Real-time budget monitoring, citizen satisfaction data, audit-ready dashboards.</p>
-            <p style="font-size:0.875rem;color:var(--accent-color);margin-top:1rem"><strong>Gyud.AI gives:</strong> Instant analytics, compliance alerts, ordinance search.</p>
-          </div>
-          <div class="stat-card">
-            <div style="width:60px;height:60px;background:rgba(0,210,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👩‍🏫</div>
-            <p class="mono" style="color:var(--secondary-accent)">TEACHER MARIA</p>
-            <h4 style="color:#fff;margin:.5rem 0">Public School Teacher</h4>
-            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Adaptive tools, multilingual content, student progress tracking, AI tutoring.</p>
-            <p style="font-size:0.875rem;color:var(--secondary-accent);margin-top:1rem"><strong>EdTech LMS gives:</strong> Personalized learning, automated grading, offline access.</p>
-          </div>
-          <div class="stat-card">
-            <div style="width:60px;height:60px;background:rgba(255,77,77,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">🧑‍💼</div>
-            <p class="mono">ENTREPRENEUR CARLO</p>
-            <h4 style="color:#fff;margin:.5rem 0">Marble Workshop Owner</h4>
-            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Fast permits, tech-savvy workforce, AI tools for business operations.</p>
-            <p style="font-size:0.875rem;color:#fff;margin-top:1rem"><strong>Both platforms:</strong> Digital permits + hire platform-trained workers with CAD, data, and AI skills.</p>
-          </div>
+      <div class="layout-split">
+        <div class="split-visual">
+          <img src="assets/images/government-building.jpg" alt="Government building">
+        </div>
+        <div class="split-content">
+          <span class="badge">Proven Results</span>
+          <h2>Deployed in Pasig City</h2>
+          <p>Real-world validation from one of Metro Manila's most progressive LGUs.</p>
+          <ul>
+            <li>Significant reduction in document retrieval time</li>
+            <li>Fewer walk-in clarification requests</li>
+            <li>Improved audit readiness with standardized logs</li>
+            <li>Enhanced CMCI scores for efficiency</li>
+          </ul>
+          <p class="text-sm text-muted" style="margin-top: var(--space-4);">
+            "Gyud.AI has transformed how our staff access ordinances and serve citizens."
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 8: Technical Foundation -->
+    <!-- SLIDE 8: IMPLEMENTATION -->
     <div class="slide" id="slide-8">
-      <div class="center-layout">
-        <span class="mono">TECHNICAL APPROACH</span>
-        <h2>Built for Philippine Government Context</h2>
-        <p>Our platforms are designed specifically for LGU requirements and constraints.</p>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem;width:100%">
-          <div class="stat-card" style="border-left:4px solid var(--accent-color)">
-            <span class="mono" style="color:var(--accent-color)">COMPLIANCE BY DESIGN</span>
-            <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">Regulatory Alignment</h3>
-            <ul style="font-size:1rem;line-height:2;list-style:none;padding:0;text-align:left">
-              <li>• Data Privacy Act (RA 10173) — DPIA-compliant</li>
-              <li>• DICT Cloud First Policy (2020)</li>
-              <li>• EODB Act (RA 11032) workflows</li>
-              <li>• DepEd Digital Transformation Roadmap</li>
-              <li>• COA audit trail requirements</li>
-            </ul>
+      <div class="layout-centered">
+        <span class="label">How We Work</span>
+        <h2>Phased Implementation</h2>
+        <p class="text-muted">Start small, prove value, scale together.</p>
+        
+        <div class="grid-4">
+          <div class="card">
+            <h3 style="color: var(--primary);">1. Discover</h3>
+            <p class="text-sm">Understand current systems and workflows.</p>
           </div>
-          <div class="stat-card" style="border-left:4px solid var(--secondary-accent)">
-            <span class="mono" style="color:var(--secondary-accent)">DEPLOYMENT FLEXIBILITY</span>
-            <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">Technical Options</h3>
-            <ul style="font-size:1rem;line-height:2;list-style:none;padding:0;text-align:left">
-              <li>• On-premise (LGU-managed servers)</li>
-              <li>• Hybrid cloud (Philippine data centers)</li>
-              <li>• Full data sovereignty & custody</li>
-              <li>• Offline-capable modules</li>
-              <li>• SMS/low-bandwidth access modes</li>
-            </ul>
+          <div class="card">
+            <h3 style="color: var(--secondary);">2. Pilot</h3>
+            <p class="text-sm">Limited deployment in 1-2 municipalities.</p>
           </div>
-        </div>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem;width:100%">
-          <div class="stat-card">
-            <p class="mono" style="color:#888">MULTI-LINGUAL AI</p>
-            <p style="font-size:1rem;margin:0">Natural language processing for Filipino, English, and local languages (Romblomanon, Onhan, Asi). Fine-tuned for government terminology and citizen queries.</p>
+          <div class="card">
+            <h3>3. Refine</h3>
+            <p class="text-sm">Iterate based on real user feedback.</p>
           </div>
-          <div class="stat-card">
-            <p class="mono" style="color:#888">INTEGRATION-READY</p>
-            <p style="font-size:1rem;margin:0">APIs for existing LGU systems (eBOSS, LGSF, eNGAS), national platforms (PhilSys, eGov PH), and mobile apps. Gradual rollout with legacy system coexistence.</p>
+          <div class="card card-accent">
+            <h3>4. Scale</h3>
+            <p class="text-sm">Province-wide rollout with proven model.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 9: Implementation Approach -->
+    <!-- SLIDE 9: TECHNICAL FOUNDATION -->
     <div class="slide" id="slide-9">
-      <div class="center-layout">
-        <span class="mono">HOW WE WORK</span>
-        <h2>Phased, Co-Created Implementation</h2>
-        <p>Our approach: Start small, prove value, scale together.</p>
-        <div style="margin-top:3rem;width:100%;max-width:1000px">
-          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem">
-            <div class="stat-card" style="padding:1.5rem">
-              <div style="width:50px;height:50px;background:#222;border:1px solid var(--accent-color);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--accent-color)">1</div>
-              <p class="mono" style="color:var(--accent-color)">DISCOVER</p>
-              <p style="font-size:0.875rem;margin-top:.5rem">Understand current systems, workflows, priorities. Map existing data and integration points.</p>
-            </div>
-            <div class="stat-card" style="padding:1.5rem">
-              <div style="width:50px;height:50px;background:#222;border:1px solid var(--secondary-accent);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--secondary-accent)">2</div>
-              <p class="mono" style="color:var(--secondary-accent)">PILOT</p>
-              <p style="font-size:0.875rem;margin-top:.5rem">Limited scope deployment in 1-2 municipalities or schools. Validate approach, gather feedback.</p>
-            </div>
-            <div class="stat-card" style="padding:1.5rem">
-              <div style="width:50px;height:50px;background:#222;border:1px solid #888;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold">3</div>
-              <p class="mono">REFINE</p>
-              <p style="font-size:0.875rem;margin-top:.5rem">Iterate based on real usage. Train superusers, adjust workflows, improve content.</p>
-            </div>
-            <div class="stat-card" style="padding:1.5rem;border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
-              <div style="width:50px;height:50px;background:var(--accent-color);color:#000;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:800">4</div>
-              <p class="mono" style="color:var(--accent-color)">SCALE</p>
-              <p style="font-size:0.875rem;margin-top:.5rem;color:#fff">Province-wide rollout with proven model. Transfer knowledge to LGU teams.</p>
-            </div>
-          </div>
-          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem">
-            <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
-              <span class="mono" style="color:#888">WHAT WE PROVIDE</span>
-              <ul style="font-size:0.875rem;line-height:2;margin-top:1rem;list-style:none">
-                <li>• Platform deployment & customization</li>
-                <li>• Data migration & content setup</li>
-                <li>• Training (staff, teachers, superusers)</li>
-                <li>• Technical support & maintenance</li>
-                <li>• Continuous improvement</li>
-              </ul>
-            </div>
-            <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
-              <span class="mono" style="color:#888">WHAT WE NEED FROM LGU</span>
-              <ul style="font-size:0.875rem;line-height:2;margin-top:1rem;list-style:none">
-                <li>• Project coordinator & technical counterpart</li>
-                <li>• Access to existing data/documents</li>
-                <li>• Champion users per department/school</li>
-                <li>• Feedback & iteration partnership</li>
-                <li>• Budget allocation (OPEX model)</li>
-              </ul>
-            </div>
-          </div>
+      <div class="layout-split">
+        <div class="split-content">
+          <span class="label">Technical Approach</span>
+          <h2>Built for PH Government</h2>
+          <p>Compliance-ready, secure, and flexible deployment.</p>
+          <ul>
+            <li>Data Privacy Act (RA 10173) compliant</li>
+            <li>DICT Cloud First Policy aligned</li>
+            <li>On-premise or hybrid deployment options</li>
+            <li>Multi-lingual AI (Filipino, Romblomanon)</li>
+            <li>Offline-capable modules</li>
+            <li>COA audit trail requirements</li>
+          </ul>
+        </div>
+        <div class="split-visual">
+          <img src="assets/images/tech-security.jpg" alt="Technology security">
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 10: Next Steps / Call to Action -->
+    <!-- SLIDE 10: NEXT STEPS -->
     <div class="slide" id="slide-10">
-      <div class="center-layout" style="background:radial-gradient(circle at center, rgba(0,210,255,0.08) 0%, transparent 70%)">
-        <h1>Let's Explore <span class="text-gradient">What's Possible</span></h1>
-        <p style="margin-top:2rem;max-width:800px">We're here to learn about Romblon's priorities and share how our platforms might support your digital transformation goals.</p>
-        <div style="margin-top:3rem">
-          <div class="stat-card" style="max-width:700px;text-align:left">
-            <span class="mono" style="color:var(--accent-color)">DURING THIS VISIT</span>
-            <ul style="font-size:1.1rem;line-height:2;margin-top:1rem;list-style:none">
-              <li>✓ <strong>Understand:</strong> Your current systems, workflows, and pain points</li>
-              <li>✓ <strong>Demonstrate:</strong> Live platform capabilities (Gyud.AI + EdTech LMS)</li>
-              <li>✓ <strong>Discuss:</strong> Potential pilot scope for 1-2 municipalities or schools</li>
-              <li>✓ <strong>Explore:</strong> Budget realities, timelines, and partnership models</li>
+      <div class="layout-centered">
+        <h2>Let's Explore What's Possible</h2>
+        <p class="text-lg" style="max-width: 700px; margin: 0 auto var(--space-6);">
+          We're here to understand Romblon's priorities and demonstrate how our platforms can support your digital transformation.
+        </p>
+        
+        <div class="grid-2" style="max-width: 800px; margin: 0 auto;">
+          <div class="card">
+            <span class="label text-primary-color">During This Visit</span>
+            <ul class="text-sm">
+              <li>Understand current workflows</li>
+              <li>Live platform demonstrations</li>
+              <li>Discuss pilot scope</li>
+              <li>Explore partnership models</li>
             </ul>
           </div>
-        </div>
-        <div style="margin-top:3rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap">
-          <div class="stat-card" style="padding:1.2rem;max-width:300px">
-            <p class="mono" style="color:var(--accent-color)">GYUD.AI DEMO</p>
-            <p style="font-size:0.875rem;margin:.5rem 0 0">Live ordinance search, citizen chatbot, dashboard mockups</p>
-          </div>
-          <div class="stat-card" style="padding:1.2rem;max-width:300px">
-            <p class="mono" style="color:var(--secondary-accent)">EDTECH LMS DEMO</p>
-            <p style="font-size:0.875rem;margin:.5rem 0 0">AI-adaptive learning, skills modules, teacher tools</p>
+          <div class="card">
+            <span class="label" style="color: var(--secondary);">Contact</span>
+            <p class="text-sm" style="margin-bottom: var(--space-2);"><strong>Climate Smart Ventures</strong><br>Lead Proponent</p>
+            <p class="text-sm"><strong>Likha Labs</strong><br>Technology Partner</p>
           </div>
         </div>
-        <p class="mono" style="margin-top:3rem;color:#666">CLIMATE SMART VENTURES (Lead) × LIKHA LABS (Technology Partner)</p>
-        <p style="font-size:0.875rem;color:#666;margin-top:1rem">Thank you for your time. We look forward to the conversation.</p>
+        
+        <p class="text-xs text-muted" style="margin-top: var(--space-6);">
+          Thank you for your time. We look forward to the conversation.
+        </p>
       </div>
     </div>
 
   </div>
 
-  <!-- Controls -->
-  <div class="controls">
-    <button class="btn-nav" onclick="prevSlide()" aria-label="Previous slide">←</button>
-    <span class="mono" id="slide-counter" aria-live="polite" style="display:flex;align-items:center;color:var(--muted-text)">1 / 10</span>
-    <button class="btn-nav" onclick="nextSlide()" aria-label="Next slide">→</button>
+  <!-- Navigation Controls -->
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="prevSlide()" aria-label="Previous slide">←</button>
+    <span class="slide-counter" id="counter">1 / 10</span>
+    <button class="nav-btn" onclick="nextSlide()" aria-label="Next slide">→</button>
   </div>
+
+  <div class="progress-bar" id="progress"></div>
 
   <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
     const progressBar = document.getElementById('progress');
-    const counter = document.getElementById('slide-counter');
-    function updateSlide(){slides.forEach((slide,index)=>{slide.classList.remove('active');if(index===currentSlide){slide.classList.add('active')}});const progress=((currentSlide+1)/slides.length)*100;progressBar.style.width=`${progress}%`;counter.innerText=`${currentSlide+1} / ${slides.length}`}
-    function nextSlide(){if(currentSlide<slides.length-1){currentSlide++;updateSlide()}}
-    function prevSlide(){if(currentSlide>0){currentSlide--;updateSlide()}}
-    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){nextSlide();if(e.key===' ')e.preventDefault()}if(e.key==='ArrowLeft')prevSlide()});
-    let touchStartX=0,touchEndX=0;document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},false);document.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;handleSwipe()},false);function handleSwipe(){if(touchStartX-touchEndX>50)nextSlide();if(touchEndX-touchStartX>50)prevSlide()}
+    const counter = document.getElementById('counter');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      
+      const progress = ((currentSlide + 1) / totalSlides) * 100;
+      progressBar.style.width = `${progress}%`;
+      counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    // Touch navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextSlide();
+      if (touchEndX - touchStartX > 50) prevSlide();
+    });
+
     updateSlide();
   </script>
 </body>
