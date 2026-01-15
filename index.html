@@ -43,8 +43,8 @@
     }
 
     h1 {
-      font-size: 4.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
       background: linear-gradient(to right, #fff, #888);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -52,22 +52,22 @@
     }
 
     h2 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
+      font-size: 2.25rem;
+      margin-bottom: 1.5rem;
       color: #fff;
     }
 
     h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.875rem;
       color: #fff;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 1rem;
       line-height: 1.8;
-      color: #ccc;
-      margin-bottom: 1.5rem;
+      color: #d4d4d4;
+      margin-bottom: 1.25rem;
       max-width: 70ch;
     }
 
@@ -140,7 +140,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.6s ease;
-      padding: 5rem 8rem;
+      padding: 4rem 6rem;
       align-items: center;
       background: radial-gradient(circle at 50% 50%, rgba(0, 255, 157, 0.03) 0%, transparent 50%);
       overflow-y: auto;
@@ -156,7 +156,7 @@
     .split-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      gap: 4rem;
       width: 100%;
       height: 100%;
       align-items: center;
@@ -178,24 +178,23 @@
     .stat-card {
       background: var(--glass-bg);
       border: 1px solid var(--border-color);
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 16px;
       backdrop-filter: blur(10px);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: border-color 0.3s ease;
     }
 
     .stat-card:hover {
-      transform: translateY(-5px);
       border-color: rgba(255, 255, 255, 0.2);
     }
 
     .stat-big {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 800;
       color: #fff;
       font-family: var(--font-mono);
       line-height: 1;
-      margin-bottom: 1rem;
+      margin-bottom: 0.875rem;
     }
 
     .stat-label {
@@ -212,12 +211,11 @@
       overflow: hidden;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
       border: 1px solid #333;
-      transition: all 0.5s ease;
+      transition: border-color 0.3s ease;
       background: #0f0f0f;
     }
 
     .mockup-container:hover {
-      transform: scale(1.02);
       border-color: var(--accent-color);
     }
 
@@ -324,27 +322,27 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
       }
 
       h2 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
 
       h3 {
-        font-size: 1.3rem;
+        font-size: 1.125rem;
       }
 
       p {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 0.9375rem;
+        line-height: 1.7;
       }
 
       .slide {
         flex-direction: column;
-        padding: 2rem 1.5rem;
+        padding: 2rem 2rem;
         align-items: flex-start;
         justify-content: flex-start;
         height: 100vh;
@@ -364,7 +362,7 @@
       }
 
       .stat-card {
-        width: 100% !important;
+        width: 100%;
         padding: 1.5rem;
       }
 
@@ -374,8 +372,8 @@
       }
 
       .display-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
       .controls {
@@ -417,7 +415,7 @@
           <div style="text-align:left;width:100%;padding-left:2rem">
             <span class="blur-pill">INTRODUCTORY VISIT • JANUARY 2026</span>
             <h1>Digital Solutions <br>for <span class="text-gradient">Romblon Province</span></h1>
-            <p style="font-size:1.5rem;color:#fff">AI-powered governance + EdTech solutions for island communities.</p>
+            <p style="font-size:1.125rem;color:#fff">AI-powered governance + EdTech solutions for island communities.</p>
             <p class="mono" style="color: var(--muted-text);">CLIMATE SMART VENTURES × LIKHA LABS</p>
             <p style="font-size:1rem;color:#aaa;margin-top:2rem">Introducing our platforms and exploring opportunities to support Romblon's digital transformation.</p>
           </div>
@@ -431,21 +429,21 @@
         <span class="mono">ABOUT ROMBLON</span>
         <h2>An Island Province with Unique Potential</h2>
         <span class="mono" style="color:#888">Context: RA 11032 (EODB) + RA 11055 (PSED) + RA 10929 (Free Internet) + DepEd Digital Transformation 2023–2028</span>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:4rem;width:100%">
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:4rem;width:100%">
           <div class="stat-card">
             <div class="stat-big">302K</div>
             <p class="mono">POPULATION</p>
-            <p style="font-size:.9rem;margin-top:1rem">17 municipalities across 3 major islands with diverse communities and needs.</p>
+            <p style="font-size:0.875rem;margin-top:1rem">17 municipalities across 3 major islands with diverse communities and needs.</p>
           </div>
           <div class="stat-card" style="border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
             <div class="stat-big text-gradient">#1</div>
             <p class="mono" style="color:var(--accent-color)">MARBLE CAPITAL</p>
-            <p style="font-size:.9rem;margin-top:1rem;color:#fff">Tourism + marble industry = strong economic foundation for growth.</p>
+            <p style="font-size:0.875rem;margin-top:1rem;color:#fff">Tourism + marble industry = strong economic foundation for growth.</p>
           </div>
           <div class="stat-card">
             <div class="stat-big">3-5</div>
             <p class="mono">STAFF PER LGU</p>
-            <p style="font-size:.9rem;margin-top:1rem">Limited human resources where digital tools can make outsized impact.</p>
+            <p style="font-size:0.875rem;margin-top:1rem">Limited human resources where digital tools can make outsized impact.</p>
           </div>
         </div>
         <ul style="list-style:none;color:#ccc;margin-top:2rem;max-width:900px">
@@ -514,12 +512,12 @@
         <span class="mono">OUR PLATFORMS</span>
         <h2>Two Integrated Solution Families</h2>
         <p style="margin-bottom:3rem">CSV brings proven digital governance + education technology designed for Philippine LGUs.</p>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;width:100%">
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;width:100%">
           <div class="stat-card" style="border-left:4px solid var(--accent-color)">
             <span class="mono" style="color:var(--accent-color)">PLATFORM 1: GOVERNANCE</span>
             <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">Gyud.AI</h3>
             <p style="font-size:1rem;margin-bottom:1.5rem;color:#aaa">Digital Governance & Citizen Clarity Platform</p>
-            <ul style="list-style:none;padding:0;text-align:left;font-size:.95rem;line-height:1.8">
+            <ul style="list-style:none;padding:0;text-align:left;font-size:1rem;line-height:1.8">
               <li>✓ AI-powered ordinance & policy search</li>
               <li>✓ Citizen inquiry chatbot (Filipino/Romblomanon)</li>
               <li>✓ Budget & procurement dashboards</li>
@@ -531,7 +529,7 @@
             <span class="mono" style="color:var(--secondary-accent)">PLATFORM 2: EDUCATION</span>
             <h3 style="color:#fff;font-size:1.8rem;margin:1rem 0">EdTech LMS</h3>
             <p style="font-size:1rem;margin-bottom:1.5rem;color:#aaa">Career Pathways, Tech/AI Skills & Industry Certification</p>
-            <ul style="list-style:none;padding:0;text-align:left;font-size:.95rem;line-height:1.8">
+            <ul style="list-style:none;padding:0;text-align:left;font-size:1rem;line-height:1.8">
               <li>✓ AI-powered career pathway mapping</li>
               <li>✓ Tech & AI skills (industry-agnostic)</li>
               <li>✓ Industry tracks: Tourism, Marble, BPO, Gov</li>
@@ -553,21 +551,21 @@
           <p style="margin-top:1.5rem"><strong>Gyud.AI</strong> is a Filipino-made AI platform purpose-built for local government operations.</p>
           
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For Councillors & Policy-Makers</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• Instant search across all ordinances, resolutions, committee reports</li>
             <li>• AI identifies amendments, penalties, implementing offices</li>
             <li>• Policy interconnection analysis for legislative decisions</li>
           </ul>
 
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For LGU Departments</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• Centralized dashboards: budgets, contracts, disbursements</li>
             <li>• Automated anomaly detection & compliance alerts</li>
             <li>• Standardized workflows reducing manual coordination</li>
           </ul>
 
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">For Citizens</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• Natural language queries: "Paano mag-apply ng business permit?"</li>
             <li>• Clear answers on taxes, penalties, requirements</li>
             <li>• 24/7 availability via web, mobile, SMS</li>
@@ -577,7 +575,7 @@
           <div class="stat-card" style="background:rgba(0,255,157,0.05);border-color:var(--accent-color)">
             <p class="mono" style="color:var(--accent-color)">PROVEN RESULTS</p>
             <h3 style="color:#fff;margin:.5rem 0 1rem">Pasig City Deployment</h3>
-            <ul style="font-size:.9rem;line-height:1.8;list-style:none;padding:0">
+            <ul style="font-size:0.875rem;line-height:1.8;list-style:none;padding:0">
               <li>✓ Significant reduction in staff document retrieval time</li>
               <li>✓ Fewer walk-in clarification requests reported</li>
               <li>✓ Improved audit readiness (standardized logs)</li>
@@ -586,7 +584,7 @@
           </div>
           <div class="stat-card">
             <p class="mono">TECHNICAL DESIGN</p>
-            <ul style="font-size:.85rem;line-height:1.8;list-style:none;padding:0;text-align:left">
+            <ul style="font-size:0.875rem;line-height:1.8;list-style:none;padding:0;text-align:left">
               <li>• On-premise or hybrid deployment</li>
               <li>• Full data sovereignty (LGU custody)</li>
               <li>• DICT cybersecurity aligned</li>
@@ -625,7 +623,7 @@
           <p style="margin-top:1.5rem">Career-first learning platform with AI-powered pathways to employment across industries.</p>
           
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Career Pathways</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• AI-powered skills assessment & career mapping</li>
             <li>• Personalized learning paths based on job goals</li>
             <li>• Direct job matching with local & remote employers</li>
@@ -633,7 +631,7 @@
           </ul>
 
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Tech & AI Skills (Industry-Agnostic)</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• AI Fundamentals: Prompt engineering, AI tools for work</li>
             <li>• Digital Skills: Google Workspace, Canva, basic coding</li>
             <li>• Data & Analytics: Excel, SQL basics, dashboarding</li>
@@ -641,7 +639,7 @@
           </ul>
 
           <h3 style="color:#fff;font-size:1.3rem;margin:2rem 0 1rem">Industry-Specific Tracks</h3>
-          <ul style="list-style:none;color:#ccc;font-size:.95rem;line-height:1.8">
+          <ul style="list-style:none;color:#ccc;font-size:1rem;line-height:1.8">
             <li>• Tourism: Hospitality tech, booking systems, guest experience</li>
             <li>• Marble: CAD/CAM basics, quality control, export standards</li>
             <li>• BPO: English proficiency, typing, customer service</li>
@@ -662,22 +660,22 @@
             <div style="width:60px;height:60px;background:rgba(0,255,157,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👨‍💼</div>
             <p class="mono" style="color:var(--accent-color)">MAYOR JUAN</p>
             <h4 style="color:#fff;margin:.5rem 0">Municipal Mayor</h4>
-            <p style="font-size:.9rem;margin-top:1rem"><strong>Needs:</strong> Real-time budget monitoring, citizen satisfaction data, audit-ready dashboards.</p>
-            <p style="font-size:.85rem;color:var(--accent-color);margin-top:1rem"><strong>Gyud.AI gives:</strong> Instant analytics, compliance alerts, ordinance search.</p>
+            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Real-time budget monitoring, citizen satisfaction data, audit-ready dashboards.</p>
+            <p style="font-size:0.875rem;color:var(--accent-color);margin-top:1rem"><strong>Gyud.AI gives:</strong> Instant analytics, compliance alerts, ordinance search.</p>
           </div>
           <div class="stat-card">
             <div style="width:60px;height:60px;background:rgba(0,210,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">👩‍🏫</div>
             <p class="mono" style="color:var(--secondary-accent)">TEACHER MARIA</p>
             <h4 style="color:#fff;margin:.5rem 0">Public School Teacher</h4>
-            <p style="font-size:.9rem;margin-top:1rem"><strong>Needs:</strong> Adaptive tools, multilingual content, student progress tracking, AI tutoring.</p>
-            <p style="font-size:.85rem;color:var(--secondary-accent);margin-top:1rem"><strong>EdTech LMS gives:</strong> Personalized learning, automated grading, offline access.</p>
+            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Adaptive tools, multilingual content, student progress tracking, AI tutoring.</p>
+            <p style="font-size:0.875rem;color:var(--secondary-accent);margin-top:1rem"><strong>EdTech LMS gives:</strong> Personalized learning, automated grading, offline access.</p>
           </div>
           <div class="stat-card">
             <div style="width:60px;height:60px;background:rgba(255,77,77,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.8rem">🧑‍💼</div>
             <p class="mono">ENTREPRENEUR CARLO</p>
             <h4 style="color:#fff;margin:.5rem 0">Marble Workshop Owner</h4>
-            <p style="font-size:.9rem;margin-top:1rem"><strong>Needs:</strong> Fast permits, tech-savvy workforce, AI tools for business operations.</p>
-            <p style="font-size:.85rem;color:#fff;margin-top:1rem"><strong>Both platforms:</strong> Digital permits + hire platform-trained workers with CAD, data, and AI skills.</p>
+            <p style="font-size:0.875rem;margin-top:1rem"><strong>Needs:</strong> Fast permits, tech-savvy workforce, AI tools for business operations.</p>
+            <p style="font-size:0.875rem;color:#fff;margin-top:1rem"><strong>Both platforms:</strong> Digital permits + hire platform-trained workers with CAD, data, and AI skills.</p>
           </div>
         </div>
       </div>
@@ -689,11 +687,11 @@
         <span class="mono">TECHNICAL APPROACH</span>
         <h2>Built for Philippine Government Context</h2>
         <p>Our platforms are designed specifically for LGU requirements and constraints.</p>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;width:100%">
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem;width:100%">
           <div class="stat-card" style="border-left:4px solid var(--accent-color)">
             <span class="mono" style="color:var(--accent-color)">COMPLIANCE BY DESIGN</span>
             <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">Regulatory Alignment</h3>
-            <ul style="font-size:.95rem;line-height:2;list-style:none;padding:0;text-align:left">
+            <ul style="font-size:1rem;line-height:2;list-style:none;padding:0;text-align:left">
               <li>• Data Privacy Act (RA 10173) — DPIA-compliant</li>
               <li>• DICT Cloud First Policy (2020)</li>
               <li>• EODB Act (RA 11032) workflows</li>
@@ -704,7 +702,7 @@
           <div class="stat-card" style="border-left:4px solid var(--secondary-accent)">
             <span class="mono" style="color:var(--secondary-accent)">DEPLOYMENT FLEXIBILITY</span>
             <h3 style="color:#fff;font-size:1.5rem;margin:1rem 0">Technical Options</h3>
-            <ul style="font-size:.95rem;line-height:2;list-style:none;padding:0;text-align:left">
+            <ul style="font-size:1rem;line-height:2;list-style:none;padding:0;text-align:left">
               <li>• On-premise (LGU-managed servers)</li>
               <li>• Hybrid cloud (Philippine data centers)</li>
               <li>• Full data sovereignty & custody</li>
@@ -713,14 +711,14 @@
             </ul>
           </div>
         </div>
-        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;width:100%">
+        <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem;width:100%">
           <div class="stat-card">
             <p class="mono" style="color:#888">MULTI-LINGUAL AI</p>
-            <p style="font-size:.95rem;margin:0">Natural language processing for Filipino, English, and local languages (Romblomanon, Onhan, Asi). Fine-tuned for government terminology and citizen queries.</p>
+            <p style="font-size:1rem;margin:0">Natural language processing for Filipino, English, and local languages (Romblomanon, Onhan, Asi). Fine-tuned for government terminology and citizen queries.</p>
           </div>
           <div class="stat-card">
             <p class="mono" style="color:#888">INTEGRATION-READY</p>
-            <p style="font-size:.95rem;margin:0">APIs for existing LGU systems (eBOSS, LGSF, eNGAS), national platforms (PhilSys, eGov PH), and mobile apps. Gradual rollout with legacy system coexistence.</p>
+            <p style="font-size:1rem;margin:0">APIs for existing LGU systems (eBOSS, LGSF, eNGAS), national platforms (PhilSys, eGov PH), and mobile apps. Gradual rollout with legacy system coexistence.</p>
           </div>
         </div>
       </div>
@@ -733,32 +731,32 @@
         <h2>Phased, Co-Created Implementation</h2>
         <p>Our approach: Start small, prove value, scale together.</p>
         <div style="margin-top:3rem;width:100%;max-width:1000px">
-          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem">
+          <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem">
             <div class="stat-card" style="padding:1.5rem">
               <div style="width:50px;height:50px;background:#222;border:1px solid var(--accent-color);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--accent-color)">1</div>
               <p class="mono" style="color:var(--accent-color)">DISCOVER</p>
-              <p style="font-size:.85rem;margin-top:.5rem">Understand current systems, workflows, priorities. Map existing data and integration points.</p>
+              <p style="font-size:0.875rem;margin-top:.5rem">Understand current systems, workflows, priorities. Map existing data and integration points.</p>
             </div>
             <div class="stat-card" style="padding:1.5rem">
               <div style="width:50px;height:50px;background:#222;border:1px solid var(--secondary-accent);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--secondary-accent)">2</div>
               <p class="mono" style="color:var(--secondary-accent)">PILOT</p>
-              <p style="font-size:.85rem;margin-top:.5rem">Limited scope deployment in 1-2 municipalities or schools. Validate approach, gather feedback.</p>
+              <p style="font-size:0.875rem;margin-top:.5rem">Limited scope deployment in 1-2 municipalities or schools. Validate approach, gather feedback.</p>
             </div>
             <div class="stat-card" style="padding:1.5rem">
               <div style="width:50px;height:50px;background:#222;border:1px solid #888;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:bold">3</div>
               <p class="mono">REFINE</p>
-              <p style="font-size:.85rem;margin-top:.5rem">Iterate based on real usage. Train superusers, adjust workflows, improve content.</p>
+              <p style="font-size:0.875rem;margin-top:.5rem">Iterate based on real usage. Train superusers, adjust workflows, improve content.</p>
             </div>
             <div class="stat-card" style="padding:1.5rem;border-color:var(--accent-color);background:rgba(0,255,157,0.05)">
               <div style="width:50px;height:50px;background:var(--accent-color);color:#000;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-weight:800">4</div>
               <p class="mono" style="color:var(--accent-color)">SCALE</p>
-              <p style="font-size:.85rem;margin-top:.5rem;color:#fff">Province-wide rollout with proven model. Transfer knowledge to LGU teams.</p>
+              <p style="font-size:0.875rem;margin-top:.5rem;color:#fff">Province-wide rollout with proven model. Transfer knowledge to LGU teams.</p>
             </div>
           </div>
           <div class="display-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem">
             <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
               <span class="mono" style="color:#888">WHAT WE PROVIDE</span>
-              <ul style="font-size:.9rem;line-height:2;margin-top:1rem;list-style:none">
+              <ul style="font-size:0.875rem;line-height:2;margin-top:1rem;list-style:none">
                 <li>• Platform deployment & customization</li>
                 <li>• Data migration & content setup</li>
                 <li>• Training (staff, teachers, superusers)</li>
@@ -768,7 +766,7 @@
             </div>
             <div style="padding:1.5rem;border:1px dashed #444;border-radius:8px">
               <span class="mono" style="color:#888">WHAT WE NEED FROM LGU</span>
-              <ul style="font-size:.9rem;line-height:2;margin-top:1rem;list-style:none">
+              <ul style="font-size:0.875rem;line-height:2;margin-top:1rem;list-style:none">
                 <li>• Project coordinator & technical counterpart</li>
                 <li>• Access to existing data/documents</li>
                 <li>• Champion users per department/school</li>
@@ -800,15 +798,15 @@
         <div style="margin-top:3rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap">
           <div class="stat-card" style="padding:1.2rem;max-width:300px">
             <p class="mono" style="color:var(--accent-color)">GYUD.AI DEMO</p>
-            <p style="font-size:.9rem;margin:.5rem 0 0">Live ordinance search, citizen chatbot, dashboard mockups</p>
+            <p style="font-size:0.875rem;margin:.5rem 0 0">Live ordinance search, citizen chatbot, dashboard mockups</p>
           </div>
           <div class="stat-card" style="padding:1.2rem;max-width:300px">
             <p class="mono" style="color:var(--secondary-accent)">EDTECH LMS DEMO</p>
-            <p style="font-size:.9rem;margin:.5rem 0 0">AI-adaptive learning, skills modules, teacher tools</p>
+            <p style="font-size:0.875rem;margin:.5rem 0 0">AI-adaptive learning, skills modules, teacher tools</p>
           </div>
         </div>
         <p class="mono" style="margin-top:3rem;color:#666">CLIMATE SMART VENTURES (Lead) × LIKHA LABS (Technology Partner)</p>
-        <p style="font-size:.9rem;color:#666;margin-top:1rem">Thank you for your time. We look forward to the conversation.</p>
+        <p style="font-size:0.875rem;color:#666;margin-top:1rem">Thank you for your time. We look forward to the conversation.</p>
       </div>
     </div>
 
