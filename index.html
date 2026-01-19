@@ -158,15 +158,16 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.5s ease;
-      display: none;
+      display: none !important;
       align-items: center;
       justify-content: center;
       padding: var(--space-6) var(--space-8);
       overflow: hidden;
+      contain: layout style paint;
     }
     
     .slide.active {
-      display: flex;
+      display: flex !important;
       opacity: 1;
       pointer-events: all;
       z-index: 10;
@@ -1088,58 +1089,6 @@
               <span style="font-size: var(--text-xl); flex-shrink: 0;">👥</span>
               <p class="text-xs" style="margin: 0;"><strong>Stay Home:</strong> Digital skills → Work remotely for Romblon operators → No need to migrate</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-            
-            <div class="card" style="padding: var(--space-4); background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
-              <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2); color: var(--secondary);">Romblon Skills Hub</h3>
-              <p class="text-sm" style="margin-bottom: var(--space-3);">Supplies trained workforce</p>
-              <p class="text-xs" style="line-height: 1.7;">Certified guides → Better experiences → Higher reviews → Verified operators → Professionalized tourism → Economic growth that creates more training demand</p>
-            </div>
-          </div>
-          
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4); text-align: center;">Real Synergies</h3>
-          
-          <div style="display: grid; gap: var(--space-3); margin-bottom: var(--space-4);">
-            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
-              <span style="font-size: var(--text-2xl); flex-shrink: 0;">🎓→🏝️</span>
-              <div>
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Training-to-Employment</h4>
-                <p class="text-sm" style="margin: 0;">Complete Tourism & Hospitality track → Get verified badge on Lakbay Romblon → Employers can find certified guides → Graduates get jobs</p>
-              </div>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
-              <span style="font-size: var(--text-2xl); flex-shrink: 0;">💡→⚡</span>
-              <div>
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">CSV Energy Connection</h4>
-                <p class="text-sm" style="margin: 0;">Solar PV training → ROMELCO jobs → Renewable energy for resorts → Lower operating costs → More competitive tourism pricing</p>
-              </div>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
-              <span style="font-size: var(--text-2xl); flex-shrink: 0;">📊→🏛️</span>
-              <div>
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Data Flows to Policy</h4>
-                <p class="text-sm" style="margin: 0;">Lakbay shows top attractions → Skills Hub trains for those sectors → LGU sees employment data → Better resource allocation and planning</p>
-              </div>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
-              <span style="font-size: var(--text-2xl); flex-shrink: 0;">👥→🌱</span>
-              <div>
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Youth Retention</h4>
-                <p class="text-sm" style="margin: 0;">Digital skills training → Can manage online bookings → Work remotely for Romblon operators → Stay on the island, earn competitively</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card" style="padding: var(--space-4); background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.3);">
-            <p class="text-sm" style="margin: 0; line-height: 1.7; text-align: center;">
-              <strong>Bottom line:</strong> These aren't separate projects. They're two sides of economic development—creating jobs and preparing people to fill them.
-            </p>
           </div>
         </div>
       </div>
