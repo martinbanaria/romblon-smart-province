@@ -158,13 +158,15 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.5s ease;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      padding: var(--space-8) var(--space-12);
+      padding: var(--space-6) var(--space-8);
+      overflow: hidden;
     }
     
     .slide.active {
+      display: flex;
       opacity: 1;
       pointer-events: all;
       z-index: 10;
@@ -239,6 +241,7 @@
       width: 100%;
       max-width: 1200px;
       text-align: center;
+      padding: var(--space-2) 0;
     }
     
     .layout-centered h2 {
@@ -246,7 +249,31 @@
     }
     
     .layout-centered > .text-muted {
-      margin-bottom: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+    
+    /* Compact spacing for content-heavy slides */
+    .compact {
+      padding: var(--space-4) var(--space-6);
+    }
+    
+    .compact .grid-2,
+    .compact .grid-3 {
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+    
+    .compact .card {
+      padding: var(--space-2);
+    }
+    
+    .compact h2 {
+      margin-bottom: var(--space-2);
+    }
+    
+    .compact h3 {
+      margin-bottom: var(--space-1);
+      font-size: var(--text-lg);
     }
     
     .grid-2 {
@@ -379,14 +406,15 @@
       right: var(--space-4);
       display: flex;
       gap: var(--space-2);
-      z-index: 100;
+      z-index: 1000;
+      pointer-events: none;
     }
     
     .nav-btn {
       width: 48px;
       height: 48px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       color: var(--text-body);
       font-size: var(--text-lg);
@@ -396,6 +424,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       backdrop-filter: blur(10px);
+      pointer-events: all;
     }
     
     .nav-btn:hover {
@@ -410,6 +439,7 @@
       font-family: var(--font-mono);
       font-size: var(--text-sm);
       color: var(--text-muted);
+      pointer-events: all;
     }
     
     .progress-bar {
@@ -420,7 +450,8 @@
       background: linear-gradient(90deg, var(--secondary), var(--primary));
       width: 0%;
       transition: width 0.3s ease;
-      z-index: 100;
+      z-index: 1000;
+      pointer-events: none;
     }
     
     /* ==========================================
@@ -471,482 +502,803 @@
         <img src="assets/images/hero-romblon-islands.jpg" alt="Romblon Islands" class="hero-bg">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <span class="badge">CSV × LIKHA LABS • JANUARY 2026</span>
-          <h1>Digital Solutions for Romblon Province</h1>
-          <p class="text-lg">AI-powered governance and education technology designed for island communities.</p>
+          <span class="badge">CSV × LIKHA LABS • FIRST MEETING • JANUARY 2026</span>
+          <h1>Exploring Digital Opportunities for Romblon</h1>
+          <p class="text-lg">Lakbay Romblon Tourism Platform + Romblon Skills Hub</p>
           <p class="text-xs text-muted" style="margin-top: var(--space-3);">Romblon: 308,985 population (2020) • 17 municipalities • 20 islands (3 major + 17 smaller) • Archipelagic province (PSA Census)</p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 2: ABOUT ROMBLON -->
+    <!-- SLIDE 2: WHO WE ARE -->
     <div class="slide" id="slide-2">
       <div class="layout-split">
         <div class="split-visual">
-          <img src="assets/images/government-office.jpg" alt="Government office">
+          <img src="assets/images/government-office.jpg" alt="CSV and Likha Labs partnership">
         </div>
         <div class="split-content">
-          <span class="label">About Romblon</span>
-          <h2>Archipelagic Province Profile</h2>
-          <p class="text-sm" style="margin-bottom: var(--space-4);">Understanding the context that makes digital solutions relevant.</p>
+          <span class="label">Who We Are</span>
+          <h2>CSV × Likha Labs Partnership</h2>
+          <p class="text-sm" style="margin-bottom: var(--space-4);">Combining energy solutions expertise with digital platform capabilities.</p>
           
           <div style="display: grid; gap: var(--space-3);">
             <div class="card" style="padding: var(--space-3); border-left: 3px solid var(--primary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Geography</h3>
-              <p class="text-sm" style="margin: 0;">20 islands across Sibuyan Sea • 3 major islands (Tablas, Sibuyan, Romblon) + 17 smaller islands • Most accessible only by sea</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Climate Smart Ventures (CSV)</h3>
+              <p class="text-sm" style="margin: 0;">Your energy partner • Working with ROMELCO on renewable solutions for several years • Deep understanding of Romblon's infrastructure and community needs</p>
             </div>
             
             <div class="card" style="padding: var(--space-3); border-left: 3px solid var(--secondary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Economy</h3>
-              <p class="text-sm" style="margin: 0;">Tourism (beaches, diving, ecotourism) • "Marble Capital of the Philippines" • Fishing and agriculture</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Likha Labs</h3>
+              <p class="text-sm" style="margin: 0;">Digital platforms and learning systems • Experience with LGUs (Pasig, Taguig, Lanao) and DOST partnerships • Building tech that works for Philippine island communities</p>
             </div>
             
             <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Demographics</h3>
-              <p class="text-sm" style="margin: 0;">308,985 population • 17 municipalities • Languages: Romblomanon, Onhan, Asi (PSA 2020)</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Why We're Excited About Romblon</h3>
+              <p class="text-sm" style="margin: 0;">Unique tourism potential (Mt. Guiting-Guiting, Tablas Blue Hole, marble heritage) • Emerging destination at the right moment • Strong partner ecosystem (ROMELCO, DepEd, TESDA, RSU)</p>
             </div>
           </div>
           
           <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
-            Our platforms are purpose-built for archipelagic provinces where geography creates unique opportunities for digital transformation.
+            This is our first meeting together—we're here to listen, share ideas, and explore what makes sense for Romblon.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 3: OUR SOLUTION -->
+    <!-- SLIDE 3: WHAT WE WANT TO EXPLORE -->
     <div class="slide" id="slide-3">
       <div class="layout-centered">
-        <span class="label">Our Platforms</span>
-        <h2>Two Integrated Solutions</h2>
-        <p class="text-muted">Proven technology designed for Philippine local governments.</p>
+        <span class="label">Today's Conversation</span>
+        <h2>What We Want to Explore Together</h2>
+        <p class="text-muted">Two complementary ideas we've been researching for Romblon.</p>
         
         <div class="grid-2">
           <div class="card card-accent">
-            <h3>Gyud.AI</h3>
-            <p class="text-sm text-muted">Digital Governance & Citizen Clarity Platform</p>
-            <p style="margin-top: var(--space-3);">AI-powered ordinance search across all resolutions • Citizen inquiry chatbot in Filipino and Romblomanon • Real-time budget & procurement dashboards with anomaly detection • Business permit workflow automation (EODB-aligned) • Data consolidation across departments with audit-ready documentation</p>
+            <h3>Lakbay Romblon</h3>
+            <p class="text-sm text-muted">Tourism Discovery Platform</p>
+            <p style="margin-top: var(--space-3);">Helping travelers discover Romblon's islands, culture, and adventures • Direct bookings with local operators (no OTA middlemen) • Offline-first design for island connectivity • Tourism data and insights for LGU planning</p>
+            <p class="text-xs" style="margin-top: var(--space-2); color: var(--primary);">Our ask: What would make this valuable for tourism operators and visitors?</p>
           </div>
           
           <div class="card card-secondary">
-            <h3>EdTech LMS</h3>
-            <p class="text-sm text-muted">Career Pathways & Skills Training Platform</p>
-            <p style="margin-top: var(--space-3);">AI-powered career pathway mapping based on skills assessment • Tech & AI skills modules applicable to any industry • Industry tracks: Tourism, Marble, BPO, Government • Direct job matching with local & remote employers • TESDA-aligned certification with post-placement tracking</p>
+            <h3>Romblon Skills Hub</h3>
+            <p class="text-sm text-muted">Workforce Development Platform</p>
+            <p style="margin-top: var(--space-3);">Training for tourism, energy (solar/ROMELCO), digital skills, and more • Blended learning (online + hands-on) that works for islands • Pathways from learning to employment • Built with DepEd, TESDA, RSU, and employers</p>
+            <p class="text-xs" style="margin-top: var(--space-2); color: var(--secondary);">Our ask: What skills does Romblon's workforce need most?</p>
           </div>
         </div>
+        
+        <p class="text-sm text-muted" style="margin-top: var(--space-6); max-width: 700px; margin-left: auto; margin-right: auto;">
+          These aren't separate projects—they're an ecosystem. Trained guides appear on the tourism platform. Tourism revenue funds continued learning. One unified approach to Romblon's growth.
+        </p>
       </div>
     </div>
 
-    <!-- SLIDE 4: GYUD.AI -->
+    <!-- SLIDE 4: ROMBLON'S TOURISM POTENTIAL -->
     <div class="slide" id="slide-4">
       <div class="layout-split">
         <div class="split-content">
-          <span class="badge">Gyud.AI Platform</span>
-          <h2>Digital Governance for LGUs</h2>
-          <p class="text-sm">Filipino-made AI platform purpose-built for local government operations.</p>
+          <span class="badge">Tourism • Lakbay Romblon</span>
+          <h2>Romblon's Unique Tourism Potential</h2>
+          <p class="text-sm">An emerging eco-heritage destination with globally significant assets.</p>
           
           <div style="display: grid; gap: var(--space-3); margin-top: var(--space-4);">
             <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For Councillors & Policy-Makers</h3>
-              <p class="text-sm" style="margin: 0;">Search "tourism permit requirements Odiongan" in natural language • Track marble export ordinances across all 17 municipalities • Compare budget allocations for inter-island ferry subsidies</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Natural Heritage</h3>
+              <p class="text-sm" style="margin: 0;">Mt. Guiting-Guiting (Sibuyan's "Galápagos of Asia") • Tablas Blue Hole (only known blue hole in Philippines) • Pristine coral reefs • Whale shark migration areas</p>
             </div>
             
             <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For LGU Departments</h3>
-              <p class="text-sm" style="margin: 0;">Monitor procurement for island infrastructure projects • Alert when business permit renewals spike during tourist season • Automate quarterly CMCI reporting to DILG</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Cultural Heritage</h3>
+              <p class="text-sm" style="margin: 0;">"Marble Capital of the Philippines" • Spanish-era forts (San Andres, San Jose) • Augustinian churches • Ancient Guyangan Cave burial coffins</p>
             </div>
             
             <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For Citizens</h3>
-              <p class="text-sm" style="margin: 0;">Ask "Paano mag-apply ng marble workshop permit?" in Romblomanon • Check barangay clearance requirements without traveling from Sibuyan • Get instant answers in Filipino, 24/7</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Island Diversity</h3>
+              <p class="text-sm" style="margin: 0;">Three distinct main islands (Tablas, Sibuyan, Romblon) plus 17 smaller islands • Each with unique character, culture, and attractions • Uncrowded and uncommercialized—what Siargao and Palawan were 15 years ago</p>
             </div>
           </div>
+          
+          <p class="text-xs text-muted" style="margin-top: var(--space-4); font-style: italic;">
+            The challenge: How do travelers discover these experiences? How do local operators reach them?
+          </p>
         </div>
         <div class="split-visual">
-          <img src="assets/images/gyudai-mockup.jpg" alt="Gyud.AI Dashboard Mockup">
-          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Example: Ordinance search interface with natural language query and instant results</p>
+          <img src="assets/images/hero-romblon-islands.jpg" alt="Romblon Islands">
+          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Romblon: Emerging destination at the right moment for sustainable tourism growth</p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 5: EDTECH LMS -->
+    <!-- SLIDE 5: BENCHMARK INSPIRATION -->
     <div class="slide" id="slide-5">
-      <div class="layout-split">
-        <div class="split-visual">
-          <img src="assets/images/edtech-learning.jpg" alt="Students learning">
-        </div>
-        <div class="split-content">
-          <span class="badge">EdTech LMS Platform</span>
-          <h2>From Learning to Earning</h2>
-          <p class="text-sm">Career-first learning platform with AI-powered pathways to employment.</p>
-          
-          <div style="display: grid; gap: var(--space-3); margin-top: var(--space-4);">
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Career Pathways</h3>
-              <p class="text-sm" style="margin: 0;">Match Romblon youth with remote BPO jobs • Connect marble artisans with international buyers • Guide tour guides to digital marketing certifications • Track employment outcomes per municipality</p>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Tech & AI Skills</h3>
-              <p class="text-sm" style="margin: 0;">AI tools for tourism operators (automated booking, chatbots) • Digital payments for marble exporters • Data analytics for LGU staff • Remote work fundamentals for island residents</p>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Industry Tracks</h3>
-              <p class="text-sm" style="margin: 0;">Tourism: Social media marketing, eco-tourism certification • Marble: Quality control, export documentation • BPO: Customer service, virtual assistant training • Government: Digital governance, data privacy</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 6: WHO BENEFITS -->
-    <div class="slide" id="slide-6">
       <div class="layout-centered">
-        <span class="label">Who Benefits</span>
-        <h2>Built for Real Stakeholders</h2>
-        <p class="text-muted">Designed for the people who will use them every day.</p>
+        <span class="label">Learning from Others</span>
+        <h2>Proven Models for Community-Based Tourism</h2>
+        <p class="text-muted" style="margin-bottom: var(--space-6);">What can Romblon learn from successful Philippine destinations?</p>
         
         <div class="grid-3">
-          <div class="card persona-card">
-            <img src="assets/images/filipino-mayor.jpg" alt="Mayor Juan" class="persona-avatar">
-            <span class="label text-primary-color">Mayor Juan</span>
-            <h4>Municipal Mayor</h4>
-            <p class="text-sm text-muted">Needs real-time budget monitoring and audit-ready dashboards.</p>
+          <div class="card">
+            <h3 style="color: var(--primary);">TAO Philippines (Palawan)</h3>
+            <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">20 years of sustainable island tourism</p>
+            <p class="text-sm">Expedition-style, community-based model • Direct bookings with local island communities • Premium pricing while protecting ecosystems • Bamboo basecamps, local crew ("Lost Boys"), farm-to-table</p>
+            <p class="text-xs text-primary-color" style="margin-top: var(--space-2);"><strong>Lesson for Romblon:</strong> Community-based tourism commands premium prices</p>
           </div>
           
-          <div class="card persona-card">
-            <img src="assets/images/filipino-teacher.jpg" alt="Teacher Maria" class="persona-avatar">
-            <span class="label" style="color: var(--secondary);">Teacher Maria</span>
-            <h4>Public School Teacher</h4>
-            <p class="text-sm text-muted">Needs adaptive tools and multilingual content for students.</p>
+          <div class="card">
+            <h3 style="color: var(--secondary);">Bohol's Ecosystem Approach</h3>
+            <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">Coordinated provincial tourism</p>
+            <p class="text-sm">Iconic anchor attraction (Chocolate Hills) • Coordinated "circuit" of experiences across the province • Strong LGU-operator partnerships • Unified destination marketing</p>
+            <p class="text-xs" style="margin-top: var(--space-2); color: var(--secondary);"><strong>Lesson for Romblon:</strong> One strong attraction can drive the whole province</p>
           </div>
           
-          <div class="card persona-card">
-            <img src="assets/images/filipino-entrepreneur.jpg" alt="Carlo" class="persona-avatar">
-            <span class="label">Carlo</span>
-            <h4>Marble Workshop Owner</h4>
-            <p class="text-sm text-muted">Needs fast permits and tech-savvy workers with AI skills.</p>
+          <div class="card">
+            <h3>Siargao's Growth Story</h3>
+            <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">Rapid but cautionary tale</p>
+            <p class="text-sm">Lifestyle positioning works well • Digital nomad + surfer community • BUT warns against unmanaged growth, overtourism, and losing local character</p>
+            <p class="text-xs text-muted" style="margin-top: var(--space-2);"><strong>Lesson for Romblon:</strong> Plan for sustainable growth from day one</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 7: PROOF POINTS -->
-    <div class="slide" id="slide-7">
-      <div class="layout-split">
-        <div class="split-visual">
-          <img src="assets/images/government-building.jpg" alt="Government building">
-        </div>
-        <div class="split-content">
-          <span class="badge">Our Approach in Action</span>
-          <h2>Pasig City Partnership</h2>
-          <p class="text-sm">Currently pursuing unsolicited proposal with one of Metro Manila's most progressive LGUs.</p>
-          
-          <div style="display: grid; gap: var(--space-3); margin-top: var(--space-4);">
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">AI-powered ordinance search</h3>
-              <p class="text-sm" style="margin: 0;">Natural language queries like "barangay clearance requirements" • Instant results across thousands of resolutions • Amendment tracking • Applicable to Romblon's 17 municipal codes</p>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Citizen self-service portal</h3>
-              <p class="text-sm" style="margin: 0;">24/7 chatbot reduces counter inquiries • Answers in Filipino and local languages • Reduces need for citizens to travel between islands for simple questions</p>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Compliance & analytics</h3>
-              <p class="text-sm" style="margin: 0;">COA audit trails for procurement transparency • Automated CMCI reporting for DILG Seal of Good Governance • Real-time budget dashboards for mayors and sanggunian</p>
-            </div>
-          </div>
-          
-          <p class="text-xs text-muted" style="margin-top: var(--space-4);">
-            Validating our approach with a digitally mature government before scaling to provinces.
+        
+        <div class="card" style="margin-top: var(--space-6); padding: var(--space-4); max-width: 900px; margin-left: auto; margin-right: auto; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.3);">
+          <p class="text-sm" style="margin: 0; line-height: 1.7;">
+            <strong>Romblon's opportunity:</strong> Combine TAO's community model + Bohol's coordination + lessons from Siargao's growth. Position as eco-heritage destination before mass tourism arrives.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 8: IMPLEMENTATION -->
+    <!-- SLIDE 6: LAKBAY ROMBLON PLATFORM -->
+    <div class="slide" id="slide-6">
+      <div class="layout-split">
+        <div class="split-content">
+          <span class="badge">Platform Concept</span>
+          <h2>Lakbay Romblon</h2>
+          <p class="text-lg text-primary-color" style="margin-bottom: var(--space-2);">"Discover the Marble Heart of the Philippines"</p>
+          <p class="text-sm">A digital platform connecting travelers with authentic Romblon experiences while empowering local operators.</p>
+          
+          <div style="display: grid; gap: var(--space-3); margin-top: var(--space-4);">
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For Tourists</h3>
+              <p class="text-sm" style="margin: 0;">"Plan your Romblon adventure easily, even offline" • Pre-curated multi-island itineraries • Direct booking with verified local operators • Real-time transport coordination • Works without constant internet</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For Operators</h3>
+              <p class="text-sm" style="margin: 0;">"Reach more visitors without needing to be tech experts" • Simple dashboard for managing bookings • 10% commission vs 20-30% OTAs • Verified badge increases trust • Payment processing included</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3);">
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">For LGU</h3>
+              <p class="text-sm" style="margin: 0;">"See tourism data to make better decisions" • Visitor arrival tracking • Popular attractions analytics • Revenue transparency • Evidence-based planning • Crisis communication channel</p>
+            </div>
+          </div>
+          
+          <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
+            The platform works even with limited connectivity—essential for island travel.
+          </p>
+        </div>
+        <div class="split-visual">
+          <img src="assets/images/hero-romblon-islands.jpg" alt="Lakbay Romblon concept">
+          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Offline-first design means the remote charm of islands becomes an asset, not a barrier</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: HOW IT WORKS - TECH DEMO -->
+    <div class="slide" id="slide-7">
+      <div class="layout-centered">
+        <span class="label">Tech Capability</span>
+        <h2>How It Could Work</h2>
+        <p class="text-sm text-muted" style="margin-bottom: var(--space-4);">Mobile-first platform adapted for Romblon</p>
+        
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <div class="grid-3" style="gap: var(--space-3);">
+            
+            <!-- Screen 1: Discover -->
+            <div class="card" style="padding: var(--space-2); background: var(--bg-card);">
+              <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 24px; padding: var(--space-3); border: 2px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <!-- Status bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); padding: 0 var(--space-1);">
+                  <span style="font-size: 10px; color: var(--text-primary);">9:41</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">● ● ●</span>
+                </div>
+                
+                <!-- App header -->
+                <div style="text-align: center; margin-bottom: var(--space-3);">
+                  <h3 style="font-size: var(--text-base); color: var(--primary); margin: 0;">Lakbay Romblon</h3>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: var(--space-1) 0 0;">Discover the Marble Heart</p>
+                </div>
+                
+                <!-- Featured trip card -->
+                <div style="background: rgba(0, 255, 157, 0.1); border: 1px solid rgba(0, 255, 157, 0.3); border-radius: 12px; padding: var(--space-2); margin-bottom: var(--space-2);">
+                  <div style="background: linear-gradient(135deg, rgba(0, 255, 157, 0.2) 0%, rgba(0, 210, 255, 0.2) 100%); height: 60px; border-radius: 8px; margin-bottom: var(--space-1); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 24px;">🏝️</span>
+                  </div>
+                  <p style="font-size: 10px; font-weight: 600; color: var(--text-primary); margin: 0 0 4px;">3-Day Island Hopping</p>
+                  <p style="font-size: 8px; color: var(--text-muted); margin: 0;">Tablas • Sibuyan • Carabao</p>
+                </div>
+                
+                <!-- Quick links -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                  <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; text-align: center;">
+                    <span style="font-size: 14px;">⛰️</span>
+                    <p style="font-size: 8px; color: var(--text-muted); margin: 4px 0 0;">Mt. Guiting</p>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; text-align: center;">
+                    <span style="font-size: 14px;">🤿</span>
+                    <p style="font-size: 8px; color: var(--text-muted); margin: 4px 0 0;">Blue Hole</p>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size: 10px; color: var(--primary); margin-top: var(--space-2); text-align: center; font-weight: 600;">1. Discover</p>
+            </div>
+            
+            <!-- Screen 2: Plan -->
+            <div class="card" style="padding: var(--space-2); background: var(--bg-card);">
+              <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 24px; padding: var(--space-3); border: 2px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <!-- Status bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); padding: 0 var(--space-1);">
+                  <span style="font-size: 10px; color: var(--text-muted);">← Back</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">Share</span>
+                </div>
+                
+                <!-- Trip title -->
+                <div style="margin-bottom: var(--space-2);">
+                  <h3 style="font-size: 11px; color: var(--text-primary); margin: 0 0 4px;">Romblon Weekend</h3>
+                  <p style="font-size: 8px; color: var(--text-muted); margin: 0;">Mar 15-17 • 3 days • 2 travelers</p>
+                </div>
+                
+                <!-- Itinerary -->
+                <div style="border-left: 2px solid rgba(0, 210, 255, 0.3); padding-left: var(--space-1); margin-bottom: var(--space-2);">
+                  <div style="margin-bottom: var(--space-1); position: relative;">
+                    <div style="position: absolute; left: -10px; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%;"></div>
+                    <p style="font-size: 9px; color: var(--text-primary); margin: 0 0 2px; font-weight: 600;">Day 1</p>
+                    <p style="font-size: 8px; color: var(--text-muted); margin: 0;">Island hopping tour</p>
+                  </div>
+                  <div style="margin-bottom: var(--space-1); position: relative;">
+                    <div style="position: absolute; left: -10px; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%;"></div>
+                    <p style="font-size: 9px; color: var(--text-primary); margin: 0 0 2px; font-weight: 600;">Day 2</p>
+                    <p style="font-size: 8px; color: var(--text-muted); margin: 0;">Marble workshop</p>
+                  </div>
+                  <div style="position: relative;">
+                    <div style="position: absolute; left: -10px; width: 6px; height: 6px; background: var(--text-muted); border-radius: 50%;"></div>
+                    <p style="font-size: 9px; color: var(--text-muted); margin: 0 0 2px;">Day 3</p>
+                    <p style="font-size: 8px; color: var(--text-muted); margin: 0;">+ Add activity</p>
+                  </div>
+                </div>
+                
+                <!-- Collaborators -->
+                <div style="background: rgba(0, 210, 255, 0.1); border-radius: 8px; padding: var(--space-1); display: flex; align-items: center; justify-content: space-between;">
+                  <div style="display: flex; gap: 4px;">
+                    <div style="width: 20px; height: 20px; background: rgba(0, 255, 157, 0.3); border-radius: 50%; border: 2px solid var(--primary);"></div>
+                    <div style="width: 20px; height: 20px; background: rgba(0, 210, 255, 0.3); border-radius: 50%; border: 2px solid var(--secondary);"></div>
+                  </div>
+                  <p style="font-size: 8px; color: var(--text-muted); margin: 0;">+ Invite friends</p>
+                </div>
+              </div>
+              <p style="font-size: 10px; color: var(--secondary); margin-top: var(--space-2); text-align: center; font-weight: 600;">2. Plan Together</p>
+            </div>
+            
+            <!-- Screen 3: Book -->
+            <div class="card" style="padding: var(--space-2); background: var(--bg-card);">
+              <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 24px; padding: var(--space-3); border: 2px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <!-- Status bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); padding: 0 var(--space-1);">
+                  <span style="font-size: 10px; color: var(--text-muted);">← Back</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">•••</span>
+                </div>
+                
+                <!-- Activity card -->
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-2); margin-bottom: var(--space-2);">
+                  <div style="display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-1);">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, rgba(0, 255, 157, 0.2) 0%, rgba(0, 210, 255, 0.2) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                      <span style="font-size: 18px;">🚤</span>
+                    </div>
+                    <div style="flex: 1;">
+                      <p style="font-size: 10px; color: var(--text-primary); margin: 0; font-weight: 600;">Island Hopping Tour</p>
+                      <p style="font-size: 8px; color: var(--text-muted); margin: 2px 0 0;">Paradise Tours Romblon</p>
+                    </div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-1);">
+                    <span style="font-size: 8px; color: var(--text-muted);">2 pax • Full day</span>
+                    <span style="font-size: 10px; color: var(--primary); font-weight: 600;">₱2,500</span>
+                  </div>
+                </div>
+                
+                <!-- Operator badge -->
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: var(--space-2); padding: 6px; background: rgba(0, 255, 157, 0.05); border-radius: 8px;">
+                  <span style="font-size: 10px; color: var(--primary);">✓</span>
+                  <p style="font-size: 8px; color: var(--primary); margin: 0;">Verified Operator</p>
+                </div>
+                
+                <!-- Book button -->
+                <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 12px; padding: var(--space-2); text-align: center;">
+                  <p style="font-size: 10px; color: #000; font-weight: 700; margin: 0;">Book Now</p>
+                </div>
+                
+                <!-- Payment methods -->
+                <div style="display: flex; justify-content: center; gap: 8px; margin-top: var(--space-1);">
+                  <div style="font-size: 8px; color: var(--text-muted);">GCash</div>
+                  <div style="font-size: 8px; color: var(--text-muted);">•</div>
+                  <div style="font-size: 8px; color: var(--text-muted);">Maya</div>
+                </div>
+              </div>
+              <p style="font-size: 10px; color: var(--text-primary); margin-top: var(--space-2); text-align: center; font-weight: 600;">3. Book Direct</p>
+            </div>
+            
+          </div>
+          
+          <p class="text-xs text-muted" style="margin-top: var(--space-3); text-align: center;">
+            Working prototype—can be customized for Romblon's needs • Works offline
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: TOURISM ECOSYSTEM BENEFITS -->
     <div class="slide" id="slide-8">
       <div class="layout-centered">
-        <span class="label">How We Work</span>
-        <h2>Phased Implementation</h2>
-        <p class="text-muted">Start small, prove value, scale together.</p>
+        <span class="label">Benefits & Impact</span>
+        <h2>What This Means for Romblon Tourism</h2>
+        <p class="text-muted">Building an ecosystem that works for everyone.</p>
         
-        <div class="grid-4">
-          <div class="card">
-            <h3 style="color: var(--primary);">1. Discover</h3>
-            <p class="text-sm">Understand current systems and workflows.</p>
+        <div class="grid-2" style="margin-top: var(--space-4); max-width: 1100px; gap: var(--space-4);">
+          <div class="card" style="padding: var(--space-4); text-align: left;">
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--primary);">For Local Businesses</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Direct customer access</strong> — No 20-30% OTA commissions, keep 90% of booking value</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Predictable booking flow</strong> — Better planning for staffing, inventory, equipment</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Digital payment acceptance</strong> — Builds financial history for loans, growth</li>
+              <li style="padding-left: 0; margin-bottom: 0;"><strong>Professional credibility</strong> — Verified badge increases trust with travelers</li>
+            </ul>
           </div>
-          <div class="card">
-            <h3 style="color: var(--secondary);">2. Pilot</h3>
-            <p class="text-sm">Limited deployment in 1-2 municipalities.</p>
+          
+          <div class="card" style="padding: var(--space-4); text-align: left;">
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--secondary);">For Communities</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Direct economic participation</strong> — Tourism income stays local</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Environmental protection</strong> — Managed visitor limits prevent overtourism</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Cultural preservation</strong> — Heritage becomes economic asset</li>
+              <li style="padding-left: 0; margin-bottom: 0;"><strong>Pride and visibility</strong> — Smaller barangays get discovered too</li>
+            </ul>
           </div>
-          <div class="card">
-            <h3>3. Refine</h3>
-            <p class="text-sm">Iterate based on real user feedback.</p>
+        </div>
+        
+        <div class="grid-2" style="margin-top: var(--space-4); max-width: 1100px; gap: var(--space-4);">
+          <div class="card" style="padding: var(--space-4); text-align: left;">
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">For LGU</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Real-time visitor data</strong> — Evidence-based planning, not guesswork</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Tourism tax transparency</strong> — Accurate collection through platform</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Provincial brand visibility</strong> — Compete with established destinations</li>
+              <li style="padding-left: 0; margin-bottom: 0;"><strong>Crisis communication</strong> — Direct channel during weather, emergencies</li>
+            </ul>
           </div>
-          <div class="card card-accent">
-            <h3>4. Scale</h3>
-            <p class="text-sm">Province-wide rollout with proven model.</p>
+          
+          <div class="card" style="padding: var(--space-4); text-align: left;">
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">For Travelers</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>One-stop planning</strong> — Multi-island adventures in one place</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Verified operators</strong> — Transparent pricing, quality standards</li>
+              <li style="padding-left: 0; margin-bottom: var(--space-2);"><strong>Authentic experiences</strong> — Community connections, not just tours</li>
+              <li style="padding-left: 0; margin-bottom: 0;"><strong>Works offline</strong> — Essential for island travel</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 9: BUDGET & TIMELINE -->
+    <!-- SLIDE 9: PHASED APPROACH -->
     <div class="slide" id="slide-9">
       <div class="layout-centered">
-        <span class="label">Investment & Timeline</span>
-        <h2>Phased Rollout Model</h2>
-        <p class="text-muted" style="margin-bottom: var(--space-6);">Start with 1-2 pilot municipalities, scale based on proven results.</p>
+        <span class="label">If We Explore Together</span>
+        <h2>Phased Approach</h2>
+        <p class="text-muted">Start small, learn fast, scale what works.</p>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-top: var(--space-4); max-width: 1100px;">
-          <!-- Left: Timeline -->
-          <div>
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4); text-align: left;">Implementation Timeline</h3>
-            <div style="display: grid; gap: var(--space-4);">
-              <div class="card" style="padding: var(--space-4); border-left: 3px solid var(--primary);">
-                <span class="label text-primary-color" style="font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 1 • MONTHS 1-2</span>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Discovery & Setup</h4>
-                <p class="text-sm" style="margin: 0; line-height: 1.8;">Site assessment • Staff interviews • Data migration planning</p>
-              </div>
-              
-              <div class="card" style="padding: var(--space-4); border-left: 3px solid var(--secondary);">
-                <span class="label" style="color: var(--secondary); font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 2 • MONTHS 3-6</span>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Pilot & Refinement</h4>
-                <p class="text-sm" style="margin: 0; line-height: 1.8;">Deploy in 1-2 municipalities • Training • Feedback & iteration</p>
-              </div>
-              
-              <div class="card card-accent" style="padding: var(--space-4);">
-                <span class="label text-primary-color" style="font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 3 • MONTHS 7-12</span>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Province-wide Rollout</h4>
-                <p class="text-sm" style="margin: 0; line-height: 1.8;">All 17 municipalities • Ongoing support • Quarterly reviews</p>
-              </div>
+        <div class="grid-3" style="margin-top: var(--space-6);">
+          <div class="card" style="padding: var(--space-4); border-left: 3px solid var(--primary);">
+            <span class="label text-primary-color" style="font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 1 • MONTHS 1-6</span>
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--text-primary);">Discovery & MVP</h3>
+            <p class="text-sm" style="line-height: 1.8;">Talk to 50+ operators, understand real needs • Content collection (attractions, guides, operators) • Build MVP platform • Onboard pilot operators • Soft launch with initial users</p>
+            <p class="text-xs text-primary-color" style="margin-top: var(--space-3);"><strong>Success:</strong> 50 registered operators, 1,000 monthly users</p>
+          </div>
+          
+          <div class="card" style="padding: var(--space-4); border-left: 3px solid var(--secondary);">
+            <span class="label" style="color: var(--secondary); font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 2 • MONTHS 6-12</span>
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--text-primary);">Growth & Bookings</h3>
+            <p class="text-sm" style="line-height: 1.8;">Payment integration (GCash, Maya) • Real-time booking system • Reviews and ratings • Community experiences module • Expanded operator adoption</p>
+            <p class="text-xs" style="margin-top: var(--space-3); color: var(--secondary);"><strong>Success:</strong> 500 bookings/month, ₱500K transactions</p>
+          </div>
+          
+          <div class="card" style="padding: var(--space-4);">
+            <span class="label text-muted" style="font-size: var(--text-xs); margin-bottom: var(--space-2);">PHASE 3 • MONTHS 12-24</span>
+            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--text-primary);">Smart Tourism</h3>
+            <p class="text-sm" style="line-height: 1.8;">AI recommendations • Dynamic transport info • Loyalty programs • DOT integration • Handover to local Romblon team</p>
+            <p class="text-xs text-muted" style="margin-top: var(--space-3);"><strong>Success:</strong> Self-sustaining, managed by Romblomanons</p>
+          </div>
+        </div>
+        
+        <div class="card" style="margin-top: var(--space-6); padding: var(--space-4); max-width: 900px; margin-left: auto; margin-right: auto; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.3);">
+          <p class="text-sm" style="margin: 0; line-height: 1.7;">
+            <strong>Our philosophy:</strong> We're building scaffolding, not foundation. We succeed when Romblon's team can run this without us. Funding will be explored together based on priorities (LGU allocation, DOT grants, DICT programs, partner support).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: WORKFORCE CONTEXT -->
+    <div class="slide" id="slide-10">
+      <div class="layout-split">
+        <div class="split-visual">
+          <img src="assets/images/edtech-learning.jpg" alt="Romblon workforce">
+        </div>
+        <div class="split-content">
+          <span class="badge">Skills & Workforce</span>
+          <h2>The Workforce Challenge</h2>
+          <p class="text-sm">Building human capacity for growth</p>
+          
+          <div style="display: grid; gap: var(--space-2); margin-top: var(--space-3);">
+            <div class="card" style="padding: var(--space-2); background: rgba(255, 77, 77, 0.05); border-left: 3px solid var(--danger);">
+              <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Brain Drain</h3>
+              <p class="text-xs" style="margin: 0;">Youth leave for Manila • Limited local careers • Skills mismatch</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
+              <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Tourism Needs Skills</h3>
+              <p class="text-xs" style="margin: 0;">Guides need training • Operators need digital skills • Geography limits access</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
+              <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Energy Transition</h3>
+              <p class="text-xs" style="margin: 0;">ROMELCO needs solar techs • CSV partnership = jobs pipeline</p>
             </div>
           </div>
           
-          <!-- Right: Budget Ranges -->
-          <div>
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4); text-align: left;">Investment Range</h3>
-            <div style="display: grid; gap: var(--space-4);">
-              <div class="card" style="padding: var(--space-4); background: rgba(0, 255, 157, 0.05);">
-                <span class="label text-primary-color" style="margin-bottom: var(--space-2);">Pilot Phase</span>
-                <h3 style="font-size: var(--text-3xl); margin-bottom: var(--space-2); color: var(--primary); line-height: 1.2;">₱800K - ₱1.2M</h3>
-                <p class="text-sm text-muted" style="margin: 0;">1-2 municipalities • Setup, training, 6-month support</p>
-              </div>
-              
-              <div class="card" style="padding: var(--space-4); background: rgba(0, 210, 255, 0.05);">
-                <span class="label" style="color: var(--secondary); margin-bottom: var(--space-2);">Full Province</span>
-                <h3 style="font-size: var(--text-3xl); margin-bottom: var(--space-2); color: var(--secondary); line-height: 1.2;">₱4.5M - ₱6.5M</h3>
-                <p class="text-sm text-muted" style="margin: 0;">All 17 municipalities • First year implementation</p>
-              </div>
-              
-              <div class="card" style="padding: var(--space-4);">
-                <span class="label text-muted" style="margin-bottom: var(--space-2);">Annual Maintenance</span>
-                <h3 style="font-size: var(--text-3xl); margin-bottom: var(--space-2); color: var(--text-primary); line-height: 1.2;">₱1.2M - ₱1.8M</h3>
-                <p class="text-sm text-muted" style="margin: 0;">Hosting • Updates • Support • Enhancements</p>
-              </div>
+          <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
+            Build skills infrastructure that keeps talent home
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: ROMBLON SKILLS HUB -->
+    <div class="slide compact" id="slide-11">
+      <div class="layout-centered">
+        <span class="label">Platform Concept</span>
+        <h2>Romblon Skills Hub</h2>
+        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">"Building Island Futures" — Training that leads to real jobs</p>
+        
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <div class="grid-3" style="gap: var(--space-2); margin-top: var(--space-3);">
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">☀️ Solar PV</h4>
+              <p class="text-xs text-muted" style="margin: 0;">ROMELCO partnership<br>→ Installer jobs</p>
             </div>
             
-            <p class="text-xs text-muted" style="margin-top: var(--space-4); text-align: left; line-height: 1.6;">
-              Flexible payment: Annual budget • Multi-year • PPP • Grant funding
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🏝️ Tourism</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Guides & hospitality<br>→ Lakbay certified</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">💻 Digital Skills</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Office & marketing<br>→ Remote work ready</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">📋 LGU Ops</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Admin & services<br>→ Government jobs</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🏪 Business</h4>
+              <p class="text-xs text-muted" style="margin: 0;">MSME basics<br>→ Own enterprise</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🌊 Fisheries</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Sustainable catch<br>→ Coastal livelihood</p>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: var(--space-3); padding: var(--space-3); background: rgba(0, 210, 255, 0.05); border: 1px solid rgba(0, 210, 255, 0.3);">
+            <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: var(--secondary);">How It Works</h4>
+            <p class="text-xs" style="margin: 0; line-height: 1.6;">
+              Blended learning: 40% online + 30% workshops + 25% hands-on + 5% mentorship • TESDA-aligned certification
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 10: TECHNICAL FOUNDATION -->
-    <div class="slide" id="slide-10">
+    <!-- SLIDE 12: SOLAR PV EXAMPLE -->
+    <div class="slide" id="slide-12">
       <div class="layout-split">
         <div class="split-content">
-          <span class="label">Technical Approach</span>
-          <h2>Built for PH Government</h2>
-          <p class="text-sm">Compliance-ready, secure, and flexible deployment options.</p>
+          <span class="badge">Real Example • CSV × ROMELCO</span>
+          <h2>Solar PV Technician Track</h2>
+          <p class="text-sm">How skills training connects to real employment—a concrete example.</p>
           
           <div style="display: grid; gap: var(--space-3); margin-top: var(--space-4);">
             <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Data Privacy Act (RA 10173)</h3>
-              <p class="text-sm" style="margin: 0;">DPIA compliant • Privacy-by-design • Data sovereignty</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">The Program</h3>
+              <p class="text-sm" style="margin: 0;">4-month blended training • Energy fundamentals, electrical basics, solar components, system design, hands-on installation • Supervised practicum at real ROMELCO sites • TESDA NC II preparation</p>
             </div>
             
             <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">DICT Cloud First Policy</h3>
-              <p class="text-sm" style="margin: 0;">Hybrid deployment • On-premise options • PH data centers</p>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">The Partnership</h3>
+              <p class="text-sm" style="margin: 0;">ROMELCO provides: Equipment access, practicum sites, technical mentors, job pipeline • DepEd/TESDA: Certification alignment • CSV: Training curriculum, solar expertise • Likha Labs: Platform technology</p>
             </div>
             
             <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">Multi-lingual AI</h3>
-              <p class="text-sm" style="margin: 0;">Filipino • Romblomanon • Gov terminology • Offline-capable</p>
-            </div>
-            
-            <div class="card" style="padding: var(--space-3);">
-              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">COA Audit Standards</h3>
-              <p class="text-sm" style="margin: 0;">Automated logging • Documentation trails • Compliance reporting</p>
-            </div>
-          </div>
-        </div>
-        <div class="split-visual">
-          <img src="assets/images/tech-security.jpg" alt="Technology security">
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 11: TECHNICAL REQUIREMENTS -->
-    <div class="slide" id="slide-11">
-      <div class="layout-centered">
-        <span class="label">Infrastructure Needs</span>
-        <h2>Technical Requirements</h2>
-        <p class="text-muted" style="margin-bottom: var(--space-6);">Minimal infrastructure needed. Flexible deployment for island connectivity challenges.</p>
-        
-        <div class="grid-2" style="margin-top: var(--space-4); max-width: 1100px; gap: var(--space-6);">
-          <!-- Left Card: Infrastructure -->
-          <div class="card" style="padding: var(--space-6); text-align: left;">
-            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4); color: var(--primary);">Infrastructure</h3>
-            
-            <div style="display: grid; gap: var(--space-4);">
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Hosting Options</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Cloud (AWS Manila/Google Cloud PH) • Hybrid (on-premise + cloud backup) • 99.9% uptime SLA</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Bandwidth</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Minimum 5 Mbps per LGU office • Optimal 10-20 Mbps • Works on 3G/4G mobile • Offline-capable for remote islands</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Data Privacy</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Data Privacy Act compliant • 256-bit encryption • LGU retains data ownership • No vendor lock-in</p>
-              </div>
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1);">The Employment Pathway</h3>
+              <p class="text-sm" style="margin: 0;">Entry (₱12-18K/month): Solar installer, electrician helper • Mid-level (₱18-30K/month): Lead installer, system designer • Advanced (₱30K+): Project manager, own business • Potential employers: ROMELCO, resorts, LGUs, solar companies</p>
             </div>
           </div>
           
-          <!-- Right Card: Training & Support -->
-          <div class="card" style="padding: var(--space-6); text-align: left;">
-            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4); color: var(--secondary);">Training & Support</h3>
-            
-            <div style="display: grid; gap: var(--space-4);">
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Initial Training</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">3-day onsite training per municipality • Platform overview • Hands-on practice • Admin functions</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Ongoing Support</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">24/7 helpdesk (chat, email, phone) • Monthly webinars • Quarterly onsite visits • Dedicated account manager</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Train-the-Trainer</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Designate 2-3 "power users" per municipality • Reduces external support dependency • Builds local capacity</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <p class="text-xs text-muted" style="margin-top: var(--space-6); max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-          Technical assessment during discovery phase will tailor deployment to Romblon's existing infrastructure.
-        </p>
-      </div>
-    </div>
-
-    <!-- SLIDE 12: WHAT WE'RE ASKING FOR -->
-    <div class="slide" id="slide-12">
-      <div class="layout-centered">
-        <span class="label">Partnership Requirements</span>
-        <h2>What We're Asking From Romblon</h2>
-        <p class="text-muted" style="margin-bottom: var(--space-6);">A collaborative partnership requires commitment from both sides.</p>
-        
-        <div class="grid-2" style="margin-top: var(--space-4); max-width: 1100px; margin-left: auto; margin-right: auto; gap: var(--space-6);">
-          <!-- Left: Provincial Government Commitment -->
-          <div class="card card-accent" style="padding: var(--space-6); text-align: left;">
-            <span class="label text-primary-color" style="margin-bottom: var(--space-2);">From the Province</span>
-            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Your Commitment</h3>
-            
-            <div style="display: grid; gap: var(--space-4);">
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Leadership & Coordination</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Project champion at provincial level • Focal persons per municipality • Quarterly steering committee • Policy support (ordinance/EO)</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Data & Resources</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Share ordinances, resolutions, budget data • MIS/IT coordination • Staff released for 3-day training • Active pilot participation</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Budget Allocation</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Pilot: ₱800K-₱1.2M • Full rollout: ₱4.5M-₱6.5M (Year 1) • Annual maintenance: ₱1.2M-₱1.8M</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Right: What CSV × Likha Labs Provides -->
-          <div class="card card-secondary" style="padding: var(--space-6); text-align: left;">
-            <span class="label" style="color: var(--secondary); margin-bottom: var(--space-2);">From CSV × Likha Labs</span>
-            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">What You Get</h3>
-            
-            <div style="display: grid; gap: var(--space-4);">
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Platforms & Implementation</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">Gyud.AI + EdTech LMS (unlimited users) • Discovery & planning • Data migration • Romblon-specific customization</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Training & Support</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">3-day onsite training per municipality • Train-the-trainer • 24/7 helpdesk • Quarterly visits • Dedicated account manager</p>
-              </div>
-              
-              <div>
-                <h4 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary);">Compliance & Reporting</h4>
-                <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">CMCI dashboard for DILG • COA-ready audit trails • Data Privacy Act compliance • Regular progress reports to Sanggunian</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card" style="margin-top: var(--space-6); padding: var(--space-4); max-width: 900px; margin-left: auto; margin-right: auto; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.3);">
-          <h4 style="font-size: var(--text-xl); margin-bottom: var(--space-2); color: var(--primary);">Decision Timeline</h4>
-          <p class="text-sm text-muted" style="margin: 0; line-height: 1.7;">
-            <strong>Week 1-2:</strong> Province reviews proposal • <strong>Week 3-4:</strong> Negotiate scope & budget • <strong>Month 2:</strong> Sanggunian resolution • <strong>Month 3:</strong> Implementation begins
+          <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
+            This is capacity building that works—because it's co-designed with the employer who will actually hire graduates.
           </p>
         </div>
+        <div class="split-visual">
+          <img src="assets/images/edtech-learning.jpg" alt="Solar technician training">
+          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Youth trained in solar PV gain skills for Romblon's energy transition and can stay local instead of migrating</p>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 13: NEXT STEPS -->
-    <div class="slide" id="slide-13">
+    <!-- SLIDE 13: ECOSYSTEM SYNERGIES -->
+    <div class="slide compact" id="slide-13">
       <div class="layout-centered">
-        <h2 style="margin-bottom: var(--space-3);">Let's Explore What's Possible</h2>
-        <p class="text-sm text-muted" style="max-width: 600px; margin: 0 auto var(--space-6);">
-          We're here to learn about Romblon's priorities and share how our platforms can support your goals.
+        <span class="label">Two Platforms, One Vision</span>
+        <h2>How They Work Together</h2>
+        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Tourism creates jobs • Skills Hub fills them</p>
+        
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <div class="grid-2" style="gap: var(--space-3); margin-bottom: var(--space-3);">
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--primary);">Lakbay Romblon</h3>
+              <p class="text-xs" style="margin: 0;">More tourists → Demand for trained guides → Validates what to teach</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
+              <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--secondary);">Skills Hub</h3>
+              <p class="text-xs" style="margin: 0;">Certified guides → Better experiences → Higher ratings → Growth</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; gap: var(--space-2);">
+            <div class="card" style="padding: var(--space-2); display: flex; align-items: center; gap: var(--space-2); text-align: left;">
+              <span style="font-size: var(--text-xl); flex-shrink: 0;">🎓</span>
+              <p class="text-xs" style="margin: 0;"><strong>Training → Jobs:</strong> Complete Tourism track → Verified on Lakbay Romblon → Employers find you</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2); display: flex; align-items: center; gap: var(--space-2); text-align: left;">
+              <span style="font-size: var(--text-xl); flex-shrink: 0;">⚡</span>
+              <p class="text-xs" style="margin: 0;"><strong>Energy Savings:</strong> Solar training → ROMELCO jobs → Cheaper resort power → Competitive pricing</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2); display: flex; align-items: center; gap: var(--space-2); text-align: left;">
+              <span style="font-size: var(--text-xl); flex-shrink: 0;">📊</span>
+              <p class="text-xs" style="margin: 0;"><strong>Data → Policy:</strong> Platform shows top attractions → Train for those sectors → LGU plans smarter</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2); display: flex; align-items: center; gap: var(--space-2); text-align: left;">
+              <span style="font-size: var(--text-xl); flex-shrink: 0;">👥</span>
+              <p class="text-xs" style="margin: 0;"><strong>Stay Home:</strong> Digital skills → Work remotely for Romblon operators → No need to migrate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            
+            <div class="card" style="padding: var(--space-4); background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
+              <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2); color: var(--secondary);">Romblon Skills Hub</h3>
+              <p class="text-sm" style="margin-bottom: var(--space-3);">Supplies trained workforce</p>
+              <p class="text-xs" style="line-height: 1.7;">Certified guides → Better experiences → Higher reviews → Verified operators → Professionalized tourism → Economic growth that creates more training demand</p>
+            </div>
+          </div>
+          
+          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4); text-align: center;">Real Synergies</h3>
+          
+          <div style="display: grid; gap: var(--space-3); margin-bottom: var(--space-4);">
+            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
+              <span style="font-size: var(--text-2xl); flex-shrink: 0;">🎓→🏝️</span>
+              <div>
+                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Training-to-Employment</h4>
+                <p class="text-sm" style="margin: 0;">Complete Tourism & Hospitality track → Get verified badge on Lakbay Romblon → Employers can find certified guides → Graduates get jobs</p>
+              </div>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
+              <span style="font-size: var(--text-2xl); flex-shrink: 0;">💡→⚡</span>
+              <div>
+                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">CSV Energy Connection</h4>
+                <p class="text-sm" style="margin: 0;">Solar PV training → ROMELCO jobs → Renewable energy for resorts → Lower operating costs → More competitive tourism pricing</p>
+              </div>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
+              <span style="font-size: var(--text-2xl); flex-shrink: 0;">📊→🏛️</span>
+              <div>
+                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Data Flows to Policy</h4>
+                <p class="text-sm" style="margin: 0;">Lakbay shows top attractions → Skills Hub trains for those sectors → LGU sees employment data → Better resource allocation and planning</p>
+              </div>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); display: flex; align-items: flex-start; gap: var(--space-3);">
+              <span style="font-size: var(--text-2xl); flex-shrink: 0;">👥→🌱</span>
+              <div>
+                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); font-weight: 600;">Youth Retention</h4>
+                <p class="text-sm" style="margin: 0;">Digital skills training → Can manage online bookings → Work remotely for Romblon operators → Stay on the island, earn competitively</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card" style="padding: var(--space-4); background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.3);">
+            <p class="text-sm" style="margin: 0; line-height: 1.7; text-align: center;">
+              <strong>Bottom line:</strong> These aren't separate projects. They're two sides of economic development—creating jobs and preparing people to fill them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: CO-GOVERNANCE MODEL -->
+    <div class="slide compact" id="slide-14">
+      <div class="layout-centered">
+        <span class="label">Partnership Structure</span>
+        <h2>Co-Governance Model</h2>
+        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Romblon leads. We support.</p>
+        
+        <div style="max-width: 950px; margin: 0 auto;">
+          <div class="card" style="padding: var(--space-3); margin-bottom: var(--space-3); background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--primary);">Steering Committee</h3>
+            <div class="grid-2" style="gap: var(--space-2); margin: 0;">
+              <div>
+                <p class="text-xs" style="margin-bottom: var(--space-1);"><strong>Government:</strong></p>
+                <p class="text-xs text-muted" style="margin: 0;">PPDO, DepEd, Tourism, TESDA, LGU</p>
+              </div>
+              <div>
+                <p class="text-xs" style="margin-bottom: var(--space-1);"><strong>Partners:</strong></p>
+                <p class="text-xs text-muted" style="margin: 0;">ROMELCO, Operators, CSV, Likha Labs, RSU</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-2" style="gap: var(--space-2);">
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Tourism WG</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Content • Onboarding • Policy</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Skills WG</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Curriculum • Certification • Jobs</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Energy WG</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Solar training • ROMELCO pipeline</p>
+            </div>
+            
+            <div class="card" style="padding: var(--space-2);">
+              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Data WG</h4>
+              <p class="text-xs text-muted" style="margin: 0;">Impact • Sustainability • Handover</p>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: var(--space-3); padding: var(--space-2); background: rgba(0, 210, 255, 0.05); border: 1px solid rgba(0, 210, 255, 0.3);">
+            <p class="text-xs" style="margin: 0; line-height: 1.6;">
+              <strong>Principle:</strong> Romblon decides priorities. CSV & Likha Labs build capacity, then hand over.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: 90-DAY ROADMAP -->
+    <div class="slide compact" id="slide-15">
+      <div class="layout-centered">
+        <span class="label">If We Move Forward</span>
+        <h2>First 90 Days</h2>
+        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Discovery → Pilot → Launch</p>
+        
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <div style="display: grid; gap: var(--space-2);">
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.05); border-left: 4px solid var(--primary);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
+                <h3 style="font-size: var(--text-lg); margin: 0; color: var(--primary);">Weeks 1-4: Discovery</h3>
+                <span class="text-xs text-primary-color">MONTH 1</span>
+              </div>
+              
+              <div class="grid-2" style="gap: var(--space-2); margin-top: var(--space-2);">
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Tourism:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Interview 20+ operators • Map attractions • Content collection</p>
+                </div>
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Skills:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Meet DepEd, TESDA • Audit programs • Survey youth</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.05); border-left: 4px solid var(--secondary);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
+                <h3 style="font-size: var(--text-lg); margin: 0; color: var(--secondary);">Weeks 5-8: Pilot Build</h3>
+                <span class="text-xs" style="color: var(--secondary);">MONTH 2</span>
+              </div>
+              
+              <div class="grid-2" style="gap: var(--space-2); margin-top: var(--space-2);">
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Tourism:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Launch with 10 operators • One island focus • 100 early users</p>
+                </div>
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Skills:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Solar PV pilot (15 learners) • ROMELCO MOU • Curriculum</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card" style="padding: var(--space-3); border-left: 4px solid var(--text-muted);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
+                <h3 style="font-size: var(--text-lg); margin: 0;">Weeks 9-12: Launch & Learn</h3>
+                <span class="text-xs text-muted">MONTH 3</span>
+              </div>
+              
+              <div class="grid-2" style="gap: var(--space-2); margin-top: var(--space-2);">
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Tourism:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Expand to 30+ operators • Booking system • 1K monthly users</p>
+                </div>
+                <div>
+                  <p class="text-xs" style="margin-bottom: var(--space-1); font-weight: 600;">Skills:</p>
+                  <p class="text-xs text-muted" style="margin: 0; line-height: 1.5;">Mid-term review • Launch Tourism track • Digital Skills</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: var(--space-3); padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.3);">
+            <p class="text-xs" style="margin: 0; line-height: 1.6;">
+              <strong>Day 90 milestone:</strong> Steering Committee reviews data • Decide to scale, pivot, or pause
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: CLOSING -->
+    <div class="slide" id="slide-16">
+      <div class="layout-centered">
+        <h2 style="margin-bottom: var(--space-2);">Let's Explore Together</h2>
+        <p class="text-base" style="max-width: 650px; margin: 0 auto var(--space-4);">
+          We've shared our thinking. Now we want to hear yours.
         </p>
         
-        <div class="grid-2" style="max-width: 1000px; margin: 0 auto var(--space-6); gap: var(--space-4);">
-          <div class="card" style="padding: var(--space-4);">
-            <span class="label text-primary-color">During This Visit</span>
-            <p class="text-sm" style="margin-bottom: var(--space-2);"><strong>Understand workflows</strong> — Learn about your systems and challenges</p>
-            <p class="text-sm" style="margin-bottom: var(--space-2);"><strong>Platform overview</strong> — See Gyud.AI and EdTech LMS capabilities</p>
-            <p class="text-sm" style="margin-bottom: var(--space-2);"><strong>Discuss pilot scope</strong> — Explore 1-2 municipality pilot</p>
-            <p class="text-sm" style="margin-bottom: 0;"><strong>Partnership models</strong> — Budget, timelines, implementation</p>
+        <div class="grid-2" style="max-width: 800px; margin: 0 auto var(--space-4); gap: var(--space-3);">
+          <div class="card" style="padding: var(--space-4); text-align: center; background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--primary);">Climate Smart Ventures</h3>
+            <p class="text-xs text-muted">Energy Partner • ROMELCO relationship</p>
           </div>
-          <div class="card" style="padding: var(--space-4);">
-            <span class="label" style="color: var(--secondary);">Contact</span>
-            <p class="text-sm" style="margin-bottom: var(--space-3);"><strong>Climate Smart Ventures</strong><br>Lead Proponent</p>
-            <p class="text-sm" style="margin-bottom: 0;"><strong>Likha Labs</strong><br>Technology Partner</p>
+          
+          <div class="card" style="padding: var(--space-4); text-align: center; background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--secondary);">Likha Labs</h3>
+            <p class="text-xs text-muted">Technology Partner • Platform development</p>
           </div>
         </div>
         
-        <p class="text-xs text-muted" style="margin-top: 0;">
-          Thank you for your time. We look forward to the conversation.
-        </p>
+        <div class="card" style="max-width: 700px; margin: 0 auto; padding: var(--space-3);">
+          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ Does this align with your priorities?</p>
+          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ What challenges should we understand?</p>
+          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ Who else should be in this conversation?</p>
+          <p class="text-sm" style="margin: 0;">✓ What would success look like to you?</p>
+        </div>
         
-        <p class="text-xs text-muted" style="margin-top: var(--space-2); font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
-          Note: Service delivery challenges will be validated through engagement with officials. Data: PSA 2020 Census.
-        </p>
+        <p class="text-sm text-muted" style="margin-top: var(--space-4);">Thank you for your time. Excited to learn from Romblon.</p>
       </div>
     </div>
 
@@ -955,7 +1307,7 @@
   <!-- Navigation Controls -->
   <div class="nav-controls">
     <button class="nav-btn" onclick="prevSlide()" aria-label="Previous slide">←</button>
-    <span class="slide-counter" id="counter">1 / 13</span>
+    <span class="slide-counter" id="counter">1 / 16</span>
     <button class="nav-btn" onclick="nextSlide()" aria-label="Next slide">→</button>
   </div>
 
