@@ -605,8 +605,36 @@
           </p>
         </div>
         <div class="split-visual">
-          <img src="assets/images/team-collaboration.jpg" alt="Community-based tourism">
-          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Community collaboration is key to sustainable tourism growth</p>
+          <!-- Island Assets Diagram -->
+          <div class="card" style="padding: var(--space-4); background: linear-gradient(135deg, rgba(0, 255, 157, 0.05) 0%, rgba(0, 210, 255, 0.05) 100%);">
+            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">Romblon's 3 Main Islands</h4>
+            <div style="display: flex; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+              <div style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: rgba(0, 255, 157, 0.15); border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-2xl);">🏔️</span>
+                </div>
+                <p style="font-size: 11px; color: var(--primary); margin: 0; font-weight: 600;">Sibuyan</p>
+                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Mt. Guiting-Guiting</p>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: rgba(0, 210, 255, 0.15); border: 2px solid var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-2xl);">🌊</span>
+                </div>
+                <p style="font-size: 11px; color: var(--secondary); margin: 0; font-weight: 600;">Tablas</p>
+                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Blue Hole</p>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.08); border: 2px solid var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-2xl);">🏛️</span>
+                </div>
+                <p style="font-size: 11px; color: var(--text-primary); margin: 0; font-weight: 600;">Romblon</p>
+                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Marble Capital</p>
+              </div>
+            </div>
+            <div style="text-align: center; padding-top: var(--space-2); border-top: 1px solid var(--border);">
+              <p style="font-size: 10px; color: var(--text-muted); margin: 0;">+ 17 smaller islands</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -679,7 +707,44 @@
           </p>
         </div>
         <div class="split-visual">
-          <img src="assets/images/dashboard-ui.jpg" alt="Lakbay Romblon platform">
+          <!-- Platform Flow Diagram -->
+          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
+            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">How It Connects</h4>
+            
+            <!-- Flow: Tourist -> Platform -> Operator -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+              <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: rgba(0, 255, 157, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-xl);">🎒</span>
+                </div>
+                <p style="font-size: 10px; color: var(--text-muted); margin: 0;">Tourist</p>
+              </div>
+              <div style="color: var(--primary);">→</div>
+              <div style="text-align: center;">
+                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-xl);">📱</span>
+                </div>
+                <p style="font-size: 10px; color: var(--primary); margin: 0; font-weight: 600;">Lakbay</p>
+              </div>
+              <div style="color: var(--secondary);">→</div>
+              <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: rgba(0, 210, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
+                  <span style="font-size: var(--text-xl);">🚤</span>
+                </div>
+                <p style="font-size: 10px; color: var(--text-muted); margin: 0;">Operator</p>
+              </div>
+            </div>
+            
+            <!-- Data flows down -->
+            <div style="text-align: center; padding: var(--space-2); background: rgba(255,255,255,0.03); border-radius: 8px;">
+              <p style="font-size: 9px; color: var(--text-muted); margin: 0 0 4px;">↓ Data flows to ↓</p>
+              <div style="display: flex; justify-content: center; gap: var(--space-2);">
+                <span style="font-size: 10px; color: var(--secondary);">🏛️ LGU Dashboard</span>
+                <span style="color: var(--border);">|</span>
+                <span style="font-size: 10px; color: var(--primary);">💰 90% to Operators</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -965,7 +1030,50 @@
     <div class="slide" id="slide-10">
       <div class="layout-split">
         <div class="split-visual">
-          <img src="assets/images/students-learning.jpg" alt="Romblon workforce">
+          <!-- Brain Drain Diagram -->
+          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
+            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">The Problem & Solution</h4>
+            
+            <!-- Problem: Brain Drain -->
+            <div style="background: rgba(255, 77, 77, 0.08); border: 1px solid rgba(255, 77, 77, 0.3); border-radius: 12px; padding: var(--space-2); margin-bottom: var(--space-2);">
+              <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
+                <div style="text-align: center;">
+                  <span style="font-size: var(--text-xl);">👨‍🎓</span>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Youth</p>
+                </div>
+                <div style="color: var(--danger);">→→→</div>
+                <div style="text-align: center;">
+                  <span style="font-size: var(--text-xl);">🏙️</span>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Manila</p>
+                </div>
+              </div>
+              <p style="font-size: 10px; color: var(--danger); text-align: center; margin: 8px 0 0;">Brain Drain: No local opportunities</p>
+            </div>
+            
+            <!-- Arrow down -->
+            <div style="text-align: center; color: var(--primary); font-size: var(--text-lg); margin: var(--space-1) 0;">↓ Solution ↓</div>
+            
+            <!-- Solution: Skills Hub -->
+            <div style="background: rgba(0, 255, 157, 0.08); border: 1px solid rgba(0, 255, 157, 0.3); border-radius: 12px; padding: var(--space-2);">
+              <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
+                <div style="text-align: center;">
+                  <span style="font-size: var(--text-xl);">👨‍🎓</span>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Youth</p>
+                </div>
+                <div style="color: var(--primary);">→</div>
+                <div style="text-align: center;">
+                  <span style="font-size: var(--text-xl);">🎓</span>
+                  <p style="font-size: 9px; color: var(--primary); margin: 4px 0 0;">Skills Hub</p>
+                </div>
+                <div style="color: var(--primary);">→</div>
+                <div style="text-align: center;">
+                  <span style="font-size: var(--text-xl);">💼</span>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Local Jobs</p>
+                </div>
+              </div>
+              <p style="font-size: 10px; color: var(--primary); text-align: center; margin: 8px 0 0;">Stay home, earn locally</p>
+            </div>
+          </div>
         </div>
         <div class="split-content">
           <span class="badge">Skills & Workforce</span>
@@ -1076,8 +1184,54 @@
           </p>
         </div>
         <div class="split-visual">
-          <img src="assets/images/tech-security.jpg" alt="Solar technician training">
-          <p class="text-xs text-muted" style="margin-top: var(--space-2); text-align: center;">Youth trained in solar PV gain skills for Romblon's energy transition</p>
+          <!-- Career Pathway Diagram -->
+          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
+            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">Training → Employment Pathway</h4>
+            
+            <!-- Timeline -->
+            <div style="position: relative; padding-left: var(--space-4);">
+              <!-- Vertical line -->
+              <div style="position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--primary), var(--secondary));"></div>
+              
+              <!-- Step 1 -->
+              <div style="position: relative; margin-bottom: var(--space-3);">
+                <div style="position: absolute; left: -28px; width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <span style="font-size: 12px;">1</span>
+                </div>
+                <div style="background: rgba(0, 255, 157, 0.08); border-radius: 8px; padding: var(--space-2);">
+                  <p style="font-size: 11px; color: var(--primary); margin: 0; font-weight: 600;">4-Month Training</p>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Online + Hands-on at ROMELCO</p>
+                </div>
+              </div>
+              
+              <!-- Step 2 -->
+              <div style="position: relative; margin-bottom: var(--space-3);">
+                <div style="position: absolute; left: -28px; width: 24px; height: 24px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <span style="font-size: 12px;">2</span>
+                </div>
+                <div style="background: rgba(0, 210, 255, 0.08); border-radius: 8px; padding: var(--space-2);">
+                  <p style="font-size: 11px; color: var(--secondary); margin: 0; font-weight: 600;">TESDA NC II Certified</p>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Industry-recognized credential</p>
+                </div>
+              </div>
+              
+              <!-- Step 3 -->
+              <div style="position: relative;">
+                <div style="position: absolute; left: -28px; width: 24px; height: 24px; background: var(--text-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <span style="font-size: 12px; color: var(--bg-dark);">3</span>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.08); border-radius: 8px; padding: var(--space-2);">
+                  <p style="font-size: 11px; color: var(--text-primary); margin: 0; font-weight: 600;">Employment</p>
+                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">₱12K-30K+/month</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Employers -->
+            <div style="margin-top: var(--space-3); padding-top: var(--space-2); border-top: 1px solid var(--border); text-align: center;">
+              <p style="font-size: 9px; color: var(--text-muted); margin: 0;">Employers: ROMELCO • Resorts • LGUs • Solar Companies</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
