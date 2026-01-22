@@ -492,6 +492,244 @@
         padding: var(--space-4);
       }
     }
+    
+    /* ==========================================
+       ANIMATIONS & TRANSITIONS
+       ========================================== */
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+    
+    @keyframes slideProgress {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(0, 255, 157, 0.6);
+      }
+    }
+    
+    @keyframes drawLine {
+      from {
+        stroke-dashoffset: 1000;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    @keyframes countUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Animation classes */
+    .slide.active .anim-fade-up {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .slide.active .anim-fade-left {
+      animation: fadeInLeft 0.6s ease forwards;
+    }
+    
+    .slide.active .anim-fade-right {
+      animation: fadeInRight 0.6s ease forwards;
+    }
+    
+    .slide.active .anim-scale {
+      animation: scaleIn 0.5s ease forwards;
+    }
+    
+    .slide.active .anim-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .slide.active .anim-glow {
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .slide.active .anim-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    /* Staggered delays */
+    .delay-1 { animation-delay: 0.1s !important; }
+    .delay-2 { animation-delay: 0.2s !important; }
+    .delay-3 { animation-delay: 0.3s !important; }
+    .delay-4 { animation-delay: 0.4s !important; }
+    .delay-5 { animation-delay: 0.5s !important; }
+    .delay-6 { animation-delay: 0.6s !important; }
+    
+    /* Initially hidden for animation */
+    .anim-fade-up,
+    .anim-fade-left,
+    .anim-fade-right,
+    .anim-scale {
+      opacity: 0;
+    }
+    
+    /* Hover effects for interactive elements */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary);
+    }
+    
+    /* Animated progress/stat bars */
+    .stat-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .stat-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease;
+    }
+    
+    .slide.active .stat-bar-fill {
+      width: var(--fill-width, 100%);
+    }
+    
+    /* Animated connecting lines */
+    .connector-line {
+      stroke: var(--primary);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    
+    .slide.active .connector-line {
+      animation: drawLine 1.5s ease forwards;
+    }
+    
+    /* Icon containers with animation */
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .icon-circle:hover {
+      transform: scale(1.1);
+    }
+    
+    .icon-circle.primary {
+      background: rgba(0, 255, 157, 0.15);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .icon-circle.secondary {
+      background: rgba(0, 210, 255, 0.15);
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+    
+    /* Number counter animation */
+    .big-number {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .slide.active .big-number {
+      animation: countUp 0.8s ease forwards;
+    }
   </style>
 </head>
 <body>
@@ -515,69 +753,145 @@
     <div class="slide" id="slide-2">
       <div class="layout-split">
         <div class="split-visual">
-          <!-- Partnership Diagram -->
-          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
-            <h4 style="font-size: var(--text-base); text-align: center; margin-bottom: var(--space-4); color: var(--text-muted);">Partnership Structure</h4>
-            
-            <!-- Two partners -->
-            <div style="display: flex; justify-content: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: rgba(0, 255, 157, 0.15); border: 2px solid var(--primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
-                  <span style="font-size: var(--text-2xl);">⚡</span>
-                </div>
-                <p style="font-size: var(--text-sm); color: var(--primary); margin: 0; font-weight: 600;">CSV</p>
-                <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 4px 0 0;">Energy Partner</p>
-              </div>
+          <!-- Custom SVG Partnership Diagram -->
+          <div class="anim-scale delay-1" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="csvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00ff9d;stop-opacity:0.2" />
+                  <stop offset="100%" style="stop-color:#00ff9d;stop-opacity:0.05" />
+                </linearGradient>
+                <linearGradient id="likhaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00d2ff;stop-opacity:0.2" />
+                  <stop offset="100%" style="stop-color:#00d2ff;stop-opacity:0.05" />
+                </linearGradient>
+                <linearGradient id="connectGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#00ff9d" />
+                  <stop offset="100%" style="stop-color:#00d2ff" />
+                </linearGradient>
+                <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                
+                <!-- Animated pulse -->
+                <style>
+                  @keyframes pulse-ring {
+                    0% { r: 45; opacity: 0.8; }
+                    100% { r: 60; opacity: 0; }
+                  }
+                  .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+                  .pulse-ring-delay { animation: pulse-ring 2s ease-out infinite; animation-delay: 1s; }
+                  
+                  @keyframes draw-line {
+                    0% { stroke-dashoffset: 100; }
+                    100% { stroke-dashoffset: 0; }
+                  }
+                  .draw-line { stroke-dasharray: 100; animation: draw-line 1.5s ease forwards; }
+                  
+                  @keyframes float-slow {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                  }
+                  .float-anim { animation: float-slow 3s ease-in-out infinite; }
+                </style>
+              </defs>
               
-              <div style="display: flex; align-items: center; color: var(--text-muted);">×</div>
+              <!-- Background grid pattern -->
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+              </pattern>
+              <rect width="400" height="400" fill="url(#grid)"/>
               
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: rgba(0, 210, 255, 0.15); border: 2px solid var(--secondary); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
-                  <span style="font-size: var(--text-2xl);">💻</span>
-                </div>
-                <p style="font-size: var(--text-sm); color: var(--secondary); margin: 0; font-weight: 600;">Likha Labs</p>
-                <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 4px 0 0;">Tech Partner</p>
-              </div>
-            </div>
-            
-            <!-- Arrow down -->
-            <div style="text-align: center; color: var(--text-muted); margin-bottom: var(--space-3);">↓ Working with ↓</div>
-            
-            <!-- Romblon partners -->
-            <div style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: var(--space-3);">
-              <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-2);">
-                <span style="font-size: var(--text-xs); background: rgba(0, 255, 157, 0.1); color: var(--primary); padding: 6px 12px; border-radius: 20px;">🔌 ROMELCO</span>
-                <span style="font-size: var(--text-xs); background: rgba(0, 210, 255, 0.1); color: var(--secondary); padding: 6px 12px; border-radius: 20px;">🎓 DepEd</span>
-                <span style="font-size: var(--text-xs); background: rgba(255, 255, 255, 0.05); color: var(--text-body); padding: 6px 12px; border-radius: 20px;">🛠️ TESDA</span>
-                <span style="font-size: var(--text-xs); background: rgba(255, 255, 255, 0.05); color: var(--text-body); padding: 6px 12px; border-radius: 20px;">🏫 RSU</span>
-                <span style="font-size: var(--text-xs); background: rgba(255, 255, 255, 0.05); color: var(--text-body); padding: 6px 12px; border-radius: 20px;">🏛️ LGUs</span>
-              </div>
-            </div>
+              <!-- Connection line between partners -->
+              <line x1="120" y1="130" x2="280" y2="130" stroke="url(#connectGrad)" stroke-width="3" class="draw-line" stroke-linecap="round"/>
+              
+              <!-- CSV Partner Node -->
+              <g class="float-anim" style="transform-origin: 120px 130px;">
+                <circle cx="120" cy="130" r="50" fill="url(#csvGrad)" stroke="#00ff9d" stroke-width="2"/>
+                <circle cx="120" cy="130" class="pulse-ring" fill="none" stroke="#00ff9d" stroke-width="1"/>
+                <!-- Lightning bolt icon -->
+                <path d="M120 100 L110 130 L120 130 L115 160 L135 125 L125 125 L130 100 Z" fill="#00ff9d" filter="url(#glow2)"/>
+                <text x="120" y="190" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="700" font-family="system-ui">CSV</text>
+                <text x="120" y="206" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">Energy Partner</text>
+              </g>
+              
+              <!-- Likha Labs Partner Node -->
+              <g class="float-anim" style="transform-origin: 280px 130px; animation-delay: 0.5s;">
+                <circle cx="280" cy="130" r="50" fill="url(#likhaGrad)" stroke="#00d2ff" stroke-width="2"/>
+                <circle cx="280" cy="130" class="pulse-ring-delay" fill="none" stroke="#00d2ff" stroke-width="1"/>
+                <!-- Code/brackets icon -->
+                <text x="280" y="140" text-anchor="middle" fill="#00d2ff" font-size="28" font-weight="300" font-family="monospace" filter="url(#glow2)">&lt;/&gt;</text>
+                <text x="280" y="190" text-anchor="middle" fill="#00d2ff" font-size="14" font-weight="700" font-family="system-ui">LIKHA LABS</text>
+                <text x="280" y="206" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">Tech Partner</text>
+              </g>
+              
+              <!-- Connection symbol -->
+              <circle cx="200" cy="130" r="15" fill="#0f0f0f" stroke="url(#connectGrad)" stroke-width="2"/>
+              <text x="200" y="135" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">×</text>
+              
+              <!-- Arrow down to Romblon -->
+              <path d="M200 160 L200 230" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="6,4" class="draw-line" style="animation-delay: 0.5s;"/>
+              <polygon points="200,245 193,230 207,230" fill="rgba(255,255,255,0.5)"/>
+              
+              <!-- Romblon Partners Section -->
+              <rect x="60" y="260" width="280" height="100" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="200" y="285" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">WORKING WITH</text>
+              
+              <!-- Partner badges -->
+              <g transform="translate(80, 305)">
+                <rect x="0" y="0" width="70" height="24" rx="12" fill="rgba(0,255,157,0.1)" stroke="rgba(0,255,157,0.3)" stroke-width="1"/>
+                <text x="35" y="16" text-anchor="middle" fill="#00ff9d" font-size="9" font-family="system-ui">ROMELCO</text>
+              </g>
+              <g transform="translate(160, 305)">
+                <rect x="0" y="0" width="55" height="24" rx="12" fill="rgba(0,210,255,0.1)" stroke="rgba(0,210,255,0.3)" stroke-width="1"/>
+                <text x="27" y="16" text-anchor="middle" fill="#00d2ff" font-size="9" font-family="system-ui">DepEd</text>
+              </g>
+              <g transform="translate(225, 305)">
+                <rect x="0" y="0" width="55" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <text x="27" y="16" text-anchor="middle" fill="#e0e0e0" font-size="9" font-family="system-ui">TESDA</text>
+              </g>
+              <g transform="translate(100, 335)">
+                <rect x="0" y="0" width="45" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <text x="22" y="16" text-anchor="middle" fill="#e0e0e0" font-size="9" font-family="system-ui">RSU</text>
+              </g>
+              <g transform="translate(155, 335)">
+                <rect x="0" y="0" width="50" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <text x="25" y="16" text-anchor="middle" fill="#e0e0e0" font-size="9" font-family="system-ui">LGUs</text>
+              </g>
+              <g transform="translate(215, 335)">
+                <rect x="0" y="0" width="70" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <text x="35" y="16" text-anchor="middle" fill="#e0e0e0" font-size="9" font-family="system-ui">Operators</text>
+              </g>
+            </svg>
           </div>
         </div>
         <div class="split-content">
-          <span class="label">Who We Are</span>
-          <h2>CSV × Likha Labs Partnership</h2>
-          <p class="text-sm" style="margin-bottom: var(--space-4);">Combining energy solutions expertise with digital platform capabilities.</p>
+          <span class="label anim-fade-up">Who We Are</span>
+          <h2 class="anim-fade-up delay-1">CSV × Likha Labs Partnership</h2>
+          <p class="text-sm anim-fade-up delay-2" style="margin-bottom: var(--space-4);">Combining energy solutions expertise with digital platform capabilities.</p>
           
-          <div style="display: grid; gap: var(--space-3);">
-            <div class="card" style="padding: var(--space-3); border-left: 3px solid var(--primary);">
+          <div class="anim-fade-up delay-3" style="display: grid; gap: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3); border-left: 3px solid var(--primary);">
               <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Climate Smart Ventures (CSV)</h3>
               <p class="text-sm" style="margin: 0;">Your energy partner • Working with ROMELCO on renewable solutions for several years • Deep understanding of Romblon's infrastructure and community needs</p>
             </div>
             
-            <div class="card" style="padding: var(--space-3); border-left: 3px solid var(--secondary);">
+            <div class="card card-hover" style="padding: var(--space-3); border-left: 3px solid var(--secondary);">
               <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Likha Labs</h3>
               <p class="text-sm" style="margin: 0;">Digital platforms and learning systems • Experience with LGUs (Pasig, Taguig, Lanao) and DOST partnerships • Building tech that works for Philippine island communities</p>
             </div>
             
-            <div class="card" style="padding: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3);">
               <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary);">Why We're Excited About Romblon</h3>
               <p class="text-sm" style="margin: 0;">Unique tourism potential (Mt. Guiting-Guiting, Tablas Blue Hole, marble heritage) • Emerging destination at the right moment • Strong partner ecosystem (ROMELCO, DepEd, TESDA, RSU)</p>
             </div>
           </div>
           
-          <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
+          <p class="text-xs text-muted anim-fade-up delay-4" style="margin-top: var(--space-3); font-style: italic;">
             This is our first meeting together—we're here to listen, share ideas, and explore what makes sense for Romblon.
           </p>
         </div>
@@ -587,19 +901,19 @@
     <!-- SLIDE 3: WHAT WE WANT TO EXPLORE -->
     <div class="slide" id="slide-3">
       <div class="layout-centered">
-        <span class="label">Today's Conversation</span>
-        <h2>What We Want to Explore Together</h2>
-        <p class="text-muted">Two complementary ideas we've been researching for Romblon.</p>
+        <span class="label anim-fade-up">Today's Conversation</span>
+        <h2 class="anim-fade-up delay-1">What We Want to Explore Together</h2>
+        <p class="text-muted anim-fade-up delay-2">Two complementary ideas we've been researching for Romblon.</p>
         
         <div class="grid-2">
-          <div class="card card-accent">
+          <div class="card card-accent card-hover anim-fade-up delay-3">
             <h3>Lakbay Romblon</h3>
             <p class="text-sm text-muted">Tourism Discovery Platform</p>
             <p style="margin-top: var(--space-3);">Helping travelers discover Romblon's islands, culture, and adventures • Direct bookings with local operators (no OTA middlemen) • Offline-first design for island connectivity • Tourism data and insights for LGU planning</p>
             <p class="text-xs" style="margin-top: var(--space-2); color: var(--primary);">Our ask: What would make this valuable for tourism operators and visitors?</p>
           </div>
           
-          <div class="card card-secondary">
+          <div class="card card-secondary card-hover anim-fade-up delay-4">
             <h3>Romblon Skills Hub</h3>
             <p class="text-sm text-muted">Workforce Development Platform</p>
             <p style="margin-top: var(--space-3);">Training for tourism, energy (solar/ROMELCO), digital skills, and more • Blended learning (online + hands-on) that works for islands • Pathways from learning to employment • Built with DepEd, TESDA, RSU, and employers</p>
@@ -607,7 +921,7 @@
           </div>
         </div>
         
-        <p class="text-sm text-muted" style="margin-top: var(--space-6); max-width: 700px; margin-left: auto; margin-right: auto;">
+        <p class="text-sm text-muted anim-fade-up delay-5" style="margin-top: var(--space-6); max-width: 700px; margin-left: auto; margin-right: auto;">
           These aren't separate projects—they're an ecosystem. Trained guides appear on the tourism platform. Tourism revenue funds continued learning. One unified approach to Romblon's growth.
         </p>
       </div>
@@ -643,35 +957,120 @@
           </p>
         </div>
         <div class="split-visual">
-          <!-- Island Assets Diagram -->
-          <div class="card" style="padding: var(--space-4); background: linear-gradient(135deg, rgba(0, 255, 157, 0.05) 0%, rgba(0, 210, 255, 0.05) 100%);">
-            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">Romblon's 3 Main Islands</h4>
-            <div style="display: flex; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: rgba(0, 255, 157, 0.15); border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
-                  <span style="font-size: var(--text-2xl);">🏔️</span>
-                </div>
-                <p style="font-size: 11px; color: var(--primary); margin: 0; font-weight: 600;">Sibuyan</p>
-                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Mt. Guiting-Guiting</p>
-              </div>
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: rgba(0, 210, 255, 0.15); border: 2px solid var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
-                  <span style="font-size: var(--text-2xl);">🌊</span>
-                </div>
-                <p style="font-size: 11px; color: var(--secondary); margin: 0; font-weight: 600;">Tablas</p>
-                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Blue Hole</p>
-              </div>
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.08); border: 2px solid var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-1);">
-                  <span style="font-size: var(--text-2xl);">🏛️</span>
-                </div>
-                <p style="font-size: 11px; color: var(--text-primary); margin: 0; font-weight: 600;">Romblon</p>
-                <p style="font-size: 9px; color: var(--text-muted); margin: 2px 0 0;">Marble Capital</p>
-              </div>
-            </div>
-            <div style="text-align: center; padding-top: var(--space-2); border-top: 1px solid var(--border);">
-              <p style="font-size: 10px; color: var(--text-muted); margin: 0;">+ 17 smaller islands</p>
-            </div>
+          <!-- Custom SVG: Romblon Islands Map -->
+          <div class="anim-scale delay-2" style="position: relative; width: 100%; padding-bottom: 110%;">
+            <svg viewBox="0 0 400 440" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#0a1628" />
+                  <stop offset="100%" style="stop-color:#0d2137" />
+                </linearGradient>
+                <linearGradient id="sibuyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2d5a3d" />
+                  <stop offset="100%" style="stop-color:#1a3d28" />
+                </linearGradient>
+                <filter id="islandGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                
+                <style>
+                  @keyframes wave-anim {
+                    0%, 100% { transform: translateX(0); }
+                    50% { transform: translateX(10px); }
+                  }
+                  .wave { animation: wave-anim 4s ease-in-out infinite; }
+                  .wave-delay { animation: wave-anim 4s ease-in-out infinite; animation-delay: 2s; }
+                  
+                  @keyframes pin-bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                  }
+                  .pin { animation: pin-bounce 2s ease-in-out infinite; }
+                  .pin-delay-1 { animation-delay: 0.3s; }
+                  .pin-delay-2 { animation-delay: 0.6s; }
+                </style>
+              </defs>
+              
+              <!-- Ocean background -->
+              <rect width="400" height="440" fill="url(#oceanGradient)"/>
+              
+              <!-- Animated wave lines -->
+              <g class="wave" opacity="0.15">
+                <path d="M0 380 Q60 370, 120 380 T240 380 T360 380 T480 380" stroke="#00d2ff" stroke-width="1" fill="none"/>
+              </g>
+              <g class="wave-delay" opacity="0.1">
+                <path d="M-20 400 Q40 390, 100 400 T220 400 T340 400 T460 400" stroke="#00d2ff" stroke-width="1" fill="none"/>
+              </g>
+              
+              <!-- SIBUYAN ISLAND (top left) - Largest -->
+              <g filter="url(#islandGlow)">
+                <ellipse cx="120" cy="100" rx="80" ry="55" fill="url(#sibuyanGrad)" stroke="#3d7a52" stroke-width="2"/>
+                <!-- Mountain -->
+                <path d="M80 100 L120 45 L160 100" fill="#3d7a52" stroke="#4a8a5f" stroke-width="1"/>
+                <path d="M100 100 L120 60 L140 100" fill="#4a8a5f"/>
+                <!-- Snow cap hint -->
+                <path d="M115 55 L120 45 L125 55" fill="rgba(255,255,255,0.3)"/>
+              </g>
+              <!-- Sibuyan label -->
+              <g class="pin">
+                <circle cx="120" cy="130" r="4" fill="#00ff9d"/>
+                <line x1="120" y1="134" x2="120" y2="150" stroke="#00ff9d" stroke-width="2"/>
+              </g>
+              <text x="120" y="170" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="700" font-family="system-ui">SIBUYAN</text>
+              <text x="120" y="185" text-anchor="middle" fill="#9a9a9a" font-size="9" font-family="system-ui">Mt. Guiting-Guiting</text>
+              <text x="120" y="197" text-anchor="middle" fill="#666" font-size="8" font-family="system-ui">"Galápagos of Asia"</text>
+              
+              <!-- TABLAS ISLAND (right) - Long vertical -->
+              <g filter="url(#islandGlow)">
+                <ellipse cx="300" cy="180" rx="55" ry="100" fill="url(#sibuyanGrad)" stroke="#3d7a52" stroke-width="2"/>
+                <!-- Hills -->
+                <ellipse cx="300" cy="140" rx="25" ry="15" fill="#3d7a52"/>
+                <ellipse cx="290" cy="200" rx="20" ry="12" fill="#2d5a3d"/>
+              </g>
+              <!-- Blue hole marker -->
+              <circle cx="320" cy="220" r="12" fill="rgba(0,210,255,0.3)" stroke="#00d2ff" stroke-width="2">
+                <animate attributeName="r" values="12;15;12" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="320" cy="220" r="6" fill="#00d2ff"/>
+              <!-- Tablas label -->
+              <g class="pin pin-delay-1">
+                <circle cx="300" cy="130" r="4" fill="#00d2ff"/>
+                <line x1="300" y1="100" x2="300" y2="126" stroke="#00d2ff" stroke-width="2"/>
+              </g>
+              <text x="300" y="85" text-anchor="middle" fill="#00d2ff" font-size="13" font-weight="700" font-family="system-ui">TABLAS</text>
+              <text x="300" y="72" text-anchor="middle" fill="#9a9a9a" font-size="9" font-family="system-ui">Blue Hole</text>
+              
+              <!-- ROMBLON ISLAND (center bottom) - Small, capital -->
+              <g filter="url(#islandGlow)">
+                <ellipse cx="200" cy="320" rx="50" ry="35" fill="url(#sibuyanGrad)" stroke="#3d7a52" stroke-width="2"/>
+                <!-- Fort/building symbol -->
+                <rect x="190" y="305" width="20" height="15" fill="#4a8a5f" stroke="#5a9a6f" stroke-width="1"/>
+                <polygon points="190,305 200,295 210,305" fill="#5a9a6f"/>
+              </g>
+              <!-- Romblon label -->
+              <g class="pin pin-delay-2">
+                <circle cx="200" cy="350" r="4" fill="#fff"/>
+                <line x1="200" y1="354" x2="200" y2="368" stroke="#fff" stroke-width="2"/>
+              </g>
+              <text x="200" y="388" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="system-ui">ROMBLON</text>
+              <text x="200" y="403" text-anchor="middle" fill="#9a9a9a" font-size="9" font-family="system-ui">Marble Capital</text>
+              <text x="200" y="415" text-anchor="middle" fill="#666" font-size="8" font-family="system-ui">Provincial Capital</text>
+              
+              <!-- Small islands dots -->
+              <circle cx="160" cy="250" r="8" fill="#1a3d28" stroke="#2d5a3d" stroke-width="1" opacity="0.7"/>
+              <circle cx="250" cy="280" r="6" fill="#1a3d28" stroke="#2d5a3d" stroke-width="1" opacity="0.6"/>
+              <circle cx="140" cy="290" r="5" fill="#1a3d28" stroke="#2d5a3d" stroke-width="1" opacity="0.5"/>
+              <circle cx="270" cy="350" r="7" fill="#1a3d28" stroke="#2d5a3d" stroke-width="1" opacity="0.6"/>
+              <circle cx="80" cy="200" r="4" fill="#1a3d28" stroke="#2d5a3d" stroke-width="1" opacity="0.4"/>
+              
+              <!-- Legend -->
+              <rect x="20" y="420" width="110" height="16" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <text x="75" y="432" text-anchor="middle" fill="#666" font-size="8" font-family="system-ui">+ 17 smaller islands</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -680,26 +1079,26 @@
     <!-- SLIDE 5: BENCHMARK INSPIRATION -->
     <div class="slide" id="slide-5">
       <div class="layout-centered">
-        <span class="label">Learning from Others</span>
-        <h2>Proven Models for Community-Based Tourism</h2>
-        <p class="text-muted" style="margin-bottom: var(--space-6);">What can Romblon learn from successful Philippine destinations?</p>
+        <span class="label anim-fade-up">Learning from Others</span>
+        <h2 class="anim-fade-up delay-1">Proven Models for Community-Based Tourism</h2>
+        <p class="text-muted anim-fade-up delay-2" style="margin-bottom: var(--space-6);">What can Romblon learn from successful Philippine destinations?</p>
         
         <div class="grid-3">
-          <div class="card">
+          <div class="card card-hover anim-fade-up delay-3">
             <h3 style="color: var(--primary);">TAO Philippines (Palawan)</h3>
             <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">20 years of sustainable island tourism</p>
             <p class="text-sm">Expedition-style, community-based model • Direct bookings with local island communities • Premium pricing while protecting ecosystems • Bamboo basecamps, local crew ("Lost Boys"), farm-to-table</p>
             <p class="text-xs text-primary-color" style="margin-top: var(--space-2);"><strong>Lesson for Romblon:</strong> Community-based tourism commands premium prices</p>
           </div>
           
-          <div class="card">
+          <div class="card card-hover anim-fade-up delay-4">
             <h3 style="color: var(--secondary);">Bohol's Ecosystem Approach</h3>
             <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">Coordinated provincial tourism</p>
             <p class="text-sm">Iconic anchor attraction (Chocolate Hills) • Coordinated "circuit" of experiences across the province • Strong LGU-operator partnerships • Unified destination marketing</p>
             <p class="text-xs" style="margin-top: var(--space-2); color: var(--secondary);"><strong>Lesson for Romblon:</strong> One strong attraction can drive the whole province</p>
           </div>
           
-          <div class="card">
+          <div class="card card-hover anim-fade-up delay-5">
             <h3>Siargao's Growth Story</h3>
             <p class="text-sm text-muted" style="margin-bottom: var(--space-2);">Rapid but cautionary tale</p>
             <p class="text-sm">Lifestyle positioning works well • Digital nomad + surfer community • BUT warns against unmanaged growth, overtourism, and losing local character</p>
@@ -707,7 +1106,7 @@
           </div>
         </div>
         
-        <div class="card" style="margin-top: var(--space-6); padding: var(--space-4); max-width: 900px; margin-left: auto; margin-right: auto; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.3);">
+        <div class="card anim-fade-up delay-6" style="margin-top: var(--space-6); padding: var(--space-4); max-width: 900px; margin-left: auto; margin-right: auto; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.3);">
           <p class="text-sm" style="margin: 0; line-height: 1.7;">
             <strong>Romblon's opportunity:</strong> Combine TAO's community model + Bohol's coordination + lessons from Siargao's growth. Position as eco-heritage destination before mass tourism arrives.
           </p>
@@ -741,43 +1140,130 @@
           </div>
         </div>
         <div class="split-visual">
-          <!-- Platform Flow Diagram -->
-          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
-            <h4 style="font-size: var(--text-base); text-align: center; margin-bottom: var(--space-4); color: var(--text-muted);">How It Connects</h4>
-            
-            <!-- Flow: Tourist -> Platform -> Operator -->
-            <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <div style="text-align: center;">
-                <div style="width: 70px; height: 70px; background: rgba(0, 255, 157, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
-                  <span style="font-size: var(--text-2xl);">🎒</span>
-                </div>
-                <p style="font-size: var(--text-sm); color: var(--text-muted); margin: 0;">Tourist</p>
-              </div>
-              <div style="color: var(--primary); font-size: var(--text-xl);">→</div>
-              <div style="text-align: center;">
-                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
-                  <span style="font-size: var(--text-2xl);">📱</span>
-                </div>
-                <p style="font-size: var(--text-sm); color: var(--primary); margin: 0; font-weight: 600;">Lakbay</p>
-              </div>
-              <div style="color: var(--secondary); font-size: var(--text-xl);">→</div>
-              <div style="text-align: center;">
-                <div style="width: 70px; height: 70px; background: rgba(0, 210, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
-                  <span style="font-size: var(--text-2xl);">🚤</span>
-                </div>
-                <p style="font-size: var(--text-sm); color: var(--text-muted); margin: 0;">Operator</p>
-              </div>
-            </div>
-            
-            <!-- Data flows down -->
-            <div style="text-align: center; padding: var(--space-3); background: rgba(255,255,255,0.03); border-radius: 8px;">
-              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0 0 var(--space-1);">↓ Data flows to ↓</p>
-              <div style="display: flex; justify-content: center; gap: var(--space-3);">
-                <span style="font-size: var(--text-sm); color: var(--secondary);">🏛️ LGU Dashboard</span>
-                <span style="color: var(--border);">|</span>
-                <span style="font-size: var(--text-sm); color: var(--primary);">💰 90% to Operators</span>
-              </div>
-            </div>
+          <!-- Custom SVG: Platform Flow Diagram -->
+          <div class="anim-scale delay-2" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="platformGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00ff9d" />
+                  <stop offset="100%" style="stop-color:#00d2ff" />
+                </linearGradient>
+                <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="5" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                
+                <style>
+                  @keyframes flow-right {
+                    0% { transform: translateX(-10px); opacity: 0; }
+                    50% { opacity: 1; }
+                    100% { transform: translateX(10px); opacity: 0; }
+                  }
+                  @keyframes flow-down {
+                    0% { transform: translateY(-10px); opacity: 0; }
+                    50% { opacity: 1; }
+                    100% { transform: translateY(10px); opacity: 0; }
+                  }
+                  .flow-dot { animation: flow-right 1.5s ease-in-out infinite; }
+                  .flow-dot-2 { animation: flow-right 1.5s ease-in-out infinite; animation-delay: 0.5s; }
+                  .flow-down-dot { animation: flow-down 1.5s ease-in-out infinite; }
+                  
+                  @keyframes phone-pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                  }
+                  .phone-pulse { animation: phone-pulse 2s ease-in-out infinite; transform-origin: center; }
+                </style>
+              </defs>
+              
+              <!-- Background -->
+              <rect width="400" height="400" fill="#050505"/>
+              
+              <!-- Grid pattern -->
+              <pattern id="flowGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+              </pattern>
+              <rect width="400" height="400" fill="url(#flowGrid)"/>
+              
+              <!-- TOURIST NODE (Left) -->
+              <g transform="translate(70, 120)">
+                <circle r="45" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                <!-- Person icon -->
+                <circle cy="-15" r="12" fill="none" stroke="#00ff9d" stroke-width="2"/>
+                <path d="M0 0 L0 25 M0 8 L-15 20 M0 8 L15 20 M0 25 L-12 45 M0 25 L12 45" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" fill="none"/>
+              </g>
+              <text x="70" y="185" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="600" font-family="system-ui">TOURIST</text>
+              <text x="70" y="200" text-anchor="middle" fill="#666" font-size="9" font-family="system-ui">Discovers & books</text>
+              
+              <!-- Flow arrow 1 -->
+              <line x1="125" y1="120" x2="175" y2="120" stroke="rgba(0,255,157,0.3)" stroke-width="2"/>
+              <circle class="flow-dot" cx="150" cy="120" r="4" fill="#00ff9d"/>
+              <circle class="flow-dot-2" cx="150" cy="120" r="4" fill="#00ff9d"/>
+              
+              <!-- LAKBAY PLATFORM (Center) -->
+              <g transform="translate(200, 120)" class="phone-pulse">
+                <rect x="-35" y="-55" width="70" height="110" rx="10" fill="#0f0f0f" stroke="url(#platformGrad)" stroke-width="3" filter="url(#nodeGlow)"/>
+                <!-- Screen -->
+                <rect x="-28" y="-45" width="56" height="80" rx="4" fill="linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%)"/>
+                <!-- App header -->
+                <rect x="-28" y="-45" width="56" height="16" rx="4" fill="rgba(0,255,157,0.2)"/>
+                <text x="0" y="-33" text-anchor="middle" fill="#00ff9d" font-size="7" font-weight="600" font-family="system-ui">LAKBAY</text>
+                <!-- Content lines -->
+                <rect x="-22" y="-22" width="44" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
+                <rect x="-22" y="-12" width="30" height="6" rx="2" fill="rgba(255,255,255,0.07)"/>
+                <rect x="-22" y="0" width="44" height="12" rx="2" fill="rgba(0,210,255,0.2)"/>
+                <rect x="-22" y="16" width="44" height="12" rx="2" fill="rgba(0,255,157,0.15)"/>
+                <!-- Home button -->
+                <circle cx="0" cy="45" r="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              </g>
+              <text x="200" y="195" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="system-ui">LAKBAY ROMBLON</text>
+              <text x="200" y="210" text-anchor="middle" fill="#666" font-size="9" font-family="system-ui">Platform</text>
+              
+              <!-- Flow arrow 2 -->
+              <line x1="245" y1="120" x2="295" y2="120" stroke="rgba(0,210,255,0.3)" stroke-width="2"/>
+              <circle class="flow-dot" cx="270" cy="120" r="4" fill="#00d2ff" style="animation-delay: 0.3s;"/>
+              <circle class="flow-dot-2" cx="270" cy="120" r="4" fill="#00d2ff" style="animation-delay: 0.8s;"/>
+              
+              <!-- OPERATOR NODE (Right) -->
+              <g transform="translate(330, 120)">
+                <circle r="45" fill="rgba(0,210,255,0.1)" stroke="#00d2ff" stroke-width="2"/>
+                <!-- Boat icon -->
+                <path d="M-20 5 Q0 -15, 20 5 L15 15 L-15 15 Z" fill="none" stroke="#00d2ff" stroke-width="2"/>
+                <line x1="0" y1="-15" x2="0" y2="5" stroke="#00d2ff" stroke-width="2"/>
+                <path d="M0 -15 L15 -5 L0 -5" fill="rgba(0,210,255,0.3)" stroke="#00d2ff" stroke-width="1"/>
+              </g>
+              <text x="330" y="185" text-anchor="middle" fill="#00d2ff" font-size="12" font-weight="600" font-family="system-ui">OPERATOR</text>
+              <text x="330" y="200" text-anchor="middle" fill="#666" font-size="9" font-family="system-ui">Gets booking</text>
+              
+              <!-- Data flows down from platform -->
+              <line x1="200" y1="180" x2="200" y2="250" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="6,4"/>
+              <circle class="flow-down-dot" cx="200" cy="220" r="4" fill="#fff"/>
+              
+              <!-- Bottom section: Data recipients -->
+              <rect x="50" y="270" width="300" height="100" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="200" y="295" text-anchor="middle" fill="#666" font-size="10" font-family="system-ui">DATA FLOWS TO</text>
+              
+              <!-- LGU Dashboard -->
+              <g transform="translate(120, 335)">
+                <rect x="-40" y="-25" width="80" height="40" rx="6" fill="rgba(0,210,255,0.1)" stroke="rgba(0,210,255,0.3)" stroke-width="1"/>
+                <!-- Dashboard icon -->
+                <rect x="-25" y="-15" width="15" height="20" rx="2" fill="rgba(0,210,255,0.3)"/>
+                <rect x="-5" y="-10" width="15" height="15" rx="2" fill="rgba(0,210,255,0.2)"/>
+                <rect x="15" y="-15" width="10" height="20" rx="2" fill="rgba(0,210,255,0.25)"/>
+              </g>
+              <text x="120" y="375" text-anchor="middle" fill="#00d2ff" font-size="10" font-weight="600" font-family="system-ui">LGU Dashboard</text>
+              
+              <!-- Revenue to operators -->
+              <g transform="translate(280, 335)">
+                <rect x="-40" y="-25" width="80" height="40" rx="6" fill="rgba(0,255,157,0.1)" stroke="rgba(0,255,157,0.3)" stroke-width="1"/>
+                <!-- Peso sign -->
+                <text x="0" y="5" text-anchor="middle" fill="#00ff9d" font-size="24" font-weight="700" font-family="system-ui">₱</text>
+              </g>
+              <text x="280" y="375" text-anchor="middle" fill="#00ff9d" font-size="10" font-weight="600" font-family="system-ui">90% to Operators</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -948,43 +1434,46 @@
     <!-- SLIDE 8: TOURISM ECOSYSTEM BENEFITS -->
     <div class="slide compact" id="slide-8">
       <div class="layout-centered">
-        <span class="label">Ecosystem Impact</span>
-        <h2>Everyone Benefits</h2>
+        <span class="label anim-fade-up">Ecosystem Impact</span>
+        <h2 class="anim-fade-up delay-1">Everyone Benefits</h2>
         
         <div style="max-width: 1100px; margin: var(--space-3) auto 0;">
           <!-- Top row: Main stakeholders with metrics -->
           <div class="grid-4" style="gap: var(--space-3); margin: 0;">
-            <div class="card" style="padding: var(--space-3); text-align: center; background: linear-gradient(135deg, rgba(0, 255, 157, 0.08) 0%, rgba(0, 255, 157, 0.02) 100%); border: 1px solid rgba(0, 255, 157, 0.3);">
-              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">90%</div>
+            <div class="card card-hover anim-fade-up delay-2" style="padding: var(--space-3); text-align: center; background: linear-gradient(135deg, rgba(0, 255, 157, 0.08) 0%, rgba(0, 255, 157, 0.02) 100%); border: 1px solid rgba(0, 255, 157, 0.3);">
+              <div class="big-number" style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">90%</div>
               <h3 style="font-size: var(--text-sm); margin-bottom: var(--space-1); color: var(--primary);">Operators Keep</h3>
               <p class="text-xs text-muted" style="margin: 0;">vs 70% with OTAs</p>
             </div>
             
-            <div class="card" style="padding: var(--space-3); text-align: center; background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(0, 210, 255, 0.02) 100%); border: 1px solid rgba(0, 210, 255, 0.3);">
-              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">100%</div>
+            <div class="card card-hover anim-fade-up delay-3" style="padding: var(--space-3); text-align: center; background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(0, 210, 255, 0.02) 100%); border: 1px solid rgba(0, 210, 255, 0.3);">
+              <div class="big-number" style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">100%</div>
               <h3 style="font-size: var(--text-sm); margin-bottom: var(--space-1); color: var(--secondary);">Local Revenue</h3>
               <p class="text-xs text-muted" style="margin: 0;">Stays in Romblon</p>
             </div>
             
-            <div class="card" style="padding: var(--space-3); text-align: center;">
-              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">24/7</div>
+            <div class="card card-hover anim-fade-up delay-4" style="padding: var(--space-3); text-align: center;">
+              <div class="big-number" style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">24/7</div>
               <h3 style="font-size: var(--text-sm); margin-bottom: var(--space-1);">LGU Dashboard</h3>
               <p class="text-xs text-muted" style="margin: 0;">Real-time data</p>
             </div>
             
-            <div class="card" style="padding: var(--space-3); text-align: center;">
-              <div style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">1</div>
+            <div class="card card-hover anim-fade-up delay-5" style="padding: var(--space-3); text-align: center;">
+              <div class="big-number" style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">1</div>
               <h3 style="font-size: var(--text-sm); margin-bottom: var(--space-1);">App for All</h3>
               <p class="text-xs text-muted" style="margin: 0;">Plan → Book → Go</p>
             </div>
           </div>
           
-          <!-- Bottom section: Detailed benefits -->
-          <div class="grid-2" style="gap: var(--space-3); margin-top: var(--space-3);">
-            <div class="card" style="padding: var(--space-3);">
+          <!-- Bottom section: Detailed benefits with custom SVG icons -->
+          <div class="grid-2 anim-fade-up delay-6" style="gap: var(--space-3); margin-top: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3);">
               <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
                 <div style="width: 40px; height: 40px; background: rgba(0, 255, 157, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <span style="font-size: var(--text-lg);">🏪</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 21V9"/>
+                  </svg>
                 </div>
                 <div>
                   <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: var(--primary);">Local Businesses</h3>
@@ -993,10 +1482,12 @@
               </div>
             </div>
             
-            <div class="card" style="padding: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3);">
               <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
                 <div style="width: 40px; height: 40px; background: rgba(0, 210, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <span style="font-size: var(--text-lg);">🏘️</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                    <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+                  </svg>
                 </div>
                 <div>
                   <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: var(--secondary);">Communities</h3>
@@ -1005,10 +1496,13 @@
               </div>
             </div>
             
-            <div class="card" style="padding: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3);">
               <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
                 <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <span style="font-size: var(--text-lg);">🏛️</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                    <path d="M3 21h18M4 21V10l8-7 8 7v11M12 3v4"/>
+                    <rect x="9" y="14" width="6" height="7"/>
+                  </svg>
                 </div>
                 <div>
                   <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">LGU</h3>
@@ -1017,10 +1511,13 @@
               </div>
             </div>
             
-            <div class="card" style="padding: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-3);">
               <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
                 <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <span style="font-size: var(--text-lg);">🎒</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                    <circle cx="12" cy="8" r="5"/>
+                    <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
+                  </svg>
                 </div>
                 <div>
                   <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Travelers</h3>
@@ -1037,14 +1534,17 @@
     <div class="slide" id="slide-9">
       <div class="layout-split">
         <div class="split-content">
-          <span class="label">How We Work</span>
-          <h2>This Is a Conversation,<br>Not a Pitch</h2>
-          <p class="text-lg" style="margin-bottom: var(--space-4); color: var(--text-body);">We came to listen first.</p>
+          <span class="label anim-fade-up">How We Work</span>
+          <h2 class="anim-fade-up delay-1">This Is a Conversation,<br>Not a Pitch</h2>
+          <p class="text-lg anim-fade-up delay-2" style="margin-bottom: var(--space-4); color: var(--text-body);">We came to listen first.</p>
           
-          <div style="display: grid; gap: var(--space-4);">
+          <div class="anim-fade-up delay-3" style="display: grid; gap: var(--space-4);">
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 60px; height: 60px; background: rgba(0, 255, 157, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">👂</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0; color: var(--primary);">Today: We Listen</p>
@@ -1054,7 +1554,10 @@
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 60px; height: 60px; background: rgba(0, 210, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">🌱</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0; color: var(--secondary);">If It Makes Sense: Pilot Small</p>
@@ -1064,7 +1567,10 @@
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">🏠</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9,22 9,12 15,12 15,22"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0;">Always: Romblon Owns It</p>
@@ -1075,47 +1581,110 @@
         </div>
         
         <div class="split-visual">
-          <!-- Visual: The Journey -->
-          <div class="card" style="padding: var(--space-6); background: linear-gradient(135deg, rgba(0, 255, 157, 0.03) 0%, rgba(0, 210, 255, 0.03) 100%); text-align: center;">
-            
-            <!-- Circular journey -->
-            <div style="position: relative; width: 280px; height: 280px; margin: 0 auto;">
-              <!-- Center -->
-              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(0, 255, 157, 0.3);">
-                <span style="font-size: var(--text-3xl);">🤝</span>
-              </div>
+          <!-- Custom SVG: Circular Process Diagram -->
+          <div class="anim-scale delay-2" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00ff9d" />
+                  <stop offset="100%" style="stop-color:#00d2ff" />
+                </linearGradient>
+                
+                <style>
+                  @keyframes orbit-rotate {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                  }
+                  @keyframes counter-rotate {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(-360deg); }
+                  }
+                  .orbit-ring { 
+                    animation: orbit-rotate 20s linear infinite;
+                    transform-origin: 200px 200px;
+                  }
+                  .orbit-item { 
+                    animation: counter-rotate 20s linear infinite;
+                  }
+                  @keyframes center-pulse {
+                    0%, 100% { r: 60; }
+                    50% { r: 65; }
+                  }
+                  .center-glow { animation: center-pulse 3s ease-in-out infinite; }
+                </style>
+              </defs>
               
-              <!-- Orbiting elements -->
-              <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); text-align: center;">
-                <div style="width: 50px; height: 50px; background: var(--bg-card); border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                  <span style="font-size: var(--text-lg);">💬</span>
-                </div>
-                <p style="font-size: var(--text-xs); color: var(--primary); margin: 8px 0 0;">Listen</p>
-              </div>
+              <!-- Background -->
+              <rect width="400" height="400" fill="#050505"/>
               
-              <div style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); text-align: center;">
-                <div style="width: 50px; height: 50px; background: var(--bg-card); border: 2px solid var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                  <span style="font-size: var(--text-lg);">🧪</span>
-                </div>
-                <p style="font-size: var(--text-xs); color: var(--secondary); margin: 8px 0 0;">Pilot</p>
-              </div>
+              <!-- Orbit path -->
+              <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="8,8"/>
               
-              <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center;">
-                <div style="width: 50px; height: 50px; background: var(--bg-card); border: 2px solid var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                  <span style="font-size: var(--text-lg);">📈</span>
-                </div>
-                <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 8px 0 0;">Learn</p>
-              </div>
+              <!-- Rotating orbit group -->
+              <g class="orbit-ring">
+                <!-- Listen node (top) -->
+                <g transform="translate(200, 80)">
+                  <g class="orbit-item">
+                    <circle r="35" fill="#0f0f0f" stroke="#00ff9d" stroke-width="2"/>
+                    <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                  </g>
+                </g>
+                
+                <!-- Pilot node (right) -->
+                <g transform="translate(320, 200)">
+                  <g class="orbit-item">
+                    <circle r="35" fill="#0f0f0f" stroke="#00d2ff" stroke-width="2"/>
+                    <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                  </g>
+                </g>
+                
+                <!-- Learn node (bottom) -->
+                <g transform="translate(200, 320)">
+                  <g class="orbit-item">
+                    <circle r="35" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="2"/>
+                    <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9a9a9a" stroke-width="2">
+                      <polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/>
+                      <polyline points="17,6 23,6 23,12"/>
+                    </svg>
+                  </g>
+                </g>
+                
+                <!-- Iterate node (left) -->
+                <g transform="translate(80, 200)">
+                  <g class="orbit-item">
+                    <circle r="35" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="2"/>
+                    <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9a9a9a" stroke-width="2">
+                      <polyline points="23,4 23,10 17,10"/>
+                      <polyline points="1,20 1,14 7,14"/>
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                  </g>
+                </g>
+              </g>
               
-              <div style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); text-align: center;">
-                <div style="width: 50px; height: 50px; background: var(--bg-card); border: 2px solid var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                  <span style="font-size: var(--text-lg);">🔄</span>
-                </div>
-                <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 8px 0 0;">Iterate</p>
-              </div>
-            </div>
-            
-            <p style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-4);">Partnership at the center.<br>Everything else orbits around it.</p>
+              <!-- Center: Partnership (static) -->
+              <circle class="center-glow" cx="200" cy="200" r="60" fill="url(#centerGrad)" opacity="0.9"/>
+              <circle cx="200" cy="200" r="55" fill="#0f0f0f"/>
+              <svg x="175" y="175" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="1.5">
+                <path d="M12 4.354a4 4 0 1 1 0 7.292"/>
+                <path d="M15 21H3v-1a6 6 0 0 1 12 0v1z"/>
+                <path d="M12 4.354a4 4 0 1 0 0 7.292"/>
+                <path d="M21 21v-1a6 6 0 0 0-9-5.197"/>
+              </svg>
+              
+              <!-- Labels (static) -->
+              <text x="200" y="45" text-anchor="middle" fill="#00ff9d" font-size="11" font-weight="600" font-family="system-ui">LISTEN</text>
+              <text x="355" y="205" text-anchor="middle" fill="#00d2ff" font-size="11" font-weight="600" font-family="system-ui">PILOT</text>
+              <text x="200" y="375" text-anchor="middle" fill="#9a9a9a" font-size="11" font-weight="600" font-family="system-ui">LEARN</text>
+              <text x="45" y="205" text-anchor="middle" fill="#9a9a9a" font-size="11" font-weight="600" font-family="system-ui">ITERATE</text>
+              
+              <!-- Center label -->
+              <text x="200" y="250" text-anchor="middle" fill="#00ff9d" font-size="10" font-weight="600" font-family="system-ui">PARTNERSHIP</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -1125,74 +1694,127 @@
     <div class="slide" id="slide-10">
       <div class="layout-split">
         <div class="split-visual">
-          <!-- Brain Drain Diagram -->
-          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
-            <h4 style="font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-3); color: var(--text-muted);">The Problem & Solution</h4>
-            
-            <!-- Problem: Brain Drain -->
-            <div style="background: rgba(255, 77, 77, 0.08); border: 1px solid rgba(255, 77, 77, 0.3); border-radius: 12px; padding: var(--space-2); margin-bottom: var(--space-2);">
-              <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
-                <div style="text-align: center;">
-                  <span style="font-size: var(--text-xl);">👨‍🎓</span>
-                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Youth</p>
-                </div>
-                <div style="color: var(--danger);">→→→</div>
-                <div style="text-align: center;">
-                  <span style="font-size: var(--text-xl);">🏙️</span>
-                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Manila</p>
-                </div>
-              </div>
-              <p style="font-size: 10px; color: var(--danger); text-align: center; margin: 8px 0 0;">Brain Drain: No local opportunities</p>
-            </div>
-            
-            <!-- Arrow down -->
-            <div style="text-align: center; color: var(--primary); font-size: var(--text-lg); margin: var(--space-1) 0;">↓ Solution ↓</div>
-            
-            <!-- Solution: Skills Hub -->
-            <div style="background: rgba(0, 255, 157, 0.08); border: 1px solid rgba(0, 255, 157, 0.3); border-radius: 12px; padding: var(--space-2);">
-              <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
-                <div style="text-align: center;">
-                  <span style="font-size: var(--text-xl);">👨‍🎓</span>
-                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Youth</p>
-                </div>
-                <div style="color: var(--primary);">→</div>
-                <div style="text-align: center;">
-                  <span style="font-size: var(--text-xl);">🎓</span>
-                  <p style="font-size: 9px; color: var(--primary); margin: 4px 0 0;">Skills Hub</p>
-                </div>
-                <div style="color: var(--primary);">→</div>
-                <div style="text-align: center;">
-                  <span style="font-size: var(--text-xl);">💼</span>
-                  <p style="font-size: 9px; color: var(--text-muted); margin: 4px 0 0;">Local Jobs</p>
-                </div>
-              </div>
-              <p style="font-size: 10px; color: var(--primary); text-align: center; margin: 8px 0 0;">Stay home, earn locally</p>
-            </div>
+          <!-- Custom SVG: Brain Drain vs Solution -->
+          <div class="anim-scale delay-1" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <style>
+                  @keyframes person-leave {
+                    0%, 100% { transform: translateX(0); opacity: 1; }
+                    50% { transform: translateX(30px); opacity: 0.3; }
+                  }
+                  @keyframes person-stay {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                  }
+                  .person-leaving { animation: person-leave 2s ease-in-out infinite; }
+                  .person-staying { animation: person-stay 2s ease-in-out infinite; }
+                </style>
+              </defs>
+              
+              <!-- Background -->
+              <rect width="400" height="400" fill="#050505"/>
+              
+              <!-- TOP HALF: Brain Drain -->
+              <rect x="20" y="20" width="360" height="160" rx="12" fill="rgba(255,77,77,0.05)" stroke="rgba(255,77,77,0.3)" stroke-width="1"/>
+              <text x="200" y="50" text-anchor="middle" fill="#ff4d4d" font-size="12" font-weight="600" font-family="system-ui">THE PROBLEM: BRAIN DRAIN</text>
+              
+              <!-- Person icons leaving -->
+              <g class="person-leaving" transform="translate(80, 90)">
+                <circle r="15" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+                <path d="M0 18 L0 45 M0 25 L-12 35 M0 25 L12 35 M0 45 L-8 65 M0 45 L8 65" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" fill="none"/>
+              </g>
+              
+              <!-- Arrow pointing to Manila -->
+              <path d="M130 110 L240 110" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="8,4"/>
+              <polygon points="250,110 235,103 235,117" fill="#ff4d4d"/>
+              
+              <!-- City building icon -->
+              <g transform="translate(280, 80)">
+                <rect x="0" y="20" width="25" height="40" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+                <rect x="30" y="5" width="30" height="55" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+                <!-- Windows -->
+                <rect x="5" y="25" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="15" y="25" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="5" y="35" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="35" y="15" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="50" y="15" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="35" y="30" width="5" height="5" fill="#ff6b6b"/>
+                <rect x="50" y="30" width="5" height="5" fill="#ff6b6b"/>
+              </g>
+              <text x="310" y="150" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">Manila</text>
+              <text x="80" y="165" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">Youth</text>
+              
+              <!-- Divider -->
+              <line x1="40" y1="200" x2="360" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <circle cx="200" cy="200" r="20" fill="#050505" stroke="url(#solarGrad)" stroke-width="2"/>
+              <text x="200" y="205" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="bold" font-family="system-ui">↓</text>
+              
+              <!-- BOTTOM HALF: Solution -->
+              <rect x="20" y="220" width="360" height="160" rx="12" fill="rgba(0,255,157,0.05)" stroke="rgba(0,255,157,0.3)" stroke-width="1"/>
+              <text x="200" y="250" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="600" font-family="system-ui">THE SOLUTION: SKILLS HUB</text>
+              
+              <!-- Person icon staying -->
+              <g class="person-staying" transform="translate(80, 300)">
+                <circle r="15" fill="none" stroke="#00ff9d" stroke-width="2"/>
+                <path d="M0 18 L0 45 M0 25 L-12 35 M0 25 L12 35 M0 45 L-8 65 M0 45 L8 65" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" fill="none"/>
+              </g>
+              
+              <!-- Arrow to Skills Hub -->
+              <path d="M110 305 L160 305" stroke="#00ff9d" stroke-width="2"/>
+              <polygon points="168,305 155,298 155,312" fill="#00ff9d"/>
+              
+              <!-- Skills Hub icon (book/screen) -->
+              <g transform="translate(180, 280)">
+                <rect x="0" y="0" width="50" height="35" rx="4" fill="none" stroke="#00ff9d" stroke-width="2"/>
+                <line x1="25" y1="35" x2="25" y2="45" stroke="#00ff9d" stroke-width="2"/>
+                <line x1="15" y1="45" x2="35" y2="45" stroke="#00ff9d" stroke-width="2"/>
+                <!-- Content lines -->
+                <line x1="8" y1="10" x2="42" y2="10" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+                <line x1="8" y1="18" x2="35" y2="18" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+                <line x1="8" y1="26" x2="30" y2="26" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+              </g>
+              
+              <!-- Arrow to Job -->
+              <path d="M240 305 L280 305" stroke="#00ff9d" stroke-width="2"/>
+              <polygon points="288,305 275,298 275,312" fill="#00ff9d"/>
+              
+              <!-- Job/briefcase icon -->
+              <g transform="translate(295, 285)">
+                <rect x="0" y="10" width="40" height="30" rx="4" fill="none" stroke="#00d2ff" stroke-width="2"/>
+                <path d="M10 10 L10 5 Q10 0, 15 0 L25 0 Q30 0, 30 5 L30 10" fill="none" stroke="#00d2ff" stroke-width="2"/>
+                <line x1="0" y1="22" x2="40" y2="22" stroke="#00d2ff" stroke-width="1" opacity="0.5"/>
+              </g>
+              
+              <text x="80" y="375" text-anchor="middle" fill="#9a9a9a" font-size="10" font-family="system-ui">Youth</text>
+              <text x="205" y="345" text-anchor="middle" fill="#00ff9d" font-size="10" font-family="system-ui">Skills Hub</text>
+              <text x="315" y="345" text-anchor="middle" fill="#00d2ff" font-size="10" font-family="system-ui">Local Jobs</text>
+            </svg>
           </div>
         </div>
         <div class="split-content">
-          <span class="badge">Skills & Workforce</span>
-          <h2>The Workforce Challenge</h2>
-          <p class="text-sm">Building human capacity for growth</p>
+          <span class="badge anim-fade-up">Skills & Workforce</span>
+          <h2 class="anim-fade-up delay-1">The Workforce Challenge</h2>
+          <p class="text-sm anim-fade-up delay-2">Building human capacity for growth</p>
           
-          <div style="display: grid; gap: var(--space-2); margin-top: var(--space-3);">
-            <div class="card" style="padding: var(--space-2); background: rgba(255, 77, 77, 0.05); border-left: 3px solid var(--danger);">
+          <div class="anim-fade-up delay-3" style="display: grid; gap: var(--space-2); margin-top: var(--space-3);">
+            <div class="card card-hover" style="padding: var(--space-2); background: rgba(255, 77, 77, 0.05); border-left: 3px solid var(--danger);">
               <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Brain Drain</h3>
               <p class="text-xs" style="margin: 0;">Youth leave for Manila • Limited local careers • Skills mismatch</p>
             </div>
             
-            <div class="card" style="padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
+            <div class="card card-hover" style="padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border-left: 3px solid var(--primary);">
               <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Tourism Needs Skills</h3>
               <p class="text-xs" style="margin: 0;">Guides need training • Operators need digital skills • Geography limits access</p>
             </div>
             
-            <div class="card" style="padding: var(--space-2); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
+            <div class="card card-hover" style="padding: var(--space-2); background: rgba(0, 210, 255, 0.03); border-left: 3px solid var(--secondary);">
               <h3 style="font-size: var(--text-base); margin-bottom: var(--space-1);">Energy Transition</h3>
               <p class="text-xs" style="margin: 0;">ROMELCO needs solar techs • CSV partnership = jobs pipeline</p>
             </div>
           </div>
           
-          <p class="text-xs text-muted" style="margin-top: var(--space-3); font-style: italic;">
+          <p class="text-xs text-muted anim-fade-up delay-4" style="margin-top: var(--space-3); font-style: italic;">
             Build skills infrastructure that keeps talent home
           </p>
         </div>
@@ -1202,40 +1824,115 @@
     <!-- SLIDE 11: ROMBLON SKILLS HUB -->
     <div class="slide compact" id="slide-11">
       <div class="layout-centered">
-        <span class="label">Platform Concept</span>
-        <h2>Romblon Skills Hub</h2>
-        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">"Building Island Futures" — Training that leads to real jobs</p>
+        <span class="label anim-fade-up">Platform Concept</span>
+        <h2 class="anim-fade-up delay-1">Romblon Skills Hub</h2>
+        <p class="text-sm text-muted anim-fade-up delay-2" style="margin-bottom: var(--space-3);">"Building Island Futures" — Training that leads to real jobs</p>
         
         <div style="max-width: 1100px; margin: 0 auto;">
           <div class="grid-3" style="gap: var(--space-2); margin-top: var(--space-3);">
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">☀️ Solar PV</h4>
-              <p class="text-xs text-muted" style="margin: 0;">ROMELCO partnership<br>→ Installer jobs</p>
+            <div class="card card-hover anim-fade-up delay-1" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(255, 179, 0, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffb300" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: #ffb300;">Solar PV</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">ROMELCO partnership<br>→ Installer jobs</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🏝️ Tourism</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Guides & hospitality<br>→ Lakbay certified</p>
+            <div class="card card-hover anim-fade-up delay-2" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(0, 255, 157, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                    <path d="M3 18c0 0 3-6 9-6s9 6 9 6"/>
+                    <path d="M12 12c-2 0-4 1-5 2"/>
+                    <circle cx="8" cy="8" r="2"/>
+                    <path d="M8 6V4M5 7l-1.5-1M11 7l1.5-1"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: var(--primary);">Tourism</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Guides & hospitality<br>→ Lakbay certified</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">💻 Digital Skills</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Office & marketing<br>→ Remote work ready</p>
+            <div class="card card-hover anim-fade-up delay-3" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(0, 210, 255, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: var(--secondary);">Digital Skills</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Office & marketing<br>→ Remote work ready</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">📋 LGU Ops</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Admin & services<br>→ Government jobs</p>
+            <div class="card card-hover anim-fade-up delay-4" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                    <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+                    <rect x="9" y="3" width="6" height="4" rx="1"/>
+                    <line x1="9" y1="12" x2="15" y2="12"/>
+                    <line x1="9" y1="16" x2="13" y2="16"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">LGU Ops</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Admin & services<br>→ Government jobs</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🏪 Business</h4>
-              <p class="text-xs text-muted" style="margin: 0;">MSME basics<br>→ Own enterprise</p>
+            <div class="card card-hover anim-fade-up delay-5" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(255, 179, 0, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <path d="M9 22V12h6v10"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: #f5a623;">Business</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">MSME basics<br>→ Own enterprise</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1);">🌊 Fisheries</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Sustainable catch<br>→ Coastal livelihood</p>
+            <div class="card card-hover anim-fade-up delay-6" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                <div style="width: 36px; height: 36px; background: rgba(0, 150, 200, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0096c8" stroke-width="2">
+                    <path d="M2 12c0 0 4-4 10-4s10 4 10 4"/>
+                    <path d="M2 12c0 0 4 4 10 4s10-4 10-4"/>
+                    <circle cx="12" cy="12" r="2"/>
+                    <path d="M12 8v-3M12 19v-3"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-base); margin-bottom: var(--space-1); color: #0096c8;">Fisheries</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Sustainable catch<br>→ Coastal livelihood</p>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -1253,14 +1950,19 @@
     <div class="slide" id="slide-12">
       <div class="layout-split">
         <div class="split-content">
-          <span class="badge">Real Example</span>
-          <h2>Solar PV Technician Track</h2>
-          <p class="text-lg" style="color: var(--text-body);">Train with ROMELCO. Get certified. Get hired.</p>
+          <span class="badge anim-fade-up">Real Example</span>
+          <h2 class="anim-fade-up delay-1">Solar PV Technician Track</h2>
+          <p class="text-lg anim-fade-up delay-2" style="color: var(--text-body);">Train with ROMELCO. Get certified. Get hired.</p>
           
-          <div style="display: grid; gap: var(--space-4); margin-top: var(--space-4);">
+          <div class="anim-fade-up delay-3" style="display: grid; gap: var(--space-4); margin-top: var(--space-4);">
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 56px; height: 56px; background: rgba(0, 255, 157, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">📚</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  <line x1="8" y1="6" x2="16" y2="6"/>
+                  <line x1="8" y1="10" x2="14" y2="10"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0; color: var(--primary);">4 Months</p>
@@ -1270,7 +1972,10 @@
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 56px; height: 56px; background: rgba(0, 210, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">🎓</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0; color: var(--secondary);">TESDA NC II</p>
@@ -1280,7 +1985,10 @@
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">
               <div style="width: 56px; height: 56px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-size: var(--text-2xl);">💼</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
               </div>
               <div>
                 <p style="font-size: var(--text-lg); font-weight: 600; margin: 0;">₱12K–30K+/month</p>
@@ -1290,31 +1998,90 @@
           </div>
         </div>
         <div class="split-visual">
-          <!-- Who Provides What -->
-          <div class="card" style="padding: var(--space-4); background: var(--bg-card);">
-            <h4 style="font-size: var(--text-base); text-align: center; margin-bottom: var(--space-4); color: var(--text-muted);">Who Provides What</h4>
-            
-            <div style="display: grid; gap: var(--space-3);">
-              <div style="background: rgba(0, 255, 157, 0.05); border-radius: 12px; padding: var(--space-3); border: 1px solid rgba(0, 255, 157, 0.2);">
-                <p style="font-size: var(--text-sm); font-weight: 600; color: var(--primary); margin: 0 0 4px;">ROMELCO</p>
-                <p style="font-size: var(--text-sm); color: var(--text-body); margin: 0;">Equipment, sites, mentors, jobs</p>
-              </div>
+          <!-- Custom SVG: Solar Training Pipeline -->
+          <div class="anim-scale delay-2" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="solarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00ff9d" />
+                  <stop offset="100%" style="stop-color:#00d2ff" />
+                </linearGradient>
+                
+                <style>
+                  @keyframes sun-rays {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 0.8; }
+                  }
+                  .sun-ray { animation: sun-rays 2s ease-in-out infinite; }
+                  .sun-ray:nth-child(2) { animation-delay: 0.2s; }
+                  .sun-ray:nth-child(3) { animation-delay: 0.4s; }
+                  .sun-ray:nth-child(4) { animation-delay: 0.6s; }
+                  
+                  @keyframes energy-flow {
+                    0% { stroke-dashoffset: 20; }
+                    100% { stroke-dashoffset: 0; }
+                  }
+                  .energy-line { 
+                    stroke-dasharray: 10, 5;
+                    animation: energy-flow 1s linear infinite;
+                  }
+                </style>
+              </defs>
               
-              <div style="background: rgba(0, 210, 255, 0.05); border-radius: 12px; padding: var(--space-3); border: 1px solid rgba(0, 210, 255, 0.2);">
-                <p style="font-size: var(--text-sm); font-weight: 600; color: var(--secondary); margin: 0 0 4px;">CSV</p>
-                <p style="font-size: var(--text-sm); color: var(--text-body); margin: 0;">Solar curriculum, technical expertise</p>
-              </div>
+              <!-- Background -->
+              <rect width="400" height="400" fill="#050505"/>
               
-              <div style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: var(--space-3); border: 1px solid var(--border);">
-                <p style="font-size: var(--text-sm); font-weight: 600; margin: 0 0 4px;">TESDA / DepEd</p>
-                <p style="font-size: var(--text-sm); color: var(--text-body); margin: 0;">Certification, school integration</p>
-              </div>
+              <!-- Sun -->
+              <circle cx="200" cy="60" r="30" fill="#ffb300"/>
+              <g class="sun-ray">
+                <line x1="200" y1="20" x2="200" y2="5" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+                <line x1="230" y1="30" x2="245" y2="15" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+                <line x1="240" y1="60" x2="260" y2="60" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+                <line x1="170" y1="30" x2="155" y2="15" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+                <line x1="160" y1="60" x2="140" y2="60" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+              </g>
               
-              <div style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: var(--space-3); border: 1px solid var(--border);">
-                <p style="font-size: var(--text-sm); font-weight: 600; margin: 0 0 4px;">Likha Labs</p>
-                <p style="font-size: var(--text-sm); color: var(--text-body); margin: 0;">Platform technology</p>
-              </div>
-            </div>
+              <!-- Energy flow lines -->
+              <path class="energy-line" d="M200 95 L200 130" stroke="#ffb300" stroke-width="2" fill="none"/>
+              
+              <!-- Solar Panel -->
+              <g transform="translate(140, 130)">
+                <rect width="120" height="80" rx="4" fill="#1a3d28" stroke="#00ff9d" stroke-width="2"/>
+                <!-- Grid lines -->
+                <line x1="40" y1="0" x2="40" y2="80" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+                <line x1="80" y1="0" x2="80" y2="80" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+                <line x1="0" y1="27" x2="120" y2="27" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+                <line x1="0" y1="54" x2="120" y2="54" stroke="#00ff9d" stroke-width="1" opacity="0.5"/>
+              </g>
+              <text x="200" y="230" text-anchor="middle" fill="#00ff9d" font-size="11" font-weight="600" font-family="system-ui">ROMELCO TRAINING</text>
+              
+              <!-- Flow down -->
+              <path class="energy-line" d="M200 245 L200 275" stroke="url(#solarGrad)" stroke-width="2" fill="none"/>
+              
+              <!-- Partner boxes -->
+              <g transform="translate(50, 290)">
+                <rect width="80" height="45" rx="6" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="1"/>
+                <text x="40" y="20" text-anchor="middle" fill="#00ff9d" font-size="10" font-weight="600" font-family="system-ui">ROMELCO</text>
+                <text x="40" y="35" text-anchor="middle" fill="#9a9a9a" font-size="8" font-family="system-ui">Sites & Jobs</text>
+              </g>
+              
+              <g transform="translate(160, 290)">
+                <rect width="80" height="45" rx="6" fill="rgba(0,210,255,0.1)" stroke="#00d2ff" stroke-width="1"/>
+                <text x="40" y="20" text-anchor="middle" fill="#00d2ff" font-size="10" font-weight="600" font-family="system-ui">CSV</text>
+                <text x="40" y="35" text-anchor="middle" fill="#9a9a9a" font-size="8" font-family="system-ui">Funding</text>
+              </g>
+              
+              <g transform="translate(270, 290)">
+                <rect width="80" height="45" rx="6" fill="rgba(255,255,255,0.05)" stroke="#9a9a9a" stroke-width="1"/>
+                <text x="40" y="20" text-anchor="middle" fill="#e0e0e0" font-size="10" font-weight="600" font-family="system-ui">TESDA</text>
+                <text x="40" y="35" text-anchor="middle" fill="#9a9a9a" font-size="8" font-family="system-ui">Certification</text>
+              </g>
+              
+              <!-- Output -->
+              <path class="energy-line" d="M200 345 L200 365" stroke="url(#solarGrad)" stroke-width="2" fill="none"/>
+              <rect x="120" y="370" width="160" height="25" rx="12" fill="url(#solarGrad)"/>
+              <text x="200" y="388" text-anchor="middle" fill="#050505" font-size="11" font-weight="700" font-family="system-ui">₱12K–30K+/MONTH</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -1322,87 +2089,205 @@
 
     <!-- SLIDE 13: THE TRANSFORMATION -->
     <div class="slide" id="slide-13">
-      <div class="layout-centered">
-        <span class="label">The Vision</span>
-        <h2>Two Futures for Romblon's Youth</h2>
-        
-        <div class="grid-2" style="max-width: 1100px; margin: var(--space-4) auto 0; gap: var(--space-4); align-items: stretch;">
-          <!-- WITHOUT -->
-          <div class="card" style="padding: var(--space-4); background: linear-gradient(135deg, rgba(255, 80, 80, 0.08) 0%, rgba(255, 80, 80, 0.02) 100%); border: 2px solid rgba(255, 80, 80, 0.3);">
-            <div style="text-align: center; margin-bottom: var(--space-4);">
-              <div style="font-size: 48px; margin-bottom: var(--space-2);">😔</div>
-              <h3 style="font-size: var(--text-xl); color: #ff6b6b; margin: 0;">Today</h3>
+      <div class="layout-split">
+        <div class="split-content">
+          <span class="label anim-fade-up">The Stakes</span>
+          <h2 class="anim-fade-up delay-1">Why This Matters</h2>
+          <p class="text-lg anim-fade-up delay-2" style="color: var(--text-body); margin-bottom: var(--space-4);">Every year, Romblon loses its brightest to Manila. These platforms can reverse that flow.</p>
+          
+          <div class="anim-fade-up delay-3" style="display: grid; gap: var(--space-3);">
+            <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: rgba(255, 77, 77, 0.05); border-radius: 12px; border-left: 3px solid #ff4d4d;">
+              <span class="big-number" style="font-size: var(--text-3xl); background: linear-gradient(135deg, #ff4d4d, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">65%</span>
+              <p style="margin: 0; font-size: var(--text-base);">of youth leave within 5 years of graduating</p>
             </div>
             
-            <div style="display: grid; gap: var(--space-3);">
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: #ff6b6b; font-size: var(--text-lg);">✗</span>
-                <p style="font-size: var(--text-base); margin: 0;">Graduate high school</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: #ff6b6b; font-size: var(--text-lg);">✗</span>
-                <p style="font-size: var(--text-base); margin: 0;">No local jobs that pay enough</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: #ff6b6b; font-size: var(--text-lg);">✗</span>
-                <p style="font-size: var(--text-base); margin: 0;">Take the ferry to Manila</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: #ff6b6b; font-size: var(--text-lg);">✗</span>
-                <p style="font-size: var(--text-base); margin: 0;">Maybe come back for fiestas</p>
-              </div>
-            </div>
-            
-            <div style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid rgba(255, 80, 80, 0.2); text-align: center;">
-              <p style="font-size: var(--text-lg); color: #ff6b6b; margin: 0; font-weight: 600;">Brain drain continues</p>
+            <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: rgba(0, 255, 157, 0.05); border-radius: 12px; border-left: 3px solid var(--primary);">
+              <span class="big-number" style="font-size: var(--text-3xl);">80%</span>
+              <p style="margin: 0; font-size: var(--text-base);">target: trained graduates employed locally</p>
             </div>
           </div>
           
-          <!-- WITH -->
-          <div class="card" style="padding: var(--space-4); background: linear-gradient(135deg, rgba(0, 255, 157, 0.08) 0%, rgba(0, 210, 255, 0.05) 100%); border: 2px solid var(--primary);">
-            <div style="text-align: center; margin-bottom: var(--space-4);">
-              <div style="font-size: 48px; margin-bottom: var(--space-2);">🌟</div>
-              <h3 style="font-size: var(--text-xl); color: var(--primary); margin: 0;">With These Platforms</h3>
-            </div>
-            
-            <div style="display: grid; gap: var(--space-3);">
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: var(--primary); font-size: var(--text-lg);">✓</span>
-                <p style="font-size: var(--text-base); margin: 0;">Train while in school (Skills Hub)</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: var(--primary); font-size: var(--text-lg);">✓</span>
-                <p style="font-size: var(--text-base); margin: 0;">Get TESDA certified before graduating</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: var(--primary); font-size: var(--text-lg);">✓</span>
-                <p style="font-size: var(--text-base); margin: 0;">Verified on Lakbay = employers find you</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-2);">
-                <span style="color: var(--primary); font-size: var(--text-lg);">✓</span>
-                <p style="font-size: var(--text-base); margin: 0;">₱20K/month working at home</p>
-              </div>
-            </div>
-            
-            <div style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid rgba(0, 255, 157, 0.3); text-align: center;">
-              <p style="font-size: var(--text-lg); color: var(--primary); margin: 0; font-weight: 600;">Stay. Build. Thrive.</p>
-            </div>
-          </div>
+          <p class="text-muted anim-fade-up delay-4" style="margin-top: var(--space-4); font-size: var(--text-sm); font-style: italic;">Skills Hub trains them. Lakbay connects them to jobs. They stay.</p>
         </div>
         
-        <p class="text-muted" style="margin-top: var(--space-4); font-size: var(--text-base);">This is what we're fighting for.</p>
+        <div class="split-visual">
+          <!-- Custom animated SVG: Island with people flowing out vs staying -->
+          <div class="anim-scale delay-2" style="position: relative; width: 100%; padding-bottom: 100%;">
+            <svg viewBox="0 0 400 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+              <defs>
+                <!-- Gradient for ocean -->
+                <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#0d2137;stop-opacity:1" />
+                </linearGradient>
+                
+                <!-- Gradient for island -->
+                <linearGradient id="islandGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2d5a3d;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#1a3d28;stop-opacity:1" />
+                </linearGradient>
+                
+                <!-- Glow filter -->
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                
+                <!-- Person shape -->
+                <symbol id="person" viewBox="0 0 20 40">
+                  <circle cx="10" cy="6" r="5" fill="currentColor"/>
+                  <path d="M10 12 L10 28 M10 16 L3 22 M10 16 L17 22 M10 28 L4 38 M10 28 L16 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                </symbol>
+                
+                <!-- Animated dash for paths -->
+                <style>
+                  @keyframes flowOut {
+                    0% { transform: translate(0, 0); opacity: 1; }
+                    100% { transform: translate(80px, -40px); opacity: 0; }
+                  }
+                  @keyframes flowIn {
+                    0% { transform: translate(80px, -40px); opacity: 0; }
+                    100% { transform: translate(0, 0); opacity: 1; }
+                  }
+                  @keyframes pulse-person {
+                    0%, 100% { opacity: 0.6; }
+                    50% { opacity: 1; }
+                  }
+                  .person-leaving {
+                    animation: flowOut 3s ease-in-out infinite;
+                    color: #ff6b6b;
+                  }
+                  .person-leaving:nth-child(2) { animation-delay: 0.5s; }
+                  .person-leaving:nth-child(3) { animation-delay: 1s; }
+                  .person-staying {
+                    animation: pulse-person 2s ease-in-out infinite;
+                    color: #00ff9d;
+                  }
+                  .person-staying:nth-child(2) { animation-delay: 0.3s; }
+                  .person-staying:nth-child(3) { animation-delay: 0.6s; }
+                  .person-staying:nth-child(4) { animation-delay: 0.9s; }
+                  @keyframes wave {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-3px); }
+                  }
+                  .wave-line {
+                    animation: wave 2s ease-in-out infinite;
+                  }
+                  .wave-line:nth-child(2) { animation-delay: 0.2s; }
+                  .wave-line:nth-child(3) { animation-delay: 0.4s; }
+                </style>
+              </defs>
+              
+              <!-- Background ocean -->
+              <rect width="400" height="400" fill="url(#oceanGrad)"/>
+              
+              <!-- Animated wave lines -->
+              <g class="wave-line" opacity="0.3">
+                <path d="M0 320 Q50 310, 100 320 T200 320 T300 320 T400 320" stroke="#00d2ff" stroke-width="1" fill="none"/>
+              </g>
+              <g class="wave-line" opacity="0.2">
+                <path d="M0 340 Q50 330, 100 340 T200 340 T300 340 T400 340" stroke="#00d2ff" stroke-width="1" fill="none"/>
+              </g>
+              <g class="wave-line" opacity="0.1">
+                <path d="M0 360 Q50 350, 100 360 T200 360 T300 360 T400 360" stroke="#00d2ff" stroke-width="1" fill="none"/>
+              </g>
+              
+              <!-- Romblon Island (center) -->
+              <ellipse cx="200" cy="250" rx="120" ry="50" fill="url(#islandGrad)" stroke="#3d7a52" stroke-width="2"/>
+              
+              <!-- Mountain/hills on island -->
+              <path d="M140 250 L180 190 L220 250" fill="#2d5a3d" stroke="#3d7a52" stroke-width="1"/>
+              <path d="M180 250 L230 170 L280 250" fill="#3d7a52" stroke="#4a8a5f" stroke-width="1"/>
+              <path d="M220 250 L250 210 L280 250" fill="#2d5a3d" stroke="#3d7a52" stroke-width="1"/>
+              
+              <!-- Small trees -->
+              <circle cx="150" cy="235" r="8" fill="#3d7a52"/>
+              <circle cx="165" cy="240" r="6" fill="#2d5a3d"/>
+              <circle cx="240" cy="238" r="7" fill="#3d7a52"/>
+              <circle cx="260" cy="242" r="5" fill="#2d5a3d"/>
+              
+              <!-- Label: Romblon -->
+              <text x="200" y="280" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="600" font-family="system-ui">ROMBLON</text>
+              
+              <!-- LEFT SIDE: Brain Drain (Before) -->
+              <g transform="translate(30, 80)">
+                <text x="50" y="0" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600" font-family="system-ui">BEFORE</text>
+                
+                <!-- Arrow pointing out -->
+                <path d="M50 120 C50 60, 120 40, 150 30" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0.6"/>
+                <polygon points="150,25 155,35 145,35" fill="#ff6b6b" opacity="0.6"/>
+                
+                <!-- People leaving -->
+                <g class="person-leaving" transform="translate(30, 100)">
+                  <use href="#person" width="16" height="32"/>
+                </g>
+                <g class="person-leaving" transform="translate(50, 90)">
+                  <use href="#person" width="16" height="32"/>
+                </g>
+                <g class="person-leaving" transform="translate(70, 105)">
+                  <use href="#person" width="16" height="32"/>
+                </g>
+                
+                <!-- Manila label -->
+                <text x="140" y="20" text-anchor="middle" fill="#ff6b6b" font-size="9" opacity="0.7" font-family="system-ui">to Manila</text>
+              </g>
+              
+              <!-- RIGHT SIDE: With Platforms (After) -->
+              <g transform="translate(250, 80)">
+                <text x="70" y="0" text-anchor="middle" fill="#00ff9d" font-size="11" font-weight="600" font-family="system-ui">AFTER</text>
+                
+                <!-- Circular arrows (staying) -->
+                <circle cx="70" cy="80" r="40" stroke="#00ff9d" stroke-width="1.5" fill="none" stroke-dasharray="8,4" opacity="0.4"/>
+                
+                <!-- People staying (arranged in circle) -->
+                <g class="person-staying" transform="translate(55, 50)">
+                  <use href="#person" width="14" height="28"/>
+                </g>
+                <g class="person-staying" transform="translate(80, 55)">
+                  <use href="#person" width="14" height="28"/>
+                </g>
+                <g class="person-staying" transform="translate(48, 80)">
+                  <use href="#person" width="14" height="28"/>
+                </g>
+                <g class="person-staying" transform="translate(85, 85)">
+                  <use href="#person" width="14" height="28"/>
+                </g>
+                
+                <!-- Small building/platform icon -->
+                <rect x="62" y="100" width="20" height="15" fill="none" stroke="#00ff9d" stroke-width="1.5" rx="2"/>
+                <line x1="72" y1="100" x2="72" y2="95" stroke="#00ff9d" stroke-width="1.5"/>
+                <circle cx="72" cy="92" r="3" fill="#00ff9d"/>
+              </g>
+              
+              <!-- Divider line -->
+              <line x1="200" y1="60" x2="200" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+              
+              <!-- Bottom stats -->
+              <g transform="translate(0, 370)">
+                <rect x="20" y="0" width="160" height="24" rx="4" fill="rgba(255,77,77,0.15)" stroke="#ff4d4d" stroke-width="1"/>
+                <text x="100" y="16" text-anchor="middle" fill="#ff6b6b" font-size="10" font-family="system-ui">65% leave for cities</text>
+                
+                <rect x="220" y="0" width="160" height="24" rx="4" fill="rgba(0,255,157,0.15)" stroke="#00ff9d" stroke-width="1"/>
+                <text x="300" y="16" text-anchor="middle" fill="#00ff9d" font-size="10" font-family="system-ui">80% stay with skills</text>
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- SLIDE 14: CO-GOVERNANCE MODEL -->
     <div class="slide compact" id="slide-14">
       <div class="layout-centered">
-        <span class="label">Partnership Structure</span>
-        <h2>Co-Governance Model</h2>
-        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Romblon leads. We support.</p>
+        <span class="label anim-fade-up">Partnership Structure</span>
+        <h2 class="anim-fade-up delay-1">Co-Governance Model</h2>
+        <p class="text-sm text-muted anim-fade-up delay-2" style="margin-bottom: var(--space-3);">Romblon leads. We support.</p>
         
         <div style="max-width: 950px; margin: 0 auto;">
-          <div class="card" style="padding: var(--space-3); margin-bottom: var(--space-3); background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+          <div class="card anim-scale delay-2" style="padding: var(--space-3); margin-bottom: var(--space-3); background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
             <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--primary);">Steering Committee</h3>
             <div class="grid-2" style="gap: var(--space-2); margin: 0;">
               <div>
@@ -1416,25 +2301,69 @@
             </div>
           </div>
           
-          <div class="grid-2" style="gap: var(--space-2);">
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Tourism WG</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Content • Onboarding • Policy</p>
+          <div class="grid-2 anim-fade-up delay-3" style="gap: var(--space-2);">
+            <div class="card card-hover" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div style="width: 32px; height: 32px; background: rgba(0, 255, 157, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                    <path d="M3 18c0 0 3-6 9-6s9 6 9 6"/>
+                    <circle cx="8" cy="8" r="2"/>
+                    <path d="M8 6V4"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-sm); margin-bottom: 2px; font-weight: 600; color: var(--primary);">Tourism WG</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Content & Onboarding & Policy</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Skills WG</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Curriculum • Certification • Jobs</p>
+            <div class="card card-hover" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div style="width: 32px; height: 32px; background: rgba(0, 210, 255, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-sm); margin-bottom: 2px; font-weight: 600; color: var(--secondary);">Skills WG</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Curriculum & Certification & Jobs</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Energy WG</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Solar training • ROMELCO pipeline</p>
+            <div class="card card-hover" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div style="width: 32px; height: 32px; background: rgba(255, 179, 0, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffb300" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-sm); margin-bottom: 2px; font-weight: 600; color: #ffb300;">Energy WG</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Solar training & ROMELCO pipeline</p>
+                </div>
+              </div>
             </div>
             
-            <div class="card" style="padding: var(--space-2);">
-              <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-1); font-weight: 600;">Data WG</h4>
-              <p class="text-xs text-muted" style="margin: 0;">Impact • Sustainability • Handover</p>
+            <div class="card card-hover" style="padding: var(--space-2);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div style="width: 32px; height: 32px; background: rgba(255, 255, 255, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0" stroke-width="2">
+                    <polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/>
+                    <polyline points="17,6 23,6 23,12"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-sm); margin-bottom: 2px; font-weight: 600;">Data WG</h4>
+                  <p class="text-xs text-muted" style="margin: 0;">Impact & Sustainability & Handover</p>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -1450,13 +2379,13 @@
     <!-- SLIDE 15: 90-DAY ROADMAP -->
     <div class="slide compact" id="slide-15">
       <div class="layout-centered">
-        <span class="label">If We Move Forward</span>
-        <h2>First 90 Days</h2>
-        <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Discovery → Pilot → Launch</p>
+        <span class="label anim-fade-up">If We Move Forward</span>
+        <h2 class="anim-fade-up delay-1">First 90 Days</h2>
+        <p class="text-sm text-muted anim-fade-up delay-2" style="margin-bottom: var(--space-3);">Discovery → Pilot → Launch</p>
         
         <div style="max-width: 1000px; margin: 0 auto;">
           <div style="display: grid; gap: var(--space-2);">
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.05); border-left: 4px solid var(--primary);">
+            <div class="card anim-fade-up delay-3" style="padding: var(--space-3); background: rgba(0, 255, 157, 0.05); border-left: 4px solid var(--primary);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
                 <h3 style="font-size: var(--text-lg); margin: 0; color: var(--primary);">Weeks 1-4: Discovery</h3>
                 <span class="text-xs text-primary-color">MONTH 1</span>
@@ -1474,7 +2403,7 @@
               </div>
             </div>
             
-            <div class="card" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.05); border-left: 4px solid var(--secondary);">
+            <div class="card anim-fade-up delay-4" style="padding: var(--space-3); background: rgba(0, 210, 255, 0.05); border-left: 4px solid var(--secondary);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
                 <h3 style="font-size: var(--text-lg); margin: 0; color: var(--secondary);">Weeks 5-8: Pilot Build</h3>
                 <span class="text-xs" style="color: var(--secondary);">MONTH 2</span>
@@ -1492,7 +2421,7 @@
               </div>
             </div>
             
-            <div class="card" style="padding: var(--space-3); border-left: 4px solid var(--text-muted);">
+            <div class="card anim-fade-up delay-5" style="padding: var(--space-3); border-left: 4px solid var(--text-muted);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
                 <h3 style="font-size: var(--text-lg); margin: 0;">Weeks 9-12: Launch & Learn</h3>
                 <span class="text-xs text-muted">MONTH 3</span>
@@ -1511,7 +2440,7 @@
             </div>
           </div>
           
-          <div class="card" style="margin-top: var(--space-3); padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.3);">
+          <div class="card anim-fade-up delay-6" style="margin-top: var(--space-3); padding: var(--space-2); background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.3);">
             <p class="text-xs" style="margin: 0; line-height: 1.6;">
               <strong>Day 90 milestone:</strong> Steering Committee reviews data • Decide to scale, pivot, or pause
             </p>
@@ -1523,31 +2452,70 @@
     <!-- SLIDE 16: CLOSING -->
     <div class="slide" id="slide-16">
       <div class="layout-centered">
-        <h2 style="margin-bottom: var(--space-2);">Let's Explore Together</h2>
-        <p class="text-base" style="max-width: 650px; margin: 0 auto var(--space-4);">
+        <h2 class="anim-fade-up" style="margin-bottom: var(--space-2);">Let's Explore Together</h2>
+        <p class="text-base anim-fade-up delay-1" style="max-width: 650px; margin: 0 auto var(--space-4);">
           We've shared our thinking. Now we want to hear yours.
         </p>
         
-        <div class="grid-2" style="max-width: 800px; margin: 0 auto var(--space-4); gap: var(--space-3);">
-          <div class="card" style="padding: var(--space-4); text-align: center; background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+        <div class="grid-2 anim-fade-up delay-2" style="max-width: 800px; margin: 0 auto var(--space-4); gap: var(--space-3);">
+          <div class="card card-hover" style="padding: var(--space-4); text-align: center; background: rgba(0, 255, 157, 0.05); border: 2px solid var(--primary);">
+            <div style="width: 48px; height: 48px; background: rgba(0, 255, 157, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
             <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--primary);">Climate Smart Ventures</h3>
-            <p class="text-xs text-muted">Energy Partner • ROMELCO relationship</p>
+            <p class="text-xs text-muted">Energy Partner & ROMELCO relationship</p>
           </div>
           
-          <div class="card" style="padding: var(--space-4); text-align: center; background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
+          <div class="card card-hover" style="padding: var(--space-4); text-align: center; background: rgba(0, 210, 255, 0.05); border: 2px solid var(--secondary);">
+            <div style="width: 48px; height: 48px; background: rgba(0, 210, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2">
+                <polyline points="16,18 22,12 16,6"/>
+                <polyline points="8,6 2,12 8,18"/>
+              </svg>
+            </div>
             <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--secondary);">Likha Labs</h3>
-            <p class="text-xs text-muted">Technology Partner • Platform development</p>
+            <p class="text-xs text-muted">Technology Partner & Platform development</p>
           </div>
         </div>
         
-        <div class="card" style="max-width: 700px; margin: 0 auto; padding: var(--space-3);">
-          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ Does this align with your priorities?</p>
-          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ What challenges should we understand?</p>
-          <p class="text-sm" style="margin-bottom: var(--space-1);">✓ Who else should be in this conversation?</p>
-          <p class="text-sm" style="margin: 0;">✓ What would success look like to you?</p>
+        <div class="card anim-fade-up delay-3" style="max-width: 700px; margin: 0 auto; padding: var(--space-3);">
+          <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+            <div style="width: 24px; height: 24px; background: rgba(0, 255, 157, 0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="3">
+                <polyline points="20,6 9,17 4,12"/>
+              </svg>
+            </div>
+            <p class="text-sm" style="margin: 0;">Does this align with your priorities?</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+            <div style="width: 24px; height: 24px; background: rgba(0, 255, 157, 0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="3">
+                <polyline points="20,6 9,17 4,12"/>
+              </svg>
+            </div>
+            <p class="text-sm" style="margin: 0;">What challenges should we understand?</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+            <div style="width: 24px; height: 24px; background: rgba(0, 255, 157, 0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="3">
+                <polyline points="20,6 9,17 4,12"/>
+              </svg>
+            </div>
+            <p class="text-sm" style="margin: 0;">Who else should be in this conversation?</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <div style="width: 24px; height: 24px; background: rgba(0, 255, 157, 0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="3">
+                <polyline points="20,6 9,17 4,12"/>
+              </svg>
+            </div>
+            <p class="text-sm" style="margin: 0;">What would success look like to you?</p>
+          </div>
         </div>
         
-        <p class="text-sm text-muted" style="margin-top: var(--space-4);">Thank you for your time. Excited to learn from Romblon.</p>
+        <p class="text-sm text-muted anim-fade-up delay-4" style="margin-top: var(--space-4);">Thank you for your time. Excited to learn from Romblon.</p>
       </div>
     </div>
 
